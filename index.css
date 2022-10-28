@@ -1,0 +1,282 @@
+body {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#leftContainer {
+    box-sizing: border-box;
+    width: 65%;
+    height: auto;
+    outline: 2px solid black;
+    float: left;
+}
+#rightContainer {
+    box-sizing: border-box;
+    float: right;
+    outline: 2px solid blue;
+    width: 35%;
+    height: 900px;
+    background-color: #add8e6;
+}
+#searchContainer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    outline: 2px solid orange;
+}
+
+#loginContainer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    outline: 2px solid orange;
+}
+
+.weatherTitle {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 70px;
+    outline: 3px solid green;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.weatherTitle h1 {
+    font-weight: lighter;
+}
+
+#cities {
+    box-sizing: border-box;
+    border: 2px solid turquoise;
+    width: 100%;
+    height: 250px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 30px;
+}
+
+#todayInfo {
+    box-sizing: border-box;
+    width: 100%;
+    height: 480px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#allWeatherInfo {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    outline: 2px solid red;
+}
+
+#extraTodayInfo {
+    width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+    outline: 3px solid red;
+}
+
+.selectCity {
+    box-sizing: border-box;
+    height: 200px;
+    width: 200px;
+    outline: 1px solid black;
+    text-align: center;
+}
+
+.cityPic {
+    margin: auto;
+    height: 80%;
+    width: 70%;
+    outline: 1px solid black;
+}
+
+.cityPic img{
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.cityPic:hover img {
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    text-align: center;
+    justify-content: center;
+    padding: 150px;
+}
+
+#howDisplayWeather {
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
+    width: 20%;
+    color: #808080;
+    font-size: 18px;
+}
+
+h3:hover {
+    color: #000047;
+}
+
+#displayWeather {
+    width: 100%;
+    height: 90%;
+}
+
+#hourlyDisplay {
+    width: 100%;
+    height: 100%;
+    outline: 3px solid blue;
+}
+
+.eachHour {
+    width: 100%;
+    height: 60px;
+    outline: 1px solid red;
+    display: flex;
+    align-items: center;
+}
+
+p {
+    margin: 0;
+}
+
+#sevenDayDisplay {
+    width: 100%;
+    height: 100%;
+    outline: 1px solid black;
+}
+
+#monthlyDisplay {
+    width: 100%;
+    height: 100%;
+}
+
+.eachDayin7Days {
+    width: 100%;
+    height: 65px;
+    /* outline: 4px solid orange; */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dayText {
+    width: 17%;
+    /* outline: 1px solid red; */
+}
+
+.rainChance {
+    width: 10%;
+    height: 100%;
+    /* outline: 1px solid red; */
+    display: flex;
+    align-items: center;
+}
+
+.rainDropImg {
+    width: 30%;
+    height: 50%;
+    /* outline: 1px solid green; */
+}
+
+.rainDropImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.generalWeather {
+    width: 5%;
+    height: 60%;
+    padding-left: 20px;
+    /* outline: 1px solid red; */
+}
+
+.generalWeather img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.lowTempContainer {
+    /* outline: 1px solid red; */
+    width: 10%;
+    height: auto;
+    margin-left: 70px;
+    display: flex;
+}
+
+.lowestTemp {
+    margin-left: 7px;
+    float: left;
+}
+.highTempContainer{
+    /* outline: 1px solid red; */
+    width: 10%;
+    height: auto;
+    margin-left: 70px;
+    display: flex;
+}
+.highestTemp {
+    margin-left: 7px;
+    float: right;
+}
+
+/* CSS */
+.button-9 {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 80%;
+  height: 60%;
+  line-height: 1.15;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 12%;
+  margin-left: 80px;
+}
+
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
