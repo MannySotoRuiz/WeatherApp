@@ -58,6 +58,10 @@ body {
     padding-left: 40px;
 }
 
+#cities p {
+    font-weight: bold;
+}
+
 #allWeatherInfo {
     width: 100%;
     height: auto;
@@ -116,6 +120,7 @@ h3:hover {
 #displayWeather {
     width: 100%;
     height: 90%;
+    font-size: 20px;
 }
 
 #hourlyDisplay {
@@ -235,7 +240,7 @@ p {
   color: #fff;
   cursor: pointer;
   font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-  font-size: 80%;
+  font-size: 70%;
   height: 60%;
   line-height: 1.15;
   outline: none;
