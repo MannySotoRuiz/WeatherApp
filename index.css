@@ -113,7 +113,7 @@ body {
     font-size: 18px;
 }
 
-h3:hover {
+#howDisplayWeather h3:hover {
     color: #000047;
 }
 
