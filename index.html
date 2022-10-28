@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <link type="text/css" href="index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="leftContainer">
+
+            <div id="searchContainer">
+                <div id="searchDiv"></div>
+            </div>
+
+            <div class="weatherTitle"><h1>Weather <strong>Forecast</strong></h1></div>
+
+            <div id="cities">
+                <div class="selectCity">
+                    <div class="cityPic">
+                        <img src="images/CityImages/Berlin.jpg">
+                    </div>
+                    <p>Berlin, Germany</p>
+                </div>
+                <div class="selectCity">
+                    <div class="cityPic">
+                        <img src="images/CityImages/Paris.jpg">
+                    </div>
+                    <p>Paris, France</p>
+                </div>
+                <div class="selectCity">
+                    <div class="cityPic">
+                        <img src="images/CityImages/NYC.jpg">
+                    </div>
+                    <p>New York, USA</p>
+                </div>
+            </div>
+
+            <div id="allWeatherInfo">
+                <div id="howDisplayWeather"><h3>Hourly</h3><h3>7 Day</h3><h3>Monthly</h3></div>
+                <div id="displayWeather">
+                    <div class="hidden" id="hourlyDisplay">
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">1:00</p></div>
+                        <div class="eachHour"><p class="hourText">10:00</p></div>
+                    </div>
+
+                    <div id="sevenDayDisplay">
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Sunday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/sun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Monday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/cloudyNoSun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Tuesday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/cloudyWithSun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Wednesday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/cloudyRain.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Thursday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/sun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Friday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/sun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                        <div class="eachDayin7Days">
+                            <div class="dayText">Saturday</div>
+                            <div class="rainChance">
+                                <div class="rainDropImg"><img src="images/raindrop.png"></div>
+                                <div>54%</div>
+                            </div>
+                            <div class="generalWeather"><img src="images/sun.png"></div>
+                            <div class="lowTempContainer">Lowest:
+                                <div class="lowestTemp">55</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <div class="highTempContainer">Highest:
+                                <div class="highestTemp">75</div>
+                                <span>&#176;</span>
+                                <div class="fahrenheitDisplay">F</div><div class="celsiusDisplay hidden">C</div>
+                            </div>
+                            <button class="button-9" role="button">Recommended Clothing</button>
+                        </div>
+                    </div>
+                    <div class="hidden" id="monthlyDisplay"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="rightContainer">
+            <div id="loginContainer"></div>
+            <div class="weatherTitle"></div>
+            <div id="todayInfo"></div>
+            <div id="extraTodayInfo"></div>
+        </div>
+    </body>
+</html>
