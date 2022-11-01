@@ -66,7 +66,7 @@ body {
     width: 100%;
     height: auto;
     box-sizing: border-box;
-    /* outline: 2px solid red; */
+    /* outline: 1px solid red; */
 }
 
 .selectCity {
@@ -160,12 +160,39 @@ p {
 #sevenDayDisplay {
     width: 100%;
     height: 100%;
-    /* outline: 1px solid black; */
+    outline: 1px solid black;
 }
 
 #monthlyDisplay {
     width: 100%;
+    height: 459px;
+    /* outline: 1px solid black; */
+}
+
+.monthRows {
+    width: 100%;
+    height: calc(100% / 5);
+    /* outline: 1px solid red; */
+    display: flex;
+}
+
+.eachDayInRow {
+    width: calc(100% / 7);
     height: 100%;
+    border: 0.5px solid black;
+}
+
+.holdClimatePic {
+    margin: auto;
+    width: 30%;
+    height: 30%;
+    /* outline: 1px solid blue; */
+}
+
+.holdClimatePic img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .eachDayin7Days {
