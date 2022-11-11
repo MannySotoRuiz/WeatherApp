@@ -9,13 +9,10 @@
         <h1>Account Settings</h1>
         <div id="settingsDiv">
             <div id="leftPanel">
-                <p>Edit Profile</p>
-                <hr>
-                <p style="margin-top: 30px;">Password</p>
-                <!-- <img src="images/activeSetting.jpg"> -->
-                <hr>
-                <p style="margin-top: 30px;">Weather & Clothes Preference</p>
-                <hr>
+                <div class="buttonText"><p>Edit Profile</p></div>
+                <div class="buttonText"><p style="margin-top: 20px;">Password</p></div>
+                <div class="buttonText"><p style="margin-top: 20px;">Notifications</p></div>
+                <div class="buttonText"><p style="margin-top: 20px;">Weather & Clothes Preference</p></div>
                 <div id="verticalLine"></div>
             </div>
             <div id="rightPanel">
@@ -37,11 +34,22 @@
                         <div id="country">Country<br><br>
                             <input type="text" id="fname" name="fname" placeholder="United States"><br><br>
                         </div>
+                        <button type="submit" value="Submit">Save</button>
                     </div>
                 </div>
                 <div class="hidden" id="passwordDisplay">
                     <h2>Password</h2>
+                    <div id="passwordInfo">
+                        <div id="currentPassword">Current Password<br><br>
+                            <input type="text" id="fcurrentpassword" name="fcurrentpassword"><br><br>
+                        </div>
+                        <div id="newPassword">New Password<br><br>
+                            <input type="text" id="fnewpassword" name="fnewpassword"><br><br>
+                        </div>
+                    </div>
+                    <button type="submit" value="Submit">Save</button>
                 </div>
+                <div class="hidden" id="notificationDisplay"></div>
                 <div class="hidden" id="preferenceDisplay">
                     <h2>Weather & Clothes Preference</h2>
                 </div>

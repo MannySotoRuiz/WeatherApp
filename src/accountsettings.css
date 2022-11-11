@@ -20,17 +20,34 @@ body {
     height: 100%;
     /* outline: 1px solid black; */
     text-align: center;
+    border-right: 2px solid gray;
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    padding-top: 2%;
+    padding-top: 1%;
     box-sizing: border-box;
 }
 
-#verticalLine {
+.buttonText {
+    border-bottom: 2px solid gray;
+    display: flex;
+}
+
+/* #activePageMarker {
+    border: 1px solid red;
+    width: 10%;
+    height: 20px;
+    margin-left: 20%;
+}
+
+#activePageMarker img {
     height: 100%;
-    width: 0.5px;
-    border: 2px solid black;
+    width: 100%;
+    object-fit: contain;
+} */
+
+#leftPanel p {
+    font-weight: bold;
 }
 
 #settingsButtonDiv {
