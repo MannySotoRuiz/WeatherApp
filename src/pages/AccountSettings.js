@@ -2,15 +2,35 @@ import React from 'react';
 import '../accountsettings.css';
 
 const AccountSettings = () => {
+
+    // function to make left panel buttons interactive
+    const handleClick = e => {
+        let userClicked = e.currentTarget.innerText;
+        let rightPanelChildren = e.currentTarget.parentNode.parentNode.children[1].children;
+        for (let i = 0; i < rightPanelChildren.length; i++) {
+            let currentChild = rightPanelChildren[i];
+            currentChild.classList.add("hidden");
+        }
+        if (userClicked === "Edit Profile") {
+            rightPanelChildren[0].classList.remove("hidden");
+        } else if (userClicked === "Password") {
+            rightPanelChildren[1].classList.remove("hidden");
+        } else if (userClicked === "Notifications") {
+            rightPanelChildren[2].classList.remove("hidden");
+        } else if (userClicked === "Weather & Clothes Preference") {
+            rightPanelChildren[3].classList.remove("hidden");
+        }
+    };
+
     return (
         <div id="settings">
             <h1>Account Settings</h1>
             <div id="settingsDiv">
                 <div id="leftPanel">
-                    <div className="buttonText"><p style={{ marginTop: "30px", marginBottom: "30px" }}>Edit Profile</p></div>
-                    <div className="buttonText"><p style={{ marginTop: "30px", marginBottom: "30px" }}>Password</p></div>
-                    <div className="buttonText"><p style={{ marginTop: "30px", marginBottom: "30px" }}>Notifications</p></div>
-                    <div className="buttonText"><p style={{ marginTop: "30px", marginBottom: "30px" }}>Weather & Clothes Preference</p></div>
+                    <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Edit Profile</p></div>
+                    <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Password</p></div>
+                    <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Notifications</p></div>
+                    <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Weather & Clothes Preference</p></div>
                     <div id="verticalLine"></div>
                 </div>
                 <div id="rightPanel">
@@ -20,16 +40,16 @@ const AccountSettings = () => {
                             <div id="firstName">First Name<br></br><br></br>
                                 <input type="text" id="ffirstname" name="ffirstname" placeholder="Manny"></input><br></br><br></br>
                             </div>
-                            <div id="firstName">Last Name<br></br><br></br>
+                            <div id="lastName">Last Name<br></br><br></br>
                                 <input type="text" id="flastname" name="flastname" placeholder="Soto Ruiz"></input><br></br><br></br>
                             </div>
-                            <div id="firstName">City<br></br><br></br>
+                            <div id="city">City<br></br><br></br>
                                 <input type="text" id="fcity" name="fcity" placeholder="New York"></input><br></br><br></br>
                             </div>
-                            <div id="firstName">State<br></br><br></br>
+                            <div id="state">State<br></br><br></br>
                                 <input type="text" id="fstate" name="fstate" placeholder="New York"></input><br></br><br></br>
                             </div>
-                            <div id="firstName">Country<br></br><br></br>
+                            <div id="country">Country<br></br><br></br>
                                 <input type="text" id="fcountry" name="fcountry" placeholder="United States"></input><br></br><br></br>
                             </div>
                             <button type="submit" value="Submit">Save</button>
