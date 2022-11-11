@@ -417,9 +417,9 @@ const Home = () => {
                 <div id="rightContainer">
                     <div id="loginContainer">
                         <div id="holdAccountPic">
-                            <Link to={AccountSettings}>
-                                <img src={require('../images/account.png')} alt="account icon"/>
-                            </Link>
+                            <img src={require('../images/account.png')} alt="account icon" onClick={() => {
+                                navigate("/accountsettings");
+                            }}/>
                         </div>
                     </div>
                     <div className="weatherTitle"></div>
