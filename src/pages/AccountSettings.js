@@ -14,7 +14,7 @@ const AccountSettings = () => {
                     <div id="verticalLine"></div>
                 </div>
                 <div id="rightPanel">
-                    <div className="hidden" id="editProfileDisplay">
+                    <div id="editProfileDisplay">
                         <h2>Edit Profile</h2>
                         <div id="profileInfo">
                             <div id="firstName">First Name<br></br><br></br>
@@ -36,7 +36,7 @@ const AccountSettings = () => {
                         </div>
                     </div>
 
-                    <div id="passwordDisplay">
+                    <div className="hidden" id="passwordDisplay">
                         <h2>Password</h2>
                         <div id="currentPassword">Current Password<br></br><br></br>
                             <input type="text" id="fcurrentpassword" name="fcurrentpassword"></input><br></br><br></br>
