@@ -23,7 +23,7 @@
 #holdAccountPic {
     width: 8%;
     height: 50%;
-    /* outline: 1px solid black; */
+    outline: 1px solid black;
     margin-right: 20px;
 }
 

@@ -4,8 +4,7 @@ import cloudyNoSunImg from '../images/cloudyNoSun.png';
 import cloudyRainImg from '../images/cloudyRain.png';
 import cloudyWithSunImg from '../images/cloudyWithSun.png';
 import rainDropImg from '../images/raindrop.png';
-import { Link, useNavigate } from 'react-router-dom';
-import AccountSettings from './AccountSettings';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
