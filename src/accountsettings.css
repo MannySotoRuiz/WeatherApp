@@ -7,6 +7,16 @@
     margin-bottom: 6%;
 } */
 
+#settings h1 {
+    float: left;
+}
+
+#settings h3 {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
 #settingsDiv {
     width: 100%;
     height: 700px;
@@ -31,20 +41,8 @@
 .buttonText {
     border-bottom: 2px solid gray;
     display: flex;
+    cursor: pointer;
 }
-
-/* #activePageMarker {
-    border: 1px solid red;
-    width: 10%;
-    height: 20px;
-    margin-left: 20%;
-}
-
-#activePageMarker img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-} */
 
 #leftPanel p {
     font-weight: bold;
