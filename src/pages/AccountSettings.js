@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../accountsettings.css';
 
 const AccountSettings = () => {
@@ -22,9 +23,14 @@ const AccountSettings = () => {
         }
     };
 
+    let navigate = useNavigate();
+
     return (
         <div id="settings">
             <h1>Account Settings</h1>
+            <h3 onClick={() => {
+                navigate("/");
+            }}>Home</h3>
             <div id="settingsDiv">
                 <div id="leftPanel">
                     <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Edit Profile</p></div>
@@ -53,6 +59,7 @@ const AccountSettings = () => {
                                 <input type="text" id="fcountry" name="fcountry" placeholder="United States"></input><br></br><br></br>
                             </div>
                             <button type="submit" value="Submit">Save</button>
+                            <button style={{ marginLeft: "4%" }}type="submit" value="Submit">Log Out</button>
                         </div>
                     </div>
 
