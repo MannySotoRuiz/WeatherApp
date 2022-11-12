@@ -193,28 +193,6 @@ height: 100%;
 position: absolute;
 }
 
-/* .innerPopup {
-  width: 200px;
-  height: 475px;
-} */
-
-/* #popup-inner {
-  position: relative;
-  padding: 32px;
-  width: 100%;
-  max-width: 640px;
-  background-color: #FFF;
-  width: 100%;
-  height: 100%;
-  outline: 1px solid black;
-}
-
-.popup-inner .close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-} */
-
 #monthlyDisplay {
 width: 100%;
 height: 459px;
