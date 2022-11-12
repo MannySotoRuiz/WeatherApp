@@ -2,6 +2,7 @@ import React from 'react';
 import HourlyDisplay from './HourlyDisplay';
 import SevenDayDisplay from './SevenDayDisplay';
 import MonthlyDisplay from './MonthlyDisplay';
+import Popup from './Popup';
 
 const allWeatherInfo = () => {
     return (
@@ -14,6 +15,7 @@ const allWeatherInfo = () => {
                 <div id="displayWeather">
                     <HourlyDisplay />
                     <SevenDayDisplay />
+                    <Popup />
                     <MonthlyDisplay />
                 </div>
             </div>
