@@ -15,7 +15,7 @@ const HomeRight = () => {
             <div id="loginContainer">
                 <div id="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
-                        navigate("/accountsettings");
+                        navigate("/login");
                     }}/>
                 </div>
             </div>
