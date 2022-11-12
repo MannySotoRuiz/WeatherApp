@@ -10,6 +10,15 @@ const HomeRight = () => {
 
     let navigate = useNavigate();
 
+    const current = new Date();
+    let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    let currentDay = days[current.getDay()];
+    let currentMonth = months[current.getMonth()];
+    let currentDate = current.getDate();
+    let currentYear = current.getFullYear();
+    let date = `${currentDay}, ${currentMonth} ${currentDate} ${currentYear}`;
+
     return (
         <div id="rightContainer">
             <div id="loginContainer">
@@ -25,7 +34,7 @@ const HomeRight = () => {
                     <div id="imgCurrentWeather"><img src={sunImg} alt="sunImg"/></div>
                     <div id="holdText">
                         <h2>Today</h2>
-                        <p id="todayText">Fri, Oct 28 2022</p>
+                        <p id="todayText">{date}</p>
                     </div>
                 </div>
                 <div id="todayWeather">
