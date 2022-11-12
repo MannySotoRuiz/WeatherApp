@@ -15,10 +15,10 @@ const EditPassword = () => {
         <div className="hidden" id="passwordDisplay">
             <h2>Password</h2>
             <div id="currentPassword">Current Password<br></br><br></br>
-                <input type={passwordShown ? "text" : "password"} id="fcurrentpassword" name="fcurrentpassword"></input><br></br><br></br>
+                <input type={passwordShown ? "text" : "password"} id="fcurrentpassword" name="fcurrentpassword" /><br></br><br></br>
             </div>
             <div id="newPassword">New Password<br></br><br></br>
-                <input type={passwordShown ? "text" : "password"} id="fnewpassword" name="fnewpassword"></input><br></br><br></br>
+                <input type={passwordShown ? "text" : "password"} id="fnewpassword" name="fnewpassword" /><br></br><br></br>
             </div>
             <button onClick={togglePassword}>Show Passwords</button>
             <button type="submit" value="Submit">Save</button>
