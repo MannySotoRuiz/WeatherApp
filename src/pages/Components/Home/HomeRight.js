@@ -19,6 +19,14 @@ const HomeRight = () => {
     let currentYear = current.getFullYear();
     let date = `${currentDay}, ${currentMonth} ${currentDate} ${currentYear}`;
 
+    let location = "New York, USA"; // default location
+
+    // check to see if user has a saved location to display instead of default location
+    let getLoc = JSON.parse(localStorage.getItem("location"));
+    if (getLoc) {
+        location = getLoc;
+    }
+
     return (
         <div className="col" id="rightContainer">
             <div id="loginContainer">
@@ -42,7 +50,7 @@ const HomeRight = () => {
                     <div className="fahrenheitDisplay">F</div>
                     <div className="celsiusDisplay hidden">C</div>
                 </div>
-                <div id="currentLocation">New York, USA</div>
+                <div id="currentLocation">{location}</div>
                 <div id="feelsLike">
                     <div id="feelsText">Feels like 65</div>
                     <div style={{ color: "#808080" }}>·</div>

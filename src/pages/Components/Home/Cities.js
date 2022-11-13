@@ -8,6 +8,7 @@ const Cities = () => {
         let newLocation = `${getCity}, ${getCountry}`;
         let changeLocation = document.getElementById("currentLocation");
         changeLocation.innerText = newLocation;
+        localStorage.setItem("location", JSON.stringify(newLocation));
     };
 
     return (
