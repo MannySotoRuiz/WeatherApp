@@ -86,6 +86,7 @@ box-sizing: border-box;
 width: 100%;
 min-height: 250px;
 align-items: center;
+justify-content: center;
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
