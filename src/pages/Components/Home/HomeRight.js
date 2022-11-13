@@ -20,7 +20,7 @@ const HomeRight = () => {
     let date = `${currentDay}, ${currentMonth} ${currentDate} ${currentYear}`;
 
     return (
-        <div id="rightContainer">
+        <div className="col" id="rightContainer">
             <div id="loginContainer">
                 <div id="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
