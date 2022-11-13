@@ -5,8 +5,8 @@ import HomeRight from './Components/Home/HomeRight';
 const Home = () => {
 
     document.body.style.marginTop = "0%";
-    document.body.style.marginRight = "30px";
-    document.body.style.marginLeft = "30px";
+    document.body.style.marginRight = "0%";
+    document.body.style.marginLeft = "0%";
     document.body.style.marginBottom = "0%";
     document.body.style.backgroundColor = "#ecf2f4";
 
