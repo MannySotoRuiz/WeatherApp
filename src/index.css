@@ -28,7 +28,7 @@ container are in sync with the heights whenever one of them resizes*/
 width: 100%;
 min-height: 900px;
 box-sizing: border-box;
-outline: 2px solid orange;
+/* outline: 2px solid orange; */
 /* display: flex; */
 }
 
@@ -155,6 +155,7 @@ font-size: 18px;
 
 #howDisplayWeather h3:hover {
 color: #000047;
+cursor: pointer;
 }
 
 #displayWeather {
