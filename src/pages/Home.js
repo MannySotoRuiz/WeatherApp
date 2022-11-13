@@ -12,7 +12,7 @@ const Home = () => {
 
     return (
         <div id="home">
-            <div id="mainContainer">
+            <div className="row" id="mainContainer">
                 <HomeLeft />
                 <HomeRight />
             </div >
