@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../../../newcitypopup.css";
 import { useState } from "react";
-// import { ImageContext } from "./HomeLeft";
-// import Image from "./Image";
 
 const NewCity = () => {
 
-    // const { response, isLoading } = useContext(ImageContext);
     
     const closeAddCityPopup = e => {
         let userClicked = e.currentTarget;
@@ -25,19 +22,23 @@ const NewCity = () => {
         if (search.length === 0) {
             document.getElementById("errorInput").classList.remove("hidden");
         } else {
-            let clientID = "KD3JlHXUemNJy8AIoBejnopOYu4gbmvTsuoal9N4jZk";
-            // let endPoint = `https://api.unsplash.com/photos/random/?client_id=${clientID}`;
-            let endPoint = `https://api.unsplash.com/search/photos?page1&query=newyork&client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 
             let getAll = document.querySelectorAll(".cityPic");
 
+            let getSearch = search.split(",");
+            let getCity = getSearch[0].toLocaleLowerCase();
+            // let getCountry = getSearch[1].trim().toLocaleLowerCase();
+
+            let endPoint = `https://api.unsplash.com/search/photos?page1&query=${getCity}&client_id=${process.env.REACT_APP_ACCESS_KEY}`;
+            
+            e.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden");
             fetch(endPoint)
                 .then(function (response) {
                      return response.json();
                 })
                 .then(function (jsonData) {
-                    console.log(jsonData.results[1].urls.regular);
-                    console.log(getAll[0].children);
+                    getAll[2].children[0].src = jsonData.results[Math.floor(Math.random() * 10)].urls.regular;
+                    getAll[2].parentNode.children[1].innerText = `${getSearch[0]}, ${getSearch[1]}`;
                 })
         }
     };
