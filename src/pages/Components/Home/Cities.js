@@ -1,3 +1,5 @@
+import NewCity from './NewCity';
+
 const Cities = () => {
 
     const clickedCity = e => {
@@ -9,6 +11,12 @@ const Cities = () => {
         let changeLocation = document.getElementById("currentLocation");
         changeLocation.innerText = newLocation;
         localStorage.setItem("location", JSON.stringify(newLocation));
+    };
+
+    const openAddCityPopup = e => {
+        let popup = document.querySelectorAll(".newCityPopup");
+        popup[0].classList.remove("hidden");
+        document.getElementById("submitNewCity").disabled = true;
     };
 
     return (
@@ -31,10 +39,11 @@ const Cities = () => {
                 </div>
                 <p>Paris, France</p>
             </div>
-            <div id="addCity">
+            <div onClick={openAddCityPopup} id="addCity">
                 <p style={{ marginTop: "40%", marginBottom: "10%", fontSize: "30px" }}>+</p>
                 <p style={{ marginTop: "17%", fontSize: "17px" }}>Add City</p>
             </div>
+            <NewCity />
         </div>
     );
 };
