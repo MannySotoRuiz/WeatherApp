@@ -12,17 +12,19 @@
 }
 
 .innerAddCityPopup {
-    width: 30%;
+    width: 35%;
     min-height: 180px;
     background-color: white;
     position: absolute;
     z-index: 9999;
     box-sizing: border-box;
+    border-radius: 4%;
 }
 
 .innerAddCityPopup h3 {
     margin-top: 2%;
     margin-left: 2%;
+    font-size: x-large;
 }
 
 .innerInfo {

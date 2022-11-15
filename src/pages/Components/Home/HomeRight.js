@@ -55,7 +55,7 @@ const HomeRight = () => {
                 <div id="currentLocation">{location}</div>
                 <div id="feelsLike">
                     <div id="feelsText">Feels like 65</div>
-                    <div style={{ color: "#808080" }}>·</div>
+                    <div style={{ color: "#808080", fontSize: "60px" }}>·</div>
                     <div id="sunsetTime">Sunset 20:15</div>
                 </div>
                 <div className='clothes mt-10'>
