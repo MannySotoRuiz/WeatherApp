@@ -42,15 +42,15 @@ const Cities = () => {
             </div>
             <div className="selectCity">
                 <div onClick={clickedCity} className="cityPic">
-                    <img src={require('../../../images/CityImages/Berlin.jpg')} alt="Berlin Pic" />
-                </div>
-                <p className="cityText">Berlin, Germany</p>
-            </div>
-            <div className="selectCity">
-                <div onClick={clickedCity} className="cityPic">
                     <img src={require('../../../images/CityImages/Paris.jpg')} alt="Paris Pic" />
                 </div>
                 <p className="cityText">Paris, France</p>
+            </div>
+            <div className="selectCity">
+                <div onClick={clickedCity} className="cityPic">
+                    <img src={require('../../../images/CityImages/Berlin.jpg')} alt="Berlin Pic" />
+                </div>
+                <p className="cityText">Berlin, Germany</p>
             </div>
             <div onClick={openAddCityPopup} id="addCity">
                 <p style={{ marginTop: "40%", marginBottom: "10%", fontSize: "30px" }}>+</p>
