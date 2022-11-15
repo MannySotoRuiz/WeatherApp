@@ -44,9 +44,6 @@ export default function (props) {
                         navigate("/accountsettings");
                     }}>Log In</button>
               </div>
-              <p className="text-center mt-2">
-                Forgot <a href="#">password?</a>
-              </p>
             </div>
           </form>
         </div>
@@ -85,9 +82,6 @@ export default function (props) {
                     navigate("/login");
                 }}>Sign up</button>
             </div>
-            <p className="text-center mt-2">
-              Forgot <a href="#">password?</a>
-            </p>
           </div>
         </form>
       </div>
