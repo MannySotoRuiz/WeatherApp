@@ -11,9 +11,7 @@ const Home = () => {
     document.body.style.backgroundColor = "#ecf2f4";
 
     let defaultSavedLocations = ["New York, USA", "Berlin, Germany", "Paris, France"];
-    // localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
     let defaultImages = ["../../../images/CityImages/NYC.jpg", "../../../images/CityImages/Berlin.jpg", "../../../images/CityImages/Paris.jpg"];
-    // localStorage.setItem("defaultImages", JSON.stringify(defaultImages));
 
     let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
     if (getSavedLocations) {
