@@ -4,6 +4,8 @@ const SearchBox = () => {
 
     const [search, setMessage] = useState("");
 
+    localStorage.setItem("location", JSON.stringify("New York, USA")); // set this as the default location
+
     const handleChange = (event) => {
         setMessage(event.currentTarget.value);
     };

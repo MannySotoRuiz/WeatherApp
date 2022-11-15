@@ -31,15 +31,23 @@ const NewCity = () => {
 
             let endPoint = `https://api.unsplash.com/search/photos?page1&query=${getCity}&client_id=${process.env.REACT_APP_ACCESS_KEY}`;
             
-            e.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden");
             fetch(endPoint)
                 .then(function (response) {
                      return response.json();
                 })
                 .then(function (jsonData) {
-                    getAll[2].children[0].src = jsonData.results[Math.floor(Math.random() * 10)].urls.regular;
+                    let getRandom = Math.floor(Math.random() * 20);
+                    getAll[2].children[0].src = jsonData.results[getRandom].urls.regular;
+                    getAll[2].children[0].alt = jsonData.results[getRandom].description;
                     getAll[2].parentNode.children[1].innerText = `${getSearch[0]}, ${getSearch[1]}`;
+                    let savedLocations = JSON.parse(localStorage.getItem("savedLocations"));
+                    let newSavedLocations = [savedLocations[1], savedLocations[2], search];
+                    let getImages = JSON.parse(localStorage.getItem("defaultImages"));
+                    let newImages = [getImages[1], getImages[2], jsonData.results[getRandom].urls.regular];
+                    localStorage.setItem("savedLocations", JSON.stringify(newSavedLocations)); // save to local storage new 3 locations
+                    localStorage.setItem("defaultImages", JSON.stringify(newImages));
                 })
+            e.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden"); // close popup
         }
     };
 
@@ -54,7 +62,6 @@ const NewCity = () => {
                     <input type="search" id="addCitySearch" name="addCitySearch" placeholder="Ex: Barcelona, Spain" value={search} onChange={handleChange}/>
                     <button onClick={handleAddCity} className="disabled" id="submitNewCity">Submit</button>
                     <h4 className="hidden" id="errorInput">Please try again</h4>
-                    {/* {response.map((data, key) => <Image key={key} data={data}/>)} */}
                 </div>
             </div>
             <div className="backgroundPopup"></div>
