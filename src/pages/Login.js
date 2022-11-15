@@ -62,6 +62,22 @@ export default function (props) {
               </span>
             </div>
             <div className="form-group mt-3">
+              <label>First Name</label>
+              <input
+                type="text"
+                className="form-control mt-1"
+                placeholder="First Name"
+              />
+            </div>
+            <div className="form-group mt-3">
+              <label>Last Name</label>
+              <input
+                type="text"
+                className="form-control mt-1"
+                placeholder="Last Name"
+              />
+            </div>
+            <div className="form-group mt-3">
               <label>Username</label>
               <input
                 type="text"
