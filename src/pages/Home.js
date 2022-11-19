@@ -10,24 +10,24 @@ const Home = () => {
     document.body.style.marginBottom = "0%";
     document.body.style.backgroundColor = "#ecf2f4";
 
-    let defaultSavedLocations = ["New York, USA", "Berlin, Germany", "Paris, France"];
-    let defaultImages = ["../../../images/CityImages/NYC.jpg", "../../../images/CityImages/Berlin.jpg", "../../../images/CityImages/Paris.jpg"];
+    // let defaultSavedLocations = ["New York, USA", "Berlin, Germany", "Paris, France"];
+    // let defaultImages = ["../../../images/CityImages/NYC.jpg", "../../../images/CityImages/Berlin.jpg", "../../../images/CityImages/Paris.jpg"];
 
-    let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
-    if (getSavedLocations) {
-        defaultSavedLocations = getSavedLocations;
-        localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
-    } else {
-        localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
-    }
+    // let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
+    // if (getSavedLocations) {
+    //     defaultSavedLocations = getSavedLocations;
+    //     localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+    // } else {
+    //     localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+    // }
 
-    let getDefaultImages = JSON.parse(localStorage.getItem("defaultImages"));
-    if (getDefaultImages) {
-        defaultImages = getDefaultImages;
-        localStorage.setItem("defaultImages", JSON.stringify(defaultImages));
-    } else {
-        localStorage.setItem("defaultImages", JSON.stringify(defaultImages));
-    }
+    // let getDefaultImages = JSON.parse(localStorage.getItem("defaultImages"));
+    // if (getDefaultImages) {
+    //     defaultImages = getDefaultImages;
+    //     localStorage.setItem("defaultImages", JSON.stringify(defaultImages));
+    // } else {
+    //     localStorage.setItem("defaultImages", JSON.stringify(defaultImages));
+    // }
 
     
 

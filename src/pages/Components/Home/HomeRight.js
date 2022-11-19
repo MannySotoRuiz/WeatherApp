@@ -24,9 +24,9 @@ const HomeRight = () => {
     // check to see if user has a saved location to display instead of default location
     let getLoc = JSON.parse(localStorage.getItem("location"));
     if (getLoc) {
-        console.log(getLoc);
+        // console.log(getLoc);
         location = getLoc;
-        console.log(location);
+        // console.log(location);
     }
 
     return (

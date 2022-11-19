@@ -1,4 +1,5 @@
 import NewCity from './NewCity';
+import React from 'react';
 
 const Cities = () => {
 
@@ -19,39 +20,38 @@ const Cities = () => {
         document.getElementById("submitNewCity").disabled = true;
     };
 
-    // let getImages = JSON.parse(localStorage.getItem("defaultImages"));
+    let picsSrc;
+    let getPicsSrc = JSON.parse(localStorage.getItem("allPicsSrc"));
+    if (getPicsSrc) {
+        picsSrc = getPicsSrc;
+    } else {
+        picsSrc = ["/images/CityImages/NYC.jpg", "/images/CityImages/Paris.jpg", "/images/CityImages/Berlin.jpg"];
+        localStorage.setItem("allPicsSrc", JSON.stringify(picsSrc));
+    }
 
-    // let getDefaultImages = JSON.parse(localStorage.getItem("defaultImages"));
-    // let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
-    // let firstDiv = document.createElement("div");
-    // firstDiv.classList.add("selectCity");
-    // let cityDiv = document.createElement("div");
-    // let newImg = document.createElement("img");
-    // newImg.src = getDefaultImages[0];
-    // newImg.alt = getSavedLocations[0];
-    // cityDiv.appendChild(newImg);
-    // firstDiv.appendChild(cityDiv);
-    // document.getElementById("cities").appendChild(firstDiv);
+    let defaultSavedLocations;
+    let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
+    if (getSavedLocations) {
+        defaultSavedLocations = getSavedLocations;
+        localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+    } else {
+        defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
+        localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+    }
+
+    // code to display all saved cities
     return (
         <div id="cities">
-            <div className="selectCity">
-                <div onClick={clickedCity} className="cityPic">
-                    <img src={require('../../../images/CityImages/NYC.jpg')} alt="NYC Pic" />
-                </div>
-                <p className="cityText">New York, USA</p>
-            </div>
-            <div className="selectCity">
-                <div onClick={clickedCity} className="cityPic">
-                    <img src={require('../../../images/CityImages/Paris.jpg')} alt="Paris Pic" />
-                </div>
-                <p className="cityText">Paris, France</p>
-            </div>
-            <div className="selectCity">
-                <div onClick={clickedCity} className="cityPic">
-                    <img src={require('../../../images/CityImages/Berlin.jpg')} alt="Berlin Pic" />
-                </div>
-                <p className="cityText">Berlin, Germany</p>
-            </div>
+            {picsSrc.map((picSrc, idx) => {
+                return (
+                    <div className="selectCity" key={idx}>
+                        <div onClick={clickedCity} className="cityPic">
+                            <img src={picSrc} alt="city pic"/>
+                        </div>
+                        <p className="cityText">{defaultSavedLocations[idx]}</p>
+                    </div>
+                )
+            })}
             <div onClick={openAddCityPopup} id="addCity">
                 <p style={{ marginTop: "40%", marginBottom: "10%", fontSize: "30px" }}>+</p>
                 <p style={{ marginTop: "17%", fontSize: "17px" }}>Add City</p>
