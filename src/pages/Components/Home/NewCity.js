@@ -3,63 +3,32 @@ import "../../../newcitypopup.css";
 import { useState } from "react";
 
 const NewCity = () => {
-
     
     const closeAddCityPopup = e => {
         let userClicked = e.currentTarget;
         userClicked.parentNode.parentNode.parentNode.classList.add("hidden");
     };
 
-    const [search, setSearch] = useState("");
+    const [citySearch, setCity] = useState("");
+    const [countrySearch, setCountry] = useState("");
 
-    const handleChange = (event) => {
-        setSearch(event.currentTarget.value);
+    const handleCityChange = (event) => {
+        setCity(event.currentTarget.value);
+    };
+
+    const handleCountryChange = (event) => {
+        setCountry(event.currentTarget.value);
         document.getElementById("submitNewCity").disabled = false;
         document.getElementById("submitNewCity").classList.remove("disabled");
     };
 
-    // const handleAddCity = (e) => {
-    //     if (search.length === 0) {
-    //         document.getElementById("errorInput").classList.remove("hidden");
-    //     } else {
-
-    //         let getAll = document.querySelectorAll(".cityPic");
-
-    //         let getSearch = search.split(",");
-    //         let getCity = getSearch[0].toLocaleLowerCase();
-    //         // let getCountry = getSearch[1].trim().toLocaleLowerCase();
-
-    //         let endPoint = `https://api.unsplash.com/search/photos?page1&query=${getCity}&client_id=${process.env.REACT_APP_ACCESS_KEY}`;
-            
-    //         fetch(endPoint)
-    //             .then(function (response) {
-    //                 let data
-    //                  return response.json();
-    //             })
-    //             .then(function (jsonData) {
-    //                 let getRandom = Math.floor(Math.random() * 20);
-    //                 getAll[2].children[0].src = jsonData.results[getRandom].urls.regular;
-    //                 getAll[2].children[0].alt = jsonData.results[getRandom].description;
-    //                 getAll[2].parentNode.children[1].innerText = `${getSearch[0]}, ${getSearch[1]}`;
-    //                 // let savedLocations = JSON.parse(localStorage.getItem("savedLocations"));
-    //                 // let newSavedLocations = [savedLocations[1], savedLocations[2], search];
-    //                 // let getImages = JSON.parse(localStorage.getItem("defaultImages"));
-    //                 // let newImages = [getImages[1], getImages[2], jsonData.results[getRandom].urls.regular];
-    //                 // localStorage.setItem("savedLocations", JSON.stringify(newSavedLocations)); // save to local storage new 3 locations
-    //                 // localStorage.setItem("defaultImages", JSON.stringify(newImages));
-    //             })
-    //         e.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden"); // close popup
-    //     }
-    // };
-
     const handleAddCity = async (e) => {
-        if (!search) {
-            // document.getElementById("errorInput").classList.remove("hidden");
-            alert("Please enter a city");
+        if (!citySearch || !countrySearch) {
+            alert("Please enter valid search");
+            return;
         }
-        let getSearch = search.split(",");
+        let getSearch = [citySearch, countrySearch];
         let getCity = getSearch[0].toLocaleLowerCase();
-        // let endPoint = new URL(`https://api.unsplash.com/search/photos?page1&query=${getCity}&client_id=${process.env.REACT_APP_ACCESS_KEY}`);
         let endPoint = `https://api.unsplash.com/search/photos?page1&query=${getCity}&client_id=${process.env.REACT_APP_ACCESS_KEY}`;
         const response = await fetch(endPoint);
 
@@ -70,7 +39,6 @@ const NewCity = () => {
 
         const data = await response.json();
         let getRandomPic = Math.floor(Math.random() * data.results.length);
-        console.log(getRandomPic);
         let getURL;
         try {
             getURL = new URL(data.results[getRandomPic].urls.regular);
@@ -79,14 +47,31 @@ const NewCity = () => {
             alert("Error. Please try again", error);
             return;
         }
+
+        // update to new city
         let getAll = document.querySelectorAll(".cityPic");
         getAll[2].children[0].src = getURL.href;   // update with the new src
         if (data.results[getRandomPic].alt_description) { // updatet the alt description with the new pic
-            getAll[2].children[0].alt = `${getSearch}: ${data.results[getRandomPic].alt_description}`;
+            getAll[2].children[0].alt = `${getSearch[0]}, ${getSearch[1]}: ${data.results[getRandomPic].alt_description}`;
         } else {
-            getAll[2].children[0].alt = getSearch;
+            getAll[2].children[0].alt = `${getSearch[0]}, ${getSearch[1]}`;
         }
         getAll[2].parentNode.children[1].innerText = `${getSearch[0]}, ${getSearch[1]}`; // update the displayed text w/ new city
+
+        let savedLocations = JSON.parse(localStorage.getItem("savedLocations")); // get current saved locations
+        let newSavedLocations = [savedLocations[1], savedLocations[2], `${getSearch[0]}, ${getSearch[1]}`]; // create a new variable with new locations
+        let getImages = JSON.parse(localStorage.getItem("allPicsSrc")); // get the src of all the images
+        let newImages = [getImages[1], getImages[2], getURL.href]; // create a new variable with the new sources
+        localStorage.setItem("savedLocations", JSON.stringify(newSavedLocations)); // save to local storage new 3 locations
+        localStorage.setItem("allPicsSrc", JSON.stringify(newImages));
+
+        // update the other 2 leftmost cities
+        for (let i = 0; i < 2; i++) {
+            getAll[i].children[0].src = newImages[i];
+            getAll[i].children[0].alt = newSavedLocations[i];
+            getAll[i].parentNode.children[1].innerText = newSavedLocations[i];
+        }
+
         document.querySelectorAll(".newCityPopup")[0].classList.add("hidden"); // close add city popup
     };
 
@@ -98,7 +83,8 @@ const NewCity = () => {
                 </div>
                 <div className="innerInfo">
                     <h3>Add a new city to save</h3>
-                    <input type="search" id="addCitySearch" name="addCitySearch" placeholder="Ex: Barcelona, Spain" value={search} onChange={handleChange}/>
+                    <input style={{ width: "30%" }} type="search" id="citySearch" name="citySearch" placeholder="City" value={citySearch} onChange={handleCityChange}></input>
+                    <input style={{ width: "30%" }} type="search" id="countrySearch" name="countrySearch" placeholder="Country" value={countrySearch} onChange={handleCountryChange}></input>
                     <button onClick={handleAddCity} className="disabled" id="submitNewCity">Submit</button>
                     <h4 className="hidden" id="errorInput">Please try again</h4>
                 </div>

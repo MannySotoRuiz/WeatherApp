@@ -30,10 +30,10 @@ const Cities = () => {
     }
 
     let defaultSavedLocations;
-    let getSavedLocations = JSON.parse(localStorage.getItem("defaultSavedLocations"));
+    let getSavedLocations = JSON.parse(localStorage.getItem("savedLocations"));
     if (getSavedLocations) {
         defaultSavedLocations = getSavedLocations;
-        localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+        // localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
     } else {
         defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
         localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
