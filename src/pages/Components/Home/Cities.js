@@ -1,5 +1,9 @@
 import NewCity from './NewCity';
 import React from 'react';
+// import usePlacesAutocomplete, {
+//     getGeocode,
+//     getLatLang,
+// } from 'use-places-autocomplete';
 
 const Cities = () => {
 
@@ -20,6 +24,19 @@ const Cities = () => {
         document.getElementById("submitNewCity").disabled = true;
     };
 
+    const getCoordinates = async (locations) => {
+        let storeCoordinates = [];
+        for (let i = 0; i < locations.length; i++) {
+            let getCity = locations[i].split(",")[0];
+            let endpoint = `http://api.openweathermap.org/geo/1.0/direct?q=${getCity}&appid=e15a543800b7e60db9e4e04aaf22a037`;
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            const coord = [data[0].lat, data[0].lon];
+            storeCoordinates.push(coord);
+        }
+        localStorage.setItem("allCoordinates", JSON.stringify(storeCoordinates));
+    }
+
     let picsSrc;
     let getPicsSrc = JSON.parse(localStorage.getItem("allPicsSrc"));
     if (getPicsSrc) {
@@ -33,11 +50,16 @@ const Cities = () => {
     let getSavedLocations = JSON.parse(localStorage.getItem("savedLocations"));
     if (getSavedLocations) {
         defaultSavedLocations = getSavedLocations;
+        // getCoordinates(defaultSavedLocations);
         // localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
     } else {
         defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
         localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+        getCoordinates(defaultSavedLocations);
     }
+
+    // let getAllCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
+    // if 
 
     // code to display all saved cities
     return (

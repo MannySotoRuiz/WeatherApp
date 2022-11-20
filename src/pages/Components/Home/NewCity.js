@@ -22,6 +22,15 @@ const NewCity = () => {
         document.getElementById("submitNewCity").classList.remove("disabled");
     };
 
+    // const findNewCityCoordinates = async (newCity) => {
+    //     console.log();
+    //     let endpoint = `http://api.openweathermap.org/geo/1.0/direct?q=${newCity}&appid=e15a543800b7e60db9e4e04aaf22a037`;
+    //     const response = await fetch(endpoint);
+    //     const data = await response.json();
+    //     const coord = [data[0].lat, data[0].lon];
+    //     return coord;
+    // }
+
     const handleAddCity = async (e) => {
         if (!citySearch || !countrySearch) {
             alert("Please enter valid search");
@@ -60,10 +69,20 @@ const NewCity = () => {
 
         let savedLocations = JSON.parse(localStorage.getItem("savedLocations")); // get current saved locations
         let newSavedLocations = [savedLocations[1], savedLocations[2], `${getSearch[0]}, ${getSearch[1]}`]; // create a new variable with new locations
+
         let getImages = JSON.parse(localStorage.getItem("allPicsSrc")); // get the src of all the images
         let newImages = [getImages[1], getImages[2], getURL.href]; // create a new variable with the new sources
+
+        let getOldCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
+        let end = `http://api.openweathermap.org/geo/1.0/direct?q=${getSearch[0]}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
+        const res = await fetch(end);
+        const resData = await res.json();
+        const newCoor = [resData[0].lat, resData[0].lon];
+        let newCoordinates = [getOldCoordinates[1], getOldCoordinates[2], newCoor];
+
         localStorage.setItem("savedLocations", JSON.stringify(newSavedLocations)); // save to local storage new 3 locations
         localStorage.setItem("allPicsSrc", JSON.stringify(newImages));
+        localStorage.setItem("allCoordinates", JSON.stringify(newCoordinates));
 
         // update the other 2 leftmost cities
         for (let i = 0; i < 2; i++) {
