@@ -2,7 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require('mongoose')
-const weatherRoutes = require('./routes/weather')
+const cors = require("cors");
+const accountRoutes = require('./routes/accounts')
 
 // express app
 const app = express();
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
     res.json({mssg: 'welcome to my app'})
 })
 
-app.use('/api/weather', weatherRoutes)
+app.use('/api/accounts', accountRoutes)
 
 //connect to mongo
 mongoose.connect(process.env.MONGO_URI)
