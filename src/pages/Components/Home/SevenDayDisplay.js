@@ -3,19 +3,8 @@ import cloudyNoSunImg from '../../../images/cloudyNoSun.png';
 import cloudyRainImg from '../../../images/cloudyRain.png';
 import cloudyWithSunImg from '../../../images/cloudyWithSun.png';
 import rainDropImg from '../../../images/raindrop.png';
-// import Popup from './Popup';
-// import { useState, useEffect } from 'react';
 
 const SevenDayDisplay = () => {
-
-    // const [buttonPopup, setButtonPopup] = useState(false);
-    // const [timedPopup, setTimedPopup] = useState(false);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setTimedPopup(true);
-    //     }, 5000)
-    // }, []);
 
     const addPopup = e => {
         let popup = document.querySelectorAll(".popupDisplay");
@@ -24,9 +13,6 @@ const SevenDayDisplay = () => {
 
     return (
         <div className="sevenDayDisplay">
-            {/* <Popup trigger={timedPopup}  setTrigger={setTimedPopup}>
-                <h3>Timed popup</h3>
-            </Popup> */}
             <div className="eachDayin7Days">
                 <div className="dayText">Sunday</div>
                 <div className="rainChance">
@@ -48,9 +34,6 @@ const SevenDayDisplay = () => {
                     <div className="celsiusDisplay hidden">C</div>
                 </div>
                 <button onClick={addPopup} className="button-9">Recommended Clothing</button>
-                {/* <Popup trigger={buttonPopup}  setTrigger={setButtonPopup}>
-                    <h3>My popup</h3>
-                </Popup> */}
             </div>
             <div className="eachDayin7Days">
                 <div className="dayText">Monday</div>

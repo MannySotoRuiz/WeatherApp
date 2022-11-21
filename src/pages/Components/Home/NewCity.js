@@ -22,15 +22,6 @@ const NewCity = () => {
         document.getElementById("submitNewCity").classList.remove("disabled");
     };
 
-    // const findNewCityCoordinates = async (newCity) => {
-    //     console.log();
-    //     let endpoint = `http://api.openweathermap.org/geo/1.0/direct?q=${newCity}&appid=e15a543800b7e60db9e4e04aaf22a037`;
-    //     const response = await fetch(endpoint);
-    //     const data = await response.json();
-    //     const coord = [data[0].lat, data[0].lon];
-    //     return coord;
-    // }
-
     const handleAddCity = async (e) => {
         if (!citySearch || !countrySearch) {
             alert("Please enter valid search");
