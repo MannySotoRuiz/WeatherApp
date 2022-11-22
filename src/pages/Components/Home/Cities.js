@@ -1,6 +1,6 @@
 import NewCity from './NewCity';
 import React from 'react';
-import getCityWeatherData from '../Helpers.js';
+// import getCityWeatherData from '../Helpers.js';
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLang,
@@ -17,7 +17,8 @@ const Cities = () => {
         let changeLocation = document.getElementById("currentLocation");
         changeLocation.innerText = newLocation;
         localStorage.setItem("location", JSON.stringify(newLocation));
-        getCityWeatherData(e);
+        // getCityWeatherData(e);
+        window.location.reload();
     };
 
     const openAddCityPopup = e => {
