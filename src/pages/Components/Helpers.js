@@ -18,6 +18,11 @@ export default async function display7DayData(location) {
     }
 
     let getAllCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
+    if (!getAllCoordinates) {
+        let defaultLatLong = [[40.7128,-74.0060],[48.8566,2.3522],[52.5200,13.4050]];
+        getAllCoordinates = defaultLatLong;
+        console.log(getAllCoordinates);
+    }
     let getNeededCoordinates = getAllCoordinates[index];
     let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=current,minutely,hourly,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
     const response = await fetch(endpoint);

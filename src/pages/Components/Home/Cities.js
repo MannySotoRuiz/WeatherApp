@@ -58,6 +58,7 @@ const Cities = () => {
     } else {
         defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
         localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
+        console.log(defaultSavedLocations);
         getCoordinates(defaultSavedLocations);
     }
 
