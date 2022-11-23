@@ -65,7 +65,7 @@ const NewCity = () => {
         let newImages = [getImages[1], getImages[2], getURL.href]; // create a new variable with the new sources
 
         let getOldCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
-        let end = `http://api.openweathermap.org/geo/1.0/direct?q=${getSearch[0]}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
+        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${getSearch[0]}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
         const res = await fetch(end);
         const resData = await res.json();
         const newCoor = [resData[0].lat, resData[0].lon];
