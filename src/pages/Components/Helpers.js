@@ -42,7 +42,7 @@ export default async function display7DayData(location) {
                 weekday: "long",
             });
             let icon = value.weather[0].icon;
-            let iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+            let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
             let getProb = value.pop;
             let rainProb = getProb * 100;
             let minTemp = value.temp.min.toFixed(0);
@@ -122,7 +122,7 @@ export default async function display7DayData(location) {
 //     //             weekday: "long",
 //     //         });
 //     //         let icon = value.weather[0].icon;
-//     //         let iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+//     //         let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 //     //         let getProb = value.pop;
 //     //         let rainProb = getProb * 100;
 //     //         let minTemp = value.temp.min.toFixed(0);
