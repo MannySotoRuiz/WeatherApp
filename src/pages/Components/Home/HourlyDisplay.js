@@ -1,76 +1,48 @@
+import getHourlyAndWeeklyWeather from '../Helpers.js';
+import { useEffect, useState } from 'react';
+import rainDropImg from '../../../images/raindrop.png';
+
 const HourlyDisplay = () => {
+
+    const [allData, setData] = useState([]);
+
+    let getLoc = JSON.parse(localStorage.getItem("location"));
+    if (!getLoc) {
+        getLoc = "New York, USA";
+    }
+
+    useEffect(() => {
+
+        const getData = async (place) => {
+            let getit = await getHourlyAndWeeklyWeather(place);
+            setData(getit[0]);
+        }
+        getData(getLoc);
+    }, []);
+
     return (
         <div className="hidden" id="hourlyDisplay">
-                        <div className="eachHour">
-                            <p className="hourText">1:00</p>
+            {allData.map((hr, idx) => {
+                return (
+                    <div className="eachHour" key={idx}>
+                        <p style={{ margin: "0", marginLeft: "5%" }} className="hourText">{hr[0]}</p>
+                        <div className="lowTempContainer">
+                            <div className="lowestTemp fahrenheitDisplay">{hr[1]}</div>
+                            <div className="lowestTemp celsiusDisplay hidden">{((hr[1]-32)*(5/9)).toFixed(0)}</div>
+                            <span>&#176;</span>
+                            <div className="fahrenheitDisplay">F</div>
+                            <div className="celsiusDisplay hidden">C</div>
                         </div>
-                        <div className="eachHour">
-                            <p className="hourText">2:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">3:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">4:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">5:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">6:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">7:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">8:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">9:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">10:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">12:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">13:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">14:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">15:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">16:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">17:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">18:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">19:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">20:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">21:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">22:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">23:00</p>
-                        </div>
-                        <div className="eachHour">
-                            <p className="hourText">24:00</p>
+                        <div className="generalWeather" style={{ marginLeft:"2%" }} ><img src={hr[2]} alt="weather description img"/></div>
+                        <p style={{ margin: "0" }} className="hourText">{hr[3]}</p>
+                        <div className="rainChance" style={{ marginLeft:"30%" }} >
+                            <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
+                            <div>{hr[4].toFixed(0)}%</div>
                         </div>
                     </div>
+                )
+            })}
+        </div>
     );
 };
 

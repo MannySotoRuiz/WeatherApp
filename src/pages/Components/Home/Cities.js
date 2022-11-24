@@ -53,17 +53,12 @@ const Cities = () => {
     let getSavedLocations = JSON.parse(localStorage.getItem("savedLocations"));
     if (getSavedLocations) {
         defaultSavedLocations = getSavedLocations;
-        // getCoordinates(defaultSavedLocations);
-        // localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
     } else {
         defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
         localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
         console.log(defaultSavedLocations);
         getCoordinates(defaultSavedLocations);
     }
-
-    // let getAllCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
-    // if 
 
     // code to display all saved cities
     return (
