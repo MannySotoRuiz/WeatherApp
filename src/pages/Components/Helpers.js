@@ -1,4 +1,4 @@
-export default async function getHourlyAndWeeklyWeather(location) {
+export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!location) {
         alert("Unexpected error. Try again");
     }
@@ -16,6 +16,7 @@ export default async function getHourlyAndWeeklyWeather(location) {
     let sevenDayData = [];
     let hourlyData = [];
     let getAllCoordinates;
+    let currentWeatherData;
 
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
     if (!ifSavedLocation) {
@@ -33,7 +34,7 @@ export default async function getHourlyAndWeeklyWeather(location) {
             getAllCoordinates = defaultLatLong;
         }
         let getNeededCoordinates = getAllCoordinates[index];
-        let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=current,minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
+        let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const response = await fetch(endpoint);
 
         if (response.status !== 200) {
@@ -42,6 +43,30 @@ export default async function getHourlyAndWeeklyWeather(location) {
         }
 
         const data = await response.json();
+
+        // this is the code to get the current weather information
+        const currentTemp = data.current.temp.toFixed(0);;
+        const currentSunset = new Date(data.current.sunset * 1000);
+        const sunsetHour = currentSunset.getHours();
+        const sunsetMins = currentSunset.getMinutes();
+        let newSunsetTime;
+        if (sunsetHour === 0) {
+            newSunsetTime = `12:${sunsetMins} am`;
+        } else if (sunsetHour > 11) {
+            const difference = sunsetHour - 12;
+            if (difference === 0) {
+                newSunsetTime = `12:${sunsetMins} pm`;
+            } else {
+                newSunsetTime = `${difference}:${sunsetMins} pm`;
+            }
+        } else {
+            newSunsetTime = `${sunsetHour}:${sunsetMins} am`;
+        }
+        const currentHumidity = data.current.humidity;
+        const currentIcon = data.current.weather[0].icon;
+        const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
+        const currentDesc = data.current.weather[0].description;
+        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, currentIconURL, currentDesc];
 
         // this code is to get the hourly data
         data.hourly.forEach((value, idx) => {
@@ -89,7 +114,7 @@ export default async function getHourlyAndWeeklyWeather(location) {
         });
     }
 
-    return [hourlyData, sevenDayData];
+    return [hourlyData, sevenDayData, currentWeatherData];
 }
 
 
