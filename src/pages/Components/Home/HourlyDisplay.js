@@ -1,4 +1,4 @@
-import getHourlyAndWeeklyWeather from '../Helpers.js';
+import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import { useEffect, useState } from 'react';
 import rainDropImg from '../../../images/raindrop.png';
 
@@ -14,7 +14,7 @@ const HourlyDisplay = () => {
     useEffect(() => {
 
         const getData = async (place) => {
-            let getit = await getHourlyAndWeeklyWeather(place);
+            let getit = await getHourly_Weekly_CurrentWeather(place);
             setData(getit[0]);
         }
         getData(getLoc);

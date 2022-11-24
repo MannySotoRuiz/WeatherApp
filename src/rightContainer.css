@@ -115,7 +115,7 @@
     font-size: larger;
 }
 
-#weatherText {
+.weatherText {
     margin: 0;
     padding-left: 50px;
     font-size: 140px;
@@ -138,7 +138,7 @@
     font-size: 50px;
 }
 
-#feelsText {
+.feelsText {
     color: #808080;
     margin-right: 20px;
 }
