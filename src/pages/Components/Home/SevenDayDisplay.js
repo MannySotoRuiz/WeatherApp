@@ -3,7 +3,7 @@
 // import cloudyRainImg from '../../../images/cloudyRain.png';
 // import cloudyWithSunImg from '../../../images/cloudyWithSun.png';
 import rainDropImg from '../../../images/raindrop.png';
-import display7DayData from '../Helpers.js';
+import getHourlyAndWeeklyWeather from '../Helpers.js';
 import { useEffect, useState } from 'react';
 
 const SevenDayDisplay = () => {
@@ -23,8 +23,8 @@ const SevenDayDisplay = () => {
     useEffect(() => {
 
         const getData = async (place) => {
-            let getit = await display7DayData(place);
-            setData(getit);
+            let getit = await getHourlyAndWeeklyWeather(place);
+            setData(getit[1]);
         }
         getData(getLoc);
     }, []);
@@ -32,24 +32,51 @@ const SevenDayDisplay = () => {
     return (
             <div className="sevenDayDisplay">
                 {allData.map((currentDay, idx) => {
+                    if (idx === 6) {
+                        return (
+                            <div className="eachDayin7Days" style={{ borderBottom: "none" }} key={idx}>
+                                <div className="dayText">{currentDay[0]}</div>
+                                <div className="rainChance">
+                                    <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
+                                    <div>{currentDay[1].toFixed(0)}%</div>
+                                </div>
+                                <div className="generalWeather"><img src={currentDay[2]} alt="weather description img"/></div>
+                                <div className="lowTempContainer">Lowest:
+                                    <div className="lowestTemp fahrenheitDisplay">{currentDay[3]}</div>
+                                    <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(0)}</div>
+                                    <span>&#176;</span>
+                                    <div className="fahrenheitDisplay">F</div>
+                                    <div className="celsiusDisplay hidden">C</div>
+                                </div>
+                                <div className="highTempContainer">Highest:
+                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}</div>
+                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}</div>
+                                    <span>&#176;</span>
+                                    <div className="fahrenheitDisplay">F</div>
+                                    <div className="celsiusDisplay hidden">C</div>
+                                </div>
+                                <button onClick={addPopup} className="button-9">Recommended Clothing</button>
+                            </div>
+                        )
+                    }
                     return (
                         <div className="eachDayin7Days" key={idx}>
                             <div className="dayText">{currentDay[0]}</div>
                             <div className="rainChance">
                                 <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
-                                <div>{currentDay[1]}%</div>
+                                <div>{currentDay[1].toFixed(0)}%</div>
                             </div>
                             <div className="generalWeather"><img src={currentDay[2]} alt="weather description img"/></div>
                             <div className="lowTempContainer">Lowest:
                                 <div className="lowestTemp fahrenheitDisplay">{currentDay[3]}</div>
-                                <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(2)}</div>
+                                <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(0)}</div>
                                 <span>&#176;</span>
                                 <div className="fahrenheitDisplay">F</div>
                                 <div className="celsiusDisplay hidden">C</div>
                             </div>
                             <div className="highTempContainer">Highest:
                                 <div className="highestTemp fahrenheitDisplay">{currentDay[4]}</div>
-                                <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(2)}</div>
+                                <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}</div>
                                 <span>&#176;</span>
                                 <div className="fahrenheitDisplay">F</div>
                                 <div className="celsiusDisplay hidden">C</div>
