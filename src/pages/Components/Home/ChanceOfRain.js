@@ -1,25 +1,4 @@
-// import { useState, useEffect } from "react";
-// import getHourly_Weekly_CurrentWeather from "../Helpers.js";
-
 const ChanceOfRain = () => {
-
-    // let location = "New York, USA"; // default location
-
-    // let getLoc = JSON.parse(localStorage.getItem("location"));
-    // if (getLoc) {
-    //     location = getLoc;
-    // }
-
-    // const [allData, setData] = useState([]);
-
-    // useEffect(() => {
-
-    //     const getData = async (place) => {
-    //         let getit = await getHourly_Weekly_CurrentWeather(place);
-    //         setData(getit[0]);
-    //     }
-    //     getData(location);
-    // }, []);
 
     return (
         <div className="holdStats">
