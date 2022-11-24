@@ -3,17 +3,17 @@
 // import cloudyRainImg from '../../../images/cloudyRain.png';
 // import cloudyWithSunImg from '../../../images/cloudyWithSun.png';
 import rainDropImg from '../../../images/raindrop.png';
-import getHourlyAndWeeklyWeather from '../Helpers.js';
+import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import { useEffect, useState } from 'react';
 
 const SevenDayDisplay = () => {
-
-    const [allData, setData] = useState([]);
 
     const addPopup = e => {
         let popup = document.querySelectorAll(".popupDisplay");
         popup[0].classList.remove("hidden");
     };
+
+    const [allData, setData] = useState([]);
 
     let getLoc = JSON.parse(localStorage.getItem("location"));
     if (!getLoc) {
@@ -23,7 +23,7 @@ const SevenDayDisplay = () => {
     useEffect(() => {
 
         const getData = async (place) => {
-            let getit = await getHourlyAndWeeklyWeather(place);
+            let getit = await getHourly_Weekly_CurrentWeather(place);
             setData(getit[1]);
         }
         getData(getLoc);
@@ -55,7 +55,7 @@ const SevenDayDisplay = () => {
                                     <div className="fahrenheitDisplay">F</div>
                                     <div className="celsiusDisplay hidden">C</div>
                                 </div>
-                                <button onClick={addPopup} className="button-9">Recommended Clothing</button>
+                                <button onClick={addPopup} className="button-9">Recommended Fit</button>
                             </div>
                         )
                     }
@@ -81,7 +81,7 @@ const SevenDayDisplay = () => {
                                 <div className="fahrenheitDisplay">F</div>
                                 <div className="celsiusDisplay hidden">C</div>
                             </div>
-                            <button onClick={addPopup} className="button-9">Recommended Clothing</button>
+                            <button onClick={addPopup} className="button-9">Recommended Fit</button>
                         </div>
                     )
                 })}
