@@ -17,7 +17,6 @@ const Cities = () => {
         let changeLocation = document.getElementById("currentLocation");
         changeLocation.innerText = newLocation;
         localStorage.setItem("location", JSON.stringify(newLocation));
-        // getCityWeatherData(e);
         window.location.reload();
     };
 

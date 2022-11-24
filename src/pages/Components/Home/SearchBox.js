@@ -10,10 +10,20 @@ const SearchBox = () => {
 
     const handleSearch = (event) => {
         if (event.key === "Enter") {
-            // get input value
-            document.getElementById("currentLocation").innerText=search;
-            localStorage.setItem("location", JSON.stringify(search));
-            window.location.reload();
+            if (search.length === 0) {
+                alert("Please enter a city");
+                return;
+            } else {
+                let checkValid = search.trim().split(",");
+                if (checkValid.length === 1) {
+                    alert("Please enter correct format: [city], [country]");
+                    return;
+                } else {
+                    // document.getElementById("currentLocation").innerText=search;
+                    localStorage.setItem("location", JSON.stringify(search));
+                    window.location.reload();
+                }
+            }
         }
     };
 
@@ -49,9 +59,9 @@ const SearchBox = () => {
                 <div className="search-box">
                     <div className="search-icon"><i className="iconfont icon-sousuo" style={{ fontSize: "40px" }}></i></div>
                     <div id='search-border'>
-                        <form action="" className="search-form">
-                        <input type="text" placeholder="Search new place ..." id="search" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch}/>
-                        </form>
+                        {/* <form action="" className="search-form"> */}
+                        <input type="text" placeholder="Search: [city], [country]" id="search" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch}/>
+                        {/* </form> */}
                     </div>
                     <div className="go-icon"><i className="fa fa-arrow-right"></i></div>
                 </div>

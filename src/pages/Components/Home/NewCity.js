@@ -56,10 +56,6 @@ const NewCity = () => {
         } else {
             getAll[2].children[0].alt = `${getSearch[0]}, ${getSearch[1]}`;
         }
-        getAll[2].parentNode.children[1].innerText = `${getSearch[0]}, ${getSearch[1]}`; // update the displayed text w/ new city
-
-        let savedLocations = JSON.parse(localStorage.getItem("savedLocations")); // get current saved locations
-        let newSavedLocations = [savedLocations[1], savedLocations[2], `${getSearch[0]}, ${getSearch[1]}`]; // create a new variable with new locations
 
         let getImages = JSON.parse(localStorage.getItem("allPicsSrc")); // get the src of all the images
         let newImages = [getImages[1], getImages[2], getURL.href]; // create a new variable with the new sources
@@ -70,6 +66,19 @@ const NewCity = () => {
         const resData = await res.json();
         const newCoor = [resData[0].lat, resData[0].lon];
         let newCoordinates = [getOldCoordinates[1], getOldCoordinates[2], newCoor];
+        console.log(resData);
+        let newCountry = resData[0].country;
+        let newCity = getSearch[0];
+        let newState = resData[0].state;
+        let newSavedLocations;
+        let savedLocations = JSON.parse(localStorage.getItem("savedLocations")); // get current saved locations
+        if (newState) {
+            getAll[2].parentNode.children[1].innerText = `${newCity}, ${newState}, ${newCountry}`; // update the displayed text w/ new city
+            newSavedLocations = [savedLocations[1], savedLocations[2], `${newCity}, ${newState}, ${newCountry}`]; // create a new variable with new locations
+        } else {
+            getAll[2].parentNode.children[1].innerText = `${newCity}, ${newCountry}`; // update the displayed text w/ new city
+            newSavedLocations = [savedLocations[1], savedLocations[2], `${newCity}, ${newCountry}`]; // create a new variable with new locations
+        }
 
         localStorage.setItem("savedLocations", JSON.stringify(newSavedLocations)); // save to local storage new 3 locations
         localStorage.setItem("allPicsSrc", JSON.stringify(newImages));
