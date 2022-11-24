@@ -1,0 +1,54 @@
+.infoTitle {
+    height: 15%;
+    /* width: calc(100% / 7); */
+    width: 100%;
+    /* border: 2px solid green; */
+    box-sizing: border-box;
+}
+
+.infoTitle h5 {
+    font-size: 20px;
+    margin-left: 3%;
+}
+
+.holdStats {
+    height: 85%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.statBars {
+    height: calc(100% / 6);
+    width: 100%;
+    /* outline: 1px solid red; */
+    box-sizing: border-box;
+    display: flex;
+}
+
+.holdTimeForBar {
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+}
+
+.progress-bar {
+    margin-left: 5%;
+    width: 55%;
+    height: 50%;
+    background-color: #e0e0e0;
+    /* padding: 3px; */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+    border: 2px solid white;
+}
+
+.progress-bar-fill {
+    display: block;
+    height: 22px;
+    background-color: #659cef;
+    border-radius: 3px;
+    transition: width 500ms ease-in-out;
+}
