@@ -63,8 +63,8 @@ const HomeRight = () => {
                 </div>
                 <div id="currentLocation">{location}</div>
                 <div id="feelsLike">
-                    <div className="feelsText fahrenheitDisplay">Feels like 65</div>
-                    <div className="feelsText celsiusDisplay hidden">Feels like {((allData[0]-32)*(5/9)).toFixed(0)}</div>
+                    <div className="feelsText fahrenheitDisplay">Feels like {allData[5]}</div>
+                    <div className="feelsText celsiusDisplay hidden">Feels like {((allData[5]-32)*(5/9)).toFixed(0)}</div>
                     <div style={{ color: "#808080", fontSize: "60px" }}>·</div>
                     <div id="sunsetTime">Sunset {allData[1]}</div>
                 </div>
