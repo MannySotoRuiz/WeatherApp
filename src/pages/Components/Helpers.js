@@ -97,7 +97,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         const currentIcon = data.current.weather[0].icon;
         const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
         const currentDesc = data.current.weather[0].description;
-        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, currentIconURL, currentDesc];
+        const currentFeels = data.current.feels_like.toFixed(0);
+        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, currentIconURL, currentDesc, currentFeels];
 
         // this code is to get the hourly data
         data.hourly.forEach((value, idx) => {
@@ -183,7 +184,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         const currentIcon = data.current.weather[0].icon;
         const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
         const currentDesc = data.current.weather[0].description;
-        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, currentIconURL, currentDesc];
+        const currentFeels = data.current.feels_like.toFixed(0);
+        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, currentIconURL, currentDesc, currentFeels];
 
         // this code is to get the hourly data
         data.hourly.forEach((value, idx) => {

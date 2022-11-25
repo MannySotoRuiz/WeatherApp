@@ -19,8 +19,8 @@ const HourlyDisplay = () => {
             let index = 0;
             for (let i = 0; i < updateStatBars.length; i++) {
                 updateStatBars[i].children[0].innerText = getit[0][index][0];
-                updateStatBars[i].children[1].children[0].style.width = `${getit[0][index][4]}%`;
-                updateStatBars[i].children[1].children[0].innerText = `${getit[0][index][4]}%`;
+                updateStatBars[i].children[1].children[0].style.width = `${getit[0][index][4].toFixed(0)}%`;
+                updateStatBars[i].children[1].children[0].innerText = `${getit[0][index][4].toFixed(0)}%`;
                 index += 2;
             }
             setData(getit[0]);
