@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import ChanceOfRain from './ChanceOfRain.js';
+import { useAuthContext } from '../../../hooks/useAuthContext.js';
 
 
 const HomeRight = () => {
 
     let navigate = useNavigate();
+    const { user } = useAuthContext();
 
     const current = new Date();
     let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -40,6 +42,9 @@ const HomeRight = () => {
     return (
         <div className="col" id="rightContainer">
             <div id="loginContainer">
+                {user && (
+                    <span>{user.email}</span>
+                )}
                 <div id="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
                         navigate("/login");

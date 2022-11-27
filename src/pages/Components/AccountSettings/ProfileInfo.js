@@ -1,4 +1,13 @@
+import { useLogout } from "../../../hooks/useLogout";
+
 const ProfileInfo = () => {
+
+    const { logout } = useLogout();
+
+    const handleClick = () => {
+         logout();
+    }
+
     return (
         <div id="editProfileDisplay">
             <h2>Edit Profile</h2>
@@ -19,7 +28,7 @@ const ProfileInfo = () => {
                     <input type="text" id="fcountry" name="fcountry" placeholder="United States"></input><br></br><br></br>
                 </div>
                 <button type="submit" value="Submit">Save</button>
-                <button style={{ marginLeft: "4%" }}type="submit" value="Submit">Log Out</button>
+                <button style={{ marginLeft: "4%" }}type="submit" value="Submit" onClick={handleClick}>Log Out</button>
             </div>
         </div>
     );
