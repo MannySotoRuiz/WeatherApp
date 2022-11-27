@@ -24,31 +24,21 @@ export default function (props) {
       authMode = getAuth;
     }
 
-    const [loginuser, setloginuser] = useState("");
+    const [loginemail, setloginemail] = useState("");
     const [loginpass, setloginpass] = useState ("");
-    const [signupfirst, setsignupfirst] = useState ("");
-    const [signuplast, setsignuplast] = useState ("");
-    const [signupuser, setsignupuser] = useState ("");
+    const [signupemail, setsignupemail] = useState ("");
     const [signuppass, setsignuppass] = useState ("");
 
-    const handleLoginUserChange = (event) => {
-      setloginuser(event.currentTarget.value);
+    const handleLoginEmailChange = (event) => {
+      setloginemail(event.currentTarget.value);
     };
 
     const handleLoginPassChange = (event) => {
       setloginpass(event.currentTarget.value);
     };
 
-    const handleSignupFirstChange = (event) => {
-      setsignupfirst(event.currentTarget.value);
-    };
-
-    const handleSignupLastChange = (event) => {
-      setsignuplast(event.currentTarget.value);
-    };
-
-    const handleSignupUserChange = (event) => {
-      setsignupuser(event.currentTarget.value);
+    const handleSignupEmailChange = (event) => {
+      setsignupemail(event.currentTarget.value);
     };
 
     const handleSignupPassChange = (event) => {
@@ -57,11 +47,11 @@ export default function (props) {
 
     const handleLogin = () => {
 
-      let cleanuser = loginuser.trim();
+      let cleanEmail = loginemail.trim();
       let cleanpass = loginpass.trim();
 
-      if (cleanuser.length === 0){
-        alert("Please Enter Username");
+      if (cleanEmail.length === 0){
+        alert("Please Enter Email");
         return;
       }
       
@@ -81,22 +71,10 @@ export default function (props) {
 
     const handleSignup = () => {
 
-      let cleanFirst = signupfirst.trim();
-      let cleanLast = signuplast.trim();
-      let cleanuser = signupuser.trim();
+      let cleanEmail = signupemail.trim();
       let cleanpass = signuppass.trim();
-      
-      if (cleanFirst.length === 0){
-        alert("Please Enter First Name");
-        return;
-      }
 
-      if (cleanLast.length === 0){
-        alert("Please Enter Last Name");
-        return;
-      }
-
-      if (cleanuser.length === 0){
+      if (cleanEmail.length === 0){
         alert("Please Enter Username");
         return;
       }
@@ -127,13 +105,13 @@ export default function (props) {
                 </span>
               </div>
               <div className="form-group mt-3">
-                <label>Username</label>
+                <label>Email</label>
                 <input
                   type="text"
                   className="form-control mt-1"
-                  placeholder="Enter Username"
-                  id="loginuser"
-                  onChange={handleLoginUserChange}
+                  placeholder="Enter Email"
+                  id="loginemail"
+                  onChange={handleLoginEmailChange}
                 />
               </div>
               <div className="form-group mt-3">
@@ -169,36 +147,14 @@ export default function (props) {
               </span>
             </div>
             <div className="form-group mt-3">
-              <label>First Name</label>
+              <label>Email</label>
               <input
                 type="text"
                 className="form-control mt-1"
-                placeholder="First Name"
-                name="data" 
-                id="signupfirst"
-                onChange={handleSignupFirstChange}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Last Name</label>
-              <input
-                type="text"
-                className="form-control mt-1"
-                placeholder="Last Name"
+                placeholder="Email"
                 name="data"
-                id="signuplast"
-                onChange={handleSignupLastChange}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Username</label>
-              <input
-                type="text"
-                className="form-control mt-1"
-                placeholder="Username"
-                name="data"
-                id="signupuser"
-                onChange={handleSignupUserChange}
+                id="signupemail"
+                onChange={handleSignupEmailChange}
               />
             </div>
             <div className="form-group mt-3">
