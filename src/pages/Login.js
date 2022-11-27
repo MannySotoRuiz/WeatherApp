@@ -31,7 +31,7 @@ export default function (props) {
     const [signupemail, setsignupemail] = useState ("");
     const [signuppass, setsignuppass] = useState ("");
     const {signup, error, isLoading} = useSignup();
-    const {login, loginError, loginIsLoading} = useLogin();
+    const {login, error: loginError, isLoading: loginIsLoading} = useLogin();
 
     const handleLoginEmailChange = (event) => {
       setloginemail(event.currentTarget.value);
@@ -54,26 +54,6 @@ export default function (props) {
       e.preventDefault();
 
       await login(loginemail, loginpass);
-
-      // let cleanEmail = loginemail.trim();
-      // let cleanpass = loginpass.trim();
-
-      // if (cleanEmail.length === 0){
-      //   alert("Please Enter Email");
-      //   return;
-      // }
-      
-      // if (cleanpass.length === 0){
-      //   alert("Please Enter Password");
-      //   return;
-      // }
-
-      // if (cleanpass.length <= 8){
-      //   alert("Password must be at least 8 characters long");
-      //   return;
-      // }
-
-      // navigate("/accountsettings");
       
     }
 
@@ -83,25 +63,6 @@ export default function (props) {
 
       await signup(signupemail, signuppass);
 
-      // let cleanEmail = signupemail.trim();
-      // let cleanpass = signuppass.trim();
-
-      // if (cleanEmail.length === 0){
-      //   alert("Please Enter Username");
-      //   return;
-      // }
-
-      // if (cleanpass.length === 0){
-      //   alert("Please Enter Password");
-      //   return;
-      // }
-
-      // if (cleanpass.length <= 8){
-      //   alert("Password must be at least 8 characters long");
-      //   return;
-      // }
-    
-      // navigate("/accountsettings");
     }
   
     if (authMode === "signin") {

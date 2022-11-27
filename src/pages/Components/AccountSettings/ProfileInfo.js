@@ -1,11 +1,16 @@
 import { useLogout } from "../../../hooks/useLogout";
+import { useNavigate } from 'react-router-dom';
+
 
 const ProfileInfo = () => {
+
+    let navigate = useNavigate();
 
     const { logout } = useLogout();
 
     const handleClick = () => {
          logout();
+         navigate("/");
     }
 
     return (
