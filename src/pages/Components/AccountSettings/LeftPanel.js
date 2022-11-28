@@ -22,7 +22,7 @@ const LeftPanel = () => {
     return (
         <div id="leftPanel">
             <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Edit Profile</p></div>
-            <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Password</p></div>
+            {/* <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Password</p></div> */}
             <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Notifications</p></div>
             <div className="buttonText" onClick={handleClick}><p style={{ marginTop: "30px", marginBottom: "30px" }}>Weather & Clothes Preference</p></div>
             <div id="verticalLine"></div>
