@@ -1,6 +1,7 @@
 node_modules/
 .env
 backend/.env
+backend/node_modules/
 
 # mac junk
 .DS_Store
