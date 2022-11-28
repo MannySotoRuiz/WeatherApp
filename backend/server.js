@@ -25,14 +25,14 @@ app.use('/api/accounts', accountRoutes)
 
 //connect to mongo
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('listening on port', process.env.PORT, ' and connected to mongo')
-        })
-    })
+    .then(console.log("Connected to MongoDB"))
     .catch((error) => {
         console.log(error)
     })
+
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Backend is running")
+})
 
 //listen for requests
 
