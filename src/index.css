@@ -1,3 +1,8 @@
+:root {
+	--primary: #1aac83;
+	--error: #e7195a;
+}
+
 .clothes{
   /* border: 1px solid red; */
   display: flex;
@@ -658,4 +663,16 @@ background-color: #ea4c89;
   .button-box {
     margin-left: 340px;
   }
+}
+
+div.error {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+input.error {
+    border: 1px solid var(--error);
 }

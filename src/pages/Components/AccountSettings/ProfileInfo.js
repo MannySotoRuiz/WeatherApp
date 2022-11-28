@@ -1,25 +1,46 @@
+import { useLogout } from "../../../hooks/useLogout";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+
+
 const ProfileInfo = () => {
+
+    let navigate = useNavigate();
+
+    const { logout } = useLogout();
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    // Password toggle handler
+    const togglePassword = () => {
+        // when the handler is invoked
+        // inverse the boolean state of passwordShown
+        setPasswordShown(!passwordShown);
+    }
+
+    const handleClick = () => {
+         logout();
+         navigate("/");
+    }
+
     return (
         <div id="editProfileDisplay">
             <h2>Edit Profile</h2>
             <div id="profileInfo">
-                <div id="firstName">First Name<br></br><br></br>
-                    <input type="text" id="ffirstname" name="ffirstname" placeholder="Manny"></input><br></br><br></br>
+                <div id="firstName">Email<br></br><br></br>
+                    <input type="text" id="femail" name="femail" placeholder="email"></input><br></br><br></br>
                 </div>
-                <div id="lastName">Last Name<br></br><br></br>
-                    <input type="text" id="flastname" name="flastname" placeholder="Soto Ruiz"></input><br></br><br></br>
+                <div id="passwordDisplay">
+                    <div id="currentPassword">Current Password<br></br><br></br>
+                        <input type={passwordShown ? "text" : "password"} id="fcurrentpassword" name="fcurrentpassword" /><br></br><br></br>
+                    </div>
+                    <div id="newPassword">New Password<br></br><br></br>
+                        <input type={passwordShown ? "text" : "password"} id="fnewpassword" name="fnewpassword" /><br></br><br></br>
+                    </div>
+                    <button onClick={togglePassword}>Show Passwords</button>
+                    <button type="submit" value="Submit">Save</button>
+                    <button type="submit" value="Submit" onClick={handleClick}>Log Out</button>
                 </div>
-                <div id="city">City<br></br><br></br>
-                    <input type="text" id="fcity" name="fcity" placeholder="New York"></input><br></br><br></br>
-                </div>
-                <div id="state">State<br></br><br></br>
-                    <input type="text" id="fstate" name="fstate" placeholder="New York"></input><br></br><br></br>
-                </div>
-                <div id="country">Country<br></br><br></br>
-                    <input type="text" id="fcountry" name="fcountry" placeholder="United States"></input><br></br><br></br>
-                </div>
-                <button type="submit" value="Submit">Save</button>
-                <button style={{ marginLeft: "4%" }}type="submit" value="Submit">Log Out</button>
             </div>
         </div>
     );

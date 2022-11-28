@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import '../login.css';
 import { useNavigate } from 'react-router-dom';
+import { useSignup } from '../hooks/useSignup';
+import { useLogin } from '../hooks/useLogin';
 
 export default function (props) {
     let authMode = "signin";
@@ -24,100 +26,49 @@ export default function (props) {
       authMode = getAuth;
     }
 
-    const [loginuser, setloginuser] = useState("");
+    const [loginemail, setloginemail] = useState("");
     const [loginpass, setloginpass] = useState ("");
-    const [signupfirst, setsignupfirst] = useState ("");
-    const [signuplast, setsignuplast] = useState ("");
-    const [signupuser, setsignupuser] = useState ("");
+    const [signupemail, setsignupemail] = useState ("");
     const [signuppass, setsignuppass] = useState ("");
+    const {signup, error, isLoading} = useSignup();
+    const {login, error: loginError, isLoading: loginIsLoading} = useLogin();
 
-    const handleLoginUserChange = (event) => {
-      setloginuser(event.currentTarget.value);
+    const handleLoginEmailChange = (event) => {
+      setloginemail(event.currentTarget.value);
     };
 
     const handleLoginPassChange = (event) => {
       setloginpass(event.currentTarget.value);
     };
 
-    const handleSignupFirstChange = (event) => {
-      setsignupfirst(event.currentTarget.value);
-    };
-
-    const handleSignupLastChange = (event) => {
-      setsignuplast(event.currentTarget.value);
-    };
-
-    const handleSignupUserChange = (event) => {
-      setsignupuser(event.currentTarget.value);
+    const handleSignupEmailChange = (event) => {
+      setsignupemail(event.currentTarget.value);
     };
 
     const handleSignupPassChange = (event) => {
       setsignuppass(event.currentTarget.value);
     };
 
-    const handleLogin = () => {
+    const handleLogin =  async (e) => {
 
-      let cleanuser = loginuser.trim();
-      let cleanpass = loginpass.trim();
+      e.preventDefault();
 
-      if (cleanuser.length === 0){
-        alert("Please Enter Username");
-        return;
-      }
-      
-      if (cleanpass.length === 0){
-        alert("Please Enter Password");
-        return;
-      }
-
-      if (cleanpass.length <= 8){
-        alert("Password must be at least 8 characters long");
-        return;
-      }
-
-      navigate("/accountsettings");
+      await login(loginemail, loginpass);
       
     }
 
-    const handleSignup = () => {
+    const handleSignup = async (e) => {
 
-      let cleanFirst = signupfirst.trim();
-      let cleanLast = signuplast.trim();
-      let cleanuser = signupuser.trim();
-      let cleanpass = signuppass.trim();
-      
-      if (cleanFirst.length === 0){
-        alert("Please Enter First Name");
-        return;
-      }
+      e.preventDefault();
 
-      if (cleanLast.length === 0){
-        alert("Please Enter Last Name");
-        return;
-      }
+      await signup(signupemail, signuppass);
 
-      if (cleanuser.length === 0){
-        alert("Please Enter Username");
-        return;
-      }
-
-      if (cleanpass.length === 0){
-        alert("Please Enter Password");
-        return;
-      }
-
-      if (cleanpass.length <= 8){
-        alert("Password must be at least 8 characters long");
-        return;
-      }
-    
-      navigate("/accountsettings");
     }
   
     if (authMode === "signin") {
       return (
         <div className="Auth-form-container">
-          <form className="Auth-form">
+          <form className="Auth-form" onSubmit={handleLogin}>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Log In</h3>
               <div className="text-center">
@@ -127,13 +78,13 @@ export default function (props) {
                 </span>
               </div>
               <div className="form-group mt-3">
-                <label>Username</label>
+                <label>Email</label>
                 <input
-                  type="text"
+                  type="email"
                   className="form-control mt-1"
-                  placeholder="Enter Username"
-                  id="loginuser"
-                  onChange={handleLoginUserChange}
+                  placeholder="Enter Email"
+                  id="loginemail"
+                  onChange={handleLoginEmailChange}
                 />
               </div>
               <div className="form-group mt-3">
@@ -147,9 +98,8 @@ export default function (props) {
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button onClick={() => {
-                        handleLogin();
-                    }}>Log In</button>
+                <button disabled={loginIsLoading}>Log In</button>
+                {loginError && <div className="error ">{loginError}</div>}
               </div>
             </div>
           </form>
@@ -159,7 +109,7 @@ export default function (props) {
   
     return (
       <div className="Auth-form-container">
-        <form className="Auth-form">
+        <form className="Auth-form" onSubmit={handleSignup}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign Up</h3>
             <div className="text-center">
@@ -169,36 +119,14 @@ export default function (props) {
               </span>
             </div>
             <div className="form-group mt-3">
-              <label>First Name</label>
+              <label>Email</label>
               <input
-                type="text"
+                type="email"
                 className="form-control mt-1"
-                placeholder="First Name"
-                name="data" 
-                id="signupfirst"
-                onChange={handleSignupFirstChange}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Last Name</label>
-              <input
-                type="text"
-                className="form-control mt-1"
-                placeholder="Last Name"
+                placeholder="Email"
                 name="data"
-                id="signuplast"
-                onChange={handleSignupLastChange}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Username</label>
-              <input
-                type="text"
-                className="form-control mt-1"
-                placeholder="Username"
-                name="data"
-                id="signupuser"
-                onChange={handleSignupUserChange}
+                id="signupemail"
+                onChange={handleSignupEmailChange}
               />
             </div>
             <div className="form-group mt-3">
@@ -213,12 +141,11 @@ export default function (props) {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-                <button onClick={() => {
-                    handleSignup();
-                }}>Sign up</button>
+                <button disabled={isLoading}>Sign up</button>
+                {error && <div className="error ">{error}</div>}
             </div>
           </div>
-        </form>
+        </form> 
       </div>
     )
   }
