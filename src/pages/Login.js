@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import '../login.css';
-import { useNavigate } from 'react-router-dom';
 import { useSignup } from '../hooks/useSignup';
 import { useLogin } from '../hooks/useLogin';
 
 export default function (props) {
     let authMode = "signin";
-    let navigate = useNavigate();
 
     const changeToSignUpMode = () => {
       localStorage.setItem("authMode", JSON.stringify("signup"));
@@ -73,8 +71,8 @@ export default function (props) {
               <h3 className="Auth-form-title">Log In</h3>
               <div className="text-center">
                 Not registered yet?{" "}
-                <span className="link-primary">
-                <a href="#" onClick={changeToSignUpMode}>Sign Up</a>
+                <span style={{ cursor: "pointer" }} className="link-primary" onClick={changeToSignUpMode}>
+                Sign Up
                 </span>
               </div>
               <div className="form-group mt-3">
@@ -114,8 +112,8 @@ export default function (props) {
             <h3 className="Auth-form-title">Sign Up</h3>
             <div className="text-center">
               Already registered?{" "}
-              <span className="link-primary" onClick={changeToLoginMode}>
-              <a href="#">Log In</a>
+              <span style={{ cursor: "pointer" }}  className="link-primary" onClick={changeToLoginMode}>
+              Log In
               </span>
             </div>
             <div className="form-group mt-3">

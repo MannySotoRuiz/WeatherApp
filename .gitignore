@@ -1,2 +1,12 @@
 node_modules/
 .env
+backend/.env
+
+# mac junk
+.DS_Store
+
+# visual studio code junk
+.vscode/
+.vscode/settings.json
+
+build/
