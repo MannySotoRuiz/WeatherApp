@@ -6,7 +6,7 @@ import cloudyRain from "../../images/cloudyRain.png";
 import thunderstorm from "../../images/thunderstorm.png";
 import snow from "../../images/snow.png";
 import mist from "../../images/mist.png";
-import night from "../../images/night.png";
+import night from "../../images/night2.png";
 
 export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!location) {

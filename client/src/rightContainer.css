@@ -100,8 +100,8 @@
 }
 
 #imgCurrentWeather {
-    width: 10%;
-    height: 50%;
+    width: 12%;
+    height: 70%;
 }
 
 #imgCurrentWeather img{
@@ -123,7 +123,7 @@
     color: #808080;
     margin-top: 5px;
     font-weight: bold;
-    font-size: larger;
+    font-size: 19px;
 }
 
 .weatherText {

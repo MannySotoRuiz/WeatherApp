@@ -189,7 +189,7 @@ align-items: center;
 }
 
 .eachHour p {
-  width: 13%;
+  /* width: 13%; */
   height: auto;
   /* outline: 1px solid black; */
 }
@@ -307,8 +307,9 @@ display: flex;
 }
 
 .hourlyDescription {
-  width: 15%;
+  width: 30%;
   height: auto;
+  /* outline: 1px solid black; */
 }
 
 .lowestTemp {
@@ -332,9 +333,9 @@ font-weight: bold;
 
 .dailyDescription {
   /* outline: 1px solid black; */
-  width: 15%;
+  width: 20%;
   height: auto;
-  /* text-align: center; */
+  margin-left: 3%;
 }
 
 

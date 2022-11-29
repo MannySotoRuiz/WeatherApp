@@ -73,8 +73,8 @@ const Cities = () => {
                 )
             })}
             <div onClick={openAddCityPopup} id="addCity">
-                <p style={{ marginTop: "40%", marginBottom: "10%", fontSize: "30px" }}>+</p>
-                <p style={{ marginTop: "17%", fontSize: "17px" }}>Add City</p>
+                <p style={{ marginTop: "40%", marginBottom: "10%", fontSize: "30px", fontWeight: "500" }}>+</p>
+                <p style={{ marginTop: "17%", fontSize: "19px", fontWeight: "500" }}>Add City</p>
             </div>
             <NewCity />
         </div>

@@ -42,14 +42,14 @@ const SevenDayDisplay = () => {
                                 </div>
                                 <div className="generalWeather"><img src={currentDay[2]} alt="weather description img"/></div>
                                 <div className="highTempContainer">
-                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}/</div>
-                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}/</div>
+                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}<span>&#176;</span>/</div>
+                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}<span>&#176;</span>/</div>
                                     <div className="lowestTemp fahrenheitDisplay">{currentDay[3]}</div>
                                     <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(0)}</div>
                                     <span>&#176;</span>
                                     <div className="fahrenheitDisplay">F</div>
                                     <div className="celsiusDisplay hidden">C</div>
-                                </div>
+                            </div>
                                 <div className="dailyDescription">
                                     {currentDay[5]}
                                 </div>
@@ -66,14 +66,14 @@ const SevenDayDisplay = () => {
                                 </div>
                                 <div className="generalWeather"><img src={currentDay[2]} alt="weather description img"/></div>
                                 <div className="highTempContainer">
-                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}/</div>
-                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}/</div>
+                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}<span>&#176;</span>/</div>
+                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}<span>&#176;</span>/</div>
                                     <div className="lowestTemp fahrenheitDisplay">{currentDay[3]}</div>
                                     <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(0)}</div>
                                     <span>&#176;</span>
                                     <div className="fahrenheitDisplay">F</div>
                                     <div className="celsiusDisplay hidden">C</div>
-                                </div>
+                            </div>
                                 <div className="dailyDescription">
                                     {currentDay[5]}
                                 </div>
@@ -90,8 +90,8 @@ const SevenDayDisplay = () => {
                             </div>
                             <div className="generalWeather"><img src={currentDay[2]} alt="weather description img"/></div>
                             <div className="highTempContainer">
-                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}/</div>
-                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}/</div>
+                                    <div className="highestTemp fahrenheitDisplay">{currentDay[4]}<span>&#176;</span>/</div>
+                                    <div className="highestTemp celsiusDisplay hidden">{((currentDay[4]-32)*(5/9)).toFixed(0)}<span>&#176;</span>/</div>
                                     <div className="lowestTemp fahrenheitDisplay">{currentDay[3]}</div>
                                     <div className="lowestTemp celsiusDisplay hidden">{((currentDay[3]-32)*(5/9)).toFixed(0)}</div>
                                     <span>&#176;</span>
