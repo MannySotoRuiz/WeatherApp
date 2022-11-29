@@ -1,3 +1,12 @@
+import sun from "../../images/sun.png";
+import sunCloudy from "../../images/cloudyWithSun.png";
+import cloudyNoSun from "../../images/cloudyNoSun.jpg";
+import sunRain from "../../images/sunRain.png";
+import cloudyRain from "../../images/cloudyRain.png";
+import thunderstorm from "../../images/thunderstorm.png";
+import snow from "../../images/snow.png";
+import mist from "../../images/mist.png"
+
 export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!location) {
         alert("Unexpected error. Try again");
@@ -18,6 +27,18 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
     let hourlyData = [];
     let getAllCoordinates;
     let currentWeatherData;
+
+    const picMap = {
+        "icon01d": sun,
+        "icon02d": sunCloudy,
+        "icon03d": cloudyNoSun,
+        "icon04d": cloudyNoSun,
+        "icon09d": cloudyRain,
+        "icon10d": sunRain,
+        "icon11d": thunderstorm,
+        "icon13d": snow,
+        "icon50d": mist
+    };
 
     const errorCurrentData = ["NULL", "NULL", "NULL", "NULL", "NULL"];
     const error7DayData = [
@@ -135,12 +156,14 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
                     weekday: "long",
                 });
                 let icon = value.weather[0].icon;
-                let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+                // let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
                 let getProb = value.pop;
                 let rainProb = getProb * 100;
+                let formatIcon = `icon${icon}`;
                 let minTemp = value.temp.min.toFixed(0);
                 let maxTemp = value.temp.max.toFixed(0);
-                let currentDayData = [dayname, rainProb, iconURL, minTemp, maxTemp];
+                let dailyDesc = value.weather[0].description;
+                let currentDayData = [dayname, rainProb, picMap[formatIcon], minTemp, maxTemp, dailyDesc];
                 sevenDayData.push(currentDayData);
             }
         });
@@ -222,12 +245,14 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
                     weekday: "long",
                 });
                 let icon = value.weather[0].icon;
-                let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+                // let iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
                 let getProb = value.pop;
                 let rainProb = getProb * 100;
+                let formatIcon = `icon${icon}`;
                 let minTemp = value.temp.min.toFixed(0);
                 let maxTemp = value.temp.max.toFixed(0);
-                let currentDayData = [dayname, rainProb, iconURL, minTemp, maxTemp];
+                let dailyDesc = value.weather[0].description;
+                let currentDayData = [dayname, rainProb, picMap[formatIcon], minTemp, maxTemp, dailyDesc];
                 sevenDayData.push(currentDayData);
             }
         });
