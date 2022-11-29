@@ -33,6 +33,9 @@
     text-align: center;
     box-sizing: border-box;
 }
+.innerInfo input {
+    width: 30%;
+}
 
 .innerInfo button {
     box-sizing: border-box;

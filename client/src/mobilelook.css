@@ -1,0 +1,97 @@
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 900px) {
+    .row {
+        flex-direction: column;
+        margin: 0;
+    }
+    #mainContainer {
+        min-height: 1800px;
+        margin: 0;
+    }
+    #leftContainer {
+        width: 100%;
+    }
+    #rightContainer {
+        width: 100%;
+        padding: 0;
+    }
+    #cities {
+        flex-direction: column;
+    }
+    .dayText {
+        width: 7%;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .dailyDescription {
+        display: none;
+    }
+    .rainChance {
+        display: none;
+    }
+    .highTempContainer {
+        margin-left: 60px;
+    }
+
+    .button-9 {
+        width: 40%;
+    }
+    .hourlyDescription {
+        font-size: 16px;
+        margin-left: 40px;
+        font-weight: 600;
+    }
+
+    .hourText {
+        width: 23%;
+    }
+
+    .hourlyTempDisplay {
+        margin-left: 0;
+    }
+
+    #searchContainer {
+        flex-direction: column;
+        gap: 1rem;
+        height: 160px;
+        margin-top: 20px;
+    }
+    .button-box {
+        margin: 0;
+    }
+
+    .weatherTitle {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .weatherTitle h1 {
+        font-weight: 500;
+        margin-left: 0;
+    }
+    .newCityPopup {
+        height: 100%;
+    }
+
+    .innerAddCityPopup {
+        height: 60%;
+        width: 80%;
+    }
+    .innerPopup {
+        width: 80%;
+    }
+    .innerPopup h3 {
+        font-size: 20px;
+    }
+
+    .innerInfo {
+        /* outline: 1px solid red; */
+        margin-top: 30%;
+        flex-direction: column;
+        height: 200px;
+    }
+    .innerInfo input {
+        width: 70%;
+    }
+
+}

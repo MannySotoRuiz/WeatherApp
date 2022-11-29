@@ -71,7 +71,7 @@
 }
 
 #currentLocation {
-    color: #808080;
+    /* color: #808080; */
     font-size: 25px;
     padding-top: 10px;
     width: 100%;
@@ -157,6 +157,13 @@
 #sunsetTime {
     color: #808080;
     margin-left: 20px;
+}
+
+#currentDesc {
+    width: 100%;
+    height: auto;
+    font-size: 25px;
+    color: #808080;
 }
 
 

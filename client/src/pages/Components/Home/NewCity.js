@@ -106,8 +106,8 @@ const NewCity = () => {
                 </div>
                 <div className="innerInfo">
                     <h3>Add a new city to save</h3>
-                    <input style={{ width: "30%" }} type="search" id="citySearch" name="citySearch" placeholder="City" value={citySearch} onChange={handleCityChange}></input>
-                    <input style={{ width: "30%" }} type="search" id="countrySearch" name="countrySearch" placeholder="Country" value={countrySearch} onChange={handleCountryChange}></input>
+                    <input type="search" id="citySearch" name="citySearch" placeholder="City" value={citySearch} onChange={handleCityChange}></input>
+                    <input type="search" id="countrySearch" name="countrySearch" placeholder="Country" value={countrySearch} onChange={handleCountryChange}></input>
                     <button onClick={handleAddCity} className="disabled" id="submitNewCity">Submit</button>
                     <h4 className="hidden" id="errorInput">Please try again</h4>
                 </div>

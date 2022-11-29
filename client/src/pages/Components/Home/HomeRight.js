@@ -73,6 +73,7 @@ const HomeRight = () => {
                     <div style={{ color: "#808080", fontSize: "60px" }}>·</div>
                     <div id="sunsetTime">Sunset {allData[1]}</div>
                 </div>
+                <div id="currentDesc">{allData[4]}</div>
                 {/* <div className='clothes mt-10'>
                     <i className='iconfont icon-yurongfu3 f100'></i>
                     <i className='iconfont icon-TROUSERS f100'></i>

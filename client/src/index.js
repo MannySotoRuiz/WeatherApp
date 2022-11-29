@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './rightContainer.css';
 import './statbars.css';
+import './mobilelook.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 

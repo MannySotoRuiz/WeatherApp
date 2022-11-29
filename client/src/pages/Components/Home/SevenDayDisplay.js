@@ -27,7 +27,7 @@ const SevenDayDisplay = () => {
             setData(getit[1]);
         }
         getData(getLoc);
-    }, []);
+    }, [getLoc]);
 
     return (
             <div className="sevenDayDisplay">
@@ -49,7 +49,7 @@ const SevenDayDisplay = () => {
                                     <span>&#176;</span>
                                     <div className="fahrenheitDisplay">F</div>
                                     <div className="celsiusDisplay hidden">C</div>
-                            </div>
+                                </div>
                                 <div className="dailyDescription">
                                     {currentDay[5]}
                                 </div>

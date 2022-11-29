@@ -33,7 +33,7 @@ const HourlyDisplay = () => {
             {allData.map((hr, idx) => {
                 return (
                     <div className="eachHour" key={idx}>
-                        <p style={{ margin: "0", marginLeft: "5%", marginRight: "5%", width: "13%" }} className="hourText">{hr[0]}</p>
+                        <p className="hourText">{hr[0]}</p>
                         <div className="rainChance" >
                             <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
                             <div>{hr[4].toFixed(0)}%</div>
