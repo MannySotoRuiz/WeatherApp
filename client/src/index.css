@@ -158,7 +158,8 @@ margin-left: 40px;
 /* text-align: center; */
 width: 20%;
 color: #808080;
-font-size: 18px;
+font-size: 20px;
+font-weight: 600;
 }
 
 #howDisplayWeather h3:hover {
@@ -185,6 +186,12 @@ height: 60px;
 border-bottom: 1px solid #808080;
 display: flex;
 align-items: center;
+}
+
+.eachHour p {
+  width: 13%;
+  height: auto;
+  /* outline: 1px solid black; */
 }
 
 p {
@@ -291,6 +298,19 @@ height: auto;
 display: flex;
 }
 
+.hourlyTempDisplay {
+  width: 9%;
+  margin-left: 3%;
+  height: auto;
+  /* outline: 1px solid red; */
+  display: flex;
+}
+
+.hourlyDescription {
+  width: 15%;
+  height: auto;
+}
+
 .lowestTemp {
 margin-left: 2px;
 /* float: left; */
@@ -316,6 +336,8 @@ font-weight: bold;
   height: auto;
   /* text-align: center; */
 }
+
+
 
 /* CSS */
 .button-9 {

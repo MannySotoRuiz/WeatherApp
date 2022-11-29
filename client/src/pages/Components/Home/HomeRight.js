@@ -37,7 +37,7 @@ const HomeRight = () => {
             setData(getit[2]);
         }
         getData(location);
-    }, []);
+    }, [location]);
 
     return (
         <div className="col" id="rightContainer">

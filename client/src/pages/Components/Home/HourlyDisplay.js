@@ -1,6 +1,6 @@
 import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import { useEffect, useState } from 'react';
-import rainDropImg from '../../../images/raindrop.png';
+import rainDropImg from '../../../images/rainDropIcon.png';
 
 const HourlyDisplay = () => {
 
@@ -26,27 +26,27 @@ const HourlyDisplay = () => {
             setData(getit[0]);
         }
         getData(getLoc);
-    }, []);
+    }, [getLoc]);
 
     return (
         <div className="hidden" id="hourlyDisplay">
             {allData.map((hr, idx) => {
                 return (
                     <div className="eachHour" key={idx}>
-                        <p style={{ margin: "0", marginLeft: "5%" }} className="hourText">{hr[0]}</p>
-                        <div className="lowTempContainer">
-                            <div className="lowestTemp fahrenheitDisplay">{hr[1]}</div>
-                            <div className="lowestTemp celsiusDisplay hidden">{((hr[1]-32)*(5/9)).toFixed(0)}</div>
+                        <p style={{ margin: "0", marginLeft: "5%", marginRight: "5%" }} className="hourText">{hr[0]}</p>
+                        <div className="rainChance" >
+                            <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
+                            <div>{hr[4].toFixed(0)}%</div>
+                        </div>
+                        <div className="generalWeather" style={{ marginLeft:"2%", marginRight: "2%" }} ><img src={hr[2]} alt="weather description img"/></div>
+                        <div className="hourlyTempDisplay">
+                            <div className="highestTemp fahrenheitDisplay">{hr[1]}</div>
+                            <div className="highestTemp celsiusDisplay hidden">{((hr[1]-32)*(5/9)).toFixed(0)}</div>
                             <span>&#176;</span>
                             <div className="fahrenheitDisplay">F</div>
                             <div className="celsiusDisplay hidden">C</div>
                         </div>
-                        <div className="generalWeather" style={{ marginLeft:"2%" }} ><img src={hr[2]} alt="weather description img"/></div>
-                        <p style={{ margin: "0" }} className="hourText">{hr[3]}</p>
-                        <div className="rainChance" style={{ marginLeft:"30%" }} >
-                            <div className="rainDropImg"><img src={rainDropImg} alt="rain %"/></div>
-                            <div>{hr[4].toFixed(0)}%</div>
-                        </div>
+                        <p style={{ margin: "0" }} className="hourlyDescription">{hr[3]}</p>
                     </div>
                 )
             })}
