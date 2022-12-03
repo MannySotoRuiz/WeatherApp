@@ -1,3 +1,4 @@
+// import weather icon images
 import sun from "../../images/sun.png";
 import sunCloudy from "../../images/cloudyWithSun.png";
 import cloudyNoSun from "../../images/cloudyNoSun.jpg";
@@ -7,6 +8,17 @@ import thunderstorm from "../../images/thunderstorm.png";
 import snow from "../../images/snow.png";
 import mist from "../../images/mist.png";
 import night from "../../images/night2.png";
+
+// import background images
+import sun2 from "../../images/Backgrounds/sun.jpg";
+import sunCloudy2 from "../../images/Backgrounds/cloudyWithSun.jpg";
+import cloudyNoSun2 from "../../images/Backgrounds/cloudyNoSun.jpg";
+import sunRain2 from "../../images/Backgrounds/sunRain.jpg";
+import cloudyRain2 from "../../images/Backgrounds/cloudyRain.webp";
+import thunderstorm2 from "../../images/Backgrounds/thunderstorm.jpg";
+import snow2 from "../../images/Backgrounds/snow.jpg";
+import mist2 from "../../images/Backgrounds/mist.jpg";
+import night2 from "../../images/Backgrounds/night.webp";
 
 export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!location) {
@@ -47,6 +59,26 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         "icon10n": cloudyRain,
         "icon11n": thunderstorm,
         "icon50n": mist
+    };
+
+    const backGroundMap = {
+        "icon01d": sun2,
+        "icon02d": sunCloudy2,
+        "icon03d": cloudyNoSun2,
+        "icon04d": cloudyNoSun2,
+        "icon09d": cloudyRain2,
+        "icon10d": sunRain2,
+        "icon11d": thunderstorm2,
+        "icon13d": snow2,
+        "icon50d": mist2,
+        "icon01n": night2,
+        "icon02n": night2,
+        "icon03n": cloudyNoSun2,
+        "icon04n": night2,
+        "icon09n": cloudyRain2,
+        "icon10n": cloudyRain2,
+        "icon11n": thunderstorm2,
+        "icon50n": mist2
     };
 
     const errorCurrentData = ["NULL", "NULL", "NULL", "NULL", "NULL"];
@@ -129,7 +161,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         // const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
         const currentDesc = data.current.weather[0].description;
         const currentFeels = data.current.feels_like.toFixed(0);
-        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, picMap[formatIcon], currentDesc, currentFeels];
+        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, picMap[formatIcon], currentDesc, currentFeels, backGroundMap[formatIcon]];
 
         // this code is to get the hourly data
         data.hourly.forEach((value, idx) => {
@@ -199,8 +231,16 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         // this is the code to get the current weather information
         const currentTemp = data.current.temp.toFixed(0);;
         const currentSunset = new Date(data.current.sunset * 1000);
+        // const currentDate = new Date(); // get current date to get current time
+        // const currentHour = currentDate.getHours();
+        // const currentMins = currentDate.getMinutes();
+        
+
         const sunsetHour = currentSunset.getHours();
         const sunsetMins = currentSunset.getMinutes();
+        
+
+
         let newSunsetTime;
         if (sunsetHour === 0) {
             newSunsetTime = `12:${sunsetMins} am`;
@@ -220,7 +260,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         // const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
         const currentDesc = data.current.weather[0].description;
         const currentFeels = data.current.feels_like.toFixed(0);
-        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, picMap[formatIcon], currentDesc, currentFeels];
+        currentWeatherData = [currentTemp, newSunsetTime, currentHumidity, picMap[formatIcon], currentDesc, currentFeels, backGroundMap[formatIcon]];
 
         // this code is to get the hourly data
         data.hourly.forEach((value, idx) => {
