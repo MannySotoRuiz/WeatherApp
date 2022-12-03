@@ -33,6 +33,7 @@ container are in sync with the heights whenever one of them resizes*/
 width: 100%;
 min-height: 900px;
 box-sizing: border-box;
+margin: 0;
 /* outline: 2px solid orange; */
 /* display: flex; */
 }

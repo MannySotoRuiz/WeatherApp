@@ -35,6 +35,9 @@ const HomeRight = () => {
         const getData = async (place) => {
             let getit = await getHourly_Weekly_CurrentWeather(place);
             setData(getit[2]);
+            const backgroundImg = getit[2][6];
+            let getQuery =  document.getElementById("rightContainer");
+            getQuery.style.backgroundImage = `url(${backgroundImg})`;
         }
         getData(location);
     }, [location]);
@@ -53,32 +56,35 @@ const HomeRight = () => {
             </div>
             <div className="spaceBtwn"></div>
             <div id="todayInfo">
-                <div id="todayDate">
-                    <div id="imgCurrentWeather"><img src={allData[3]} alt="current weather img"/></div>
-                    <div id="holdText">
-                        <h2>Today</h2>
-                        <p id="todayText">{date}</p>
+                <div id="innerBox"></div>
+                <div id="formattingInfo">
+                    <div id="todayDate">
+                        <div id="imgCurrentWeather"><img src={allData[3]} alt="current weather img"/></div>
+                        <div id="holdText">
+                            <h2>Today</h2>
+                            <p id="todayText">{date}</p>
+                        </div>
                     </div>
+                    <div id="todayWeather">
+                        <p className="fahrenheitDisplay weatherText">{allData[0]}</p>
+                        <p className="celsiusDisplay hidden weatherText">{((allData[0]-32)*(5/9)).toFixed(0)}</p><span>&#176;</span>
+                        <div className="fahrenheitDisplay">F</div>
+                        <div className="celsiusDisplay hidden">C</div>
+                    </div>
+                    <div id="currentLocation">{location}</div>
+                    <div id="feelsLike">
+                        <div className="feelsText fahrenheitDisplay">Feels like {allData[5]}</div>
+                        <div className="feelsText celsiusDisplay hidden">Feels like {((allData[5]-32)*(5/9)).toFixed(0)}</div>
+                        <div style={{ color: "#808080", fontSize: "60px" }}>·</div>
+                        <div id="sunsetTime">Sunset {allData[1]}</div>
+                    </div>
+                    <div id="currentDesc">{allData[4]}</div>
+                    {/* <div className='clothes mt-10'>
+                        <i className='iconfont icon-yurongfu3 f100'></i>
+                        <i className='iconfont icon-TROUSERS f100'></i>
+                        <span className='mt-10'>Today's weather is good for cotton coat</span>
+                    </div> */}
                 </div>
-                <div id="todayWeather">
-                    <p className="fahrenheitDisplay weatherText">{allData[0]}</p>
-                    <p className="celsiusDisplay hidden weatherText">{((allData[0]-32)*(5/9)).toFixed(0)}</p><span>&#176;</span>
-                    <div className="fahrenheitDisplay">F</div>
-                    <div className="celsiusDisplay hidden">C</div>
-                </div>
-                <div id="currentLocation">{location}</div>
-                <div id="feelsLike">
-                    <div className="feelsText fahrenheitDisplay">Feels like {allData[5]}</div>
-                    <div className="feelsText celsiusDisplay hidden">Feels like {((allData[5]-32)*(5/9)).toFixed(0)}</div>
-                    <div style={{ color: "#808080", fontSize: "60px" }}>·</div>
-                    <div id="sunsetTime">Sunset {allData[1]}</div>
-                </div>
-                <div id="currentDesc">{allData[4]}</div>
-                {/* <div className='clothes mt-10'>
-                    <i className='iconfont icon-yurongfu3 f100'></i>
-                    <i className='iconfont icon-TROUSERS f100'></i>
-                    <span className='mt-10'>Today's weather is good for cotton coat</span>
-                </div> */}
             </div>
             <div id="extraTodayInfo">
                 <div className="infoTitle">
