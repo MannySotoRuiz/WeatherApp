@@ -10,16 +10,16 @@ export const useLogin = () => {
     setIsLoading(true)
     setError(null)
 
-    // const response = await fetch('/api/accounts/login', {
-    //   method: 'POST',
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify({ email, password })
-    // })
-    const response = await fetch('https://weather-app-server-api.herokuapp.com/api/accounts/login', {
+    const response = await fetch('/api/accounts/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email, password })
     })
+    // const response = await fetch('https://weather-app-server-api.herokuapp.com/api/accounts/login', {
+    //   method: 'POST',
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: JSON.stringify({ email, password })
+    // })
     const json = await response.json()
 
     if (!response.ok) {

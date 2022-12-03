@@ -7,16 +7,16 @@ const accountRoutes = require('./routes/accounts')
 
 const CONNECTION_URL = 'mongodb+srv://weatherapp:weatherapp@cluster0.z08pecz.mongodb.net/test?retryWrites=true&w=majority'
 const PORT = process.env.PORT|| 4000;
-// const corsOptions ={
-//   origin:'http://localhost:3000', 
-//   credentials:true,            //access-control-allow-credentials:true
-//   optionSuccessStatus:200
-// }
 const corsOptions ={
-  origin:'https://endearing-arithmetic-daddd7.netlify.app', 
+  origin:'http://localhost:3000', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
+// const corsOptions ={
+//   origin:'https://endearing-arithmetic-daddd7.netlify.app', 
+//   credentials:true,            //access-control-allow-credentials:true
+//   optionSuccessStatus:200
+// }
 
 // express app
 const app = express();
