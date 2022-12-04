@@ -81,7 +81,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         "icon50n": mist2
     };
 
-    const errorCurrentData = [0, 0, 0, sun, 0, 0, 0, 0];
+    const errorCurrentData = [0, 0, 0, sun, 0, 0, sun2];
     const error7DayData = [
         [0, 0, sun, 0, 0, 0],
         [0, 0, sun, 0, 0, 0],
