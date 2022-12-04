@@ -1,7 +1,7 @@
 import React from 'react';
 import HourlyDisplay from './HourlyDisplay';
 import SevenDayDisplay from './SevenDayDisplay';
-import MonthlyDisplay from './MonthlyDisplay';
+// import MonthlyDisplay from './MonthlyDisplay';
 import Popup from './Popup';
 
 const AllWeatherInfo = () => {

@@ -93,5 +93,8 @@ and (max-device-width: 900px) {
     .innerInfo input {
         width: 70%;
     }
+    #search-border {
+        width: 300px;
+    }
 
 }
