@@ -56,7 +56,9 @@ const HomeRight = () => {
             </div>
             <div className="spaceBtwn"></div>
             <div id="todayInfo">
-                <div id="innerBox"></div>
+            <div id="innerBox"></div>
+            <div id="innerBoxLower"></div>
+            <div id="innerBoxTab"></div>
                 <div id="formattingInfo">
                     <div id="todayDate">
                         <div id="imgCurrentWeather"><img src={allData[3]} alt="current weather img"/></div>
@@ -86,9 +88,14 @@ const HomeRight = () => {
                     </div> */}
                 </div>
             </div>
+            
+            {/*<div id="innerBoxTab"></div>
+            <div id="innerBox2"></div>*/}
             <div id="extraTodayInfo">
                 <div className="infoTitle">
-                    <h5>Chance of rain</h5>
+                
+                    <h5>Chance of precipitation:</h5>
+                    
                 </div>
                 <ChanceOfRain />
             </div>

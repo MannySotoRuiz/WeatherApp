@@ -60,7 +60,7 @@ const SearchBox = () => {
                     <div className="search-icon"><i className="iconfont icon-sousuo" style={{ fontSize: "40px" }}></i></div>
                     <div id='search-border'>
                         {/* <form action="" className="search-form"> */}
-                        <input type="text" placeholder="Search: [city], [country]" id="search" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch}/>
+                        <input type="text" placeholder="Search: [city], [ST/country]" id="search" name="search" value={search} onChange={handleChange} onKeyDown={handleSearch}/>
                         {/* </form> */}
                     </div>
                     <div className="go-icon"><i className="fa fa-arrow-right"></i></div>
