@@ -27,13 +27,13 @@ const AllWeatherInfo = () => {
             <div id="howDisplayWeather">
                 <h3 onClick={changeForecastDisplay} className="howDisplay">Hourly</h3>
                 <h3 onClick={changeForecastDisplay} className="howDisplay">7 Day</h3>
-                <h3 onClick={changeForecastDisplay} className="howDisplay">Monthly</h3>
+                {/*<h3 onClick={changeForecastDisplay} className="howDisplay">Monthly</h3>*/}
             </div>
             <div id="displayWeather">
                 <HourlyDisplay />
                 <SevenDayDisplay />
                 <Popup />
-                <MonthlyDisplay />
+                {/*<MonthlyDisplay />*/}
             </div>
         </div>
     );
