@@ -81,39 +81,41 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         "icon50n": mist2
     };
 
-    const errorCurrentData = ["NULL", "NULL", "NULL", "NULL", "NULL"];
+    const errorCurrentData = [0, 0, 0, sun, 0, 0, 0, 0];
     const error7DayData = [
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"]
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0],
+        [0, 0, sun, 0, 0, 0]
     ];
     const errorHrData = [
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
-        ["NULL", "NULL", "NULL", "NULL", "NULL"],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
+        [0, 0, sun, 0, 0],
     ];
 
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
@@ -131,10 +133,13 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         getAllCoordinates = newCoor;
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getAllCoordinates[0]}&lon=${getAllCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const res = await fetch(endpoint);
-        if (res.status !== 200) {
-            alert("Unexpected error happened when cit's weather. Please try again");
+        if (response.status === 429) {
+            console.log("Openweathermap API reached daily limit");
             return [errorHrData, error7DayData, errorCurrentData];
+        } else if (response !== 200) {
+            return [errorHrData, error7DayData, errorCurrentData]; 
         }
+
         const data = await res.json();
 
         // this is the code to get the current weather information
@@ -220,10 +225,11 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let getNeededCoordinates = getAllCoordinates[index];
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const response = await fetch(endpoint);
-
-        if (response.status !== 200) {
-            alert("Unexpected error happened. Please try again");
+        if (response.status === 429) {
+            // console.log("Openweathermap API reached daily limit");
             return [errorHrData, error7DayData, errorCurrentData];
+        } else if (response !== 200) {
+            return [errorHrData, error7DayData, errorCurrentData]; 
         }
 
         const data = await response.json();
@@ -231,11 +237,6 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         // this is the code to get the current weather information
         const currentTemp = data.current.temp.toFixed(0);;
         const currentSunset = new Date(data.current.sunset * 1000);
-        // const currentDate = new Date(); // get current date to get current time
-        // const currentHour = currentDate.getHours();
-        // const currentMins = currentDate.getMinutes();
-        
-
         const sunsetHour = currentSunset.getHours();
         const sunsetMins = currentSunset.getMinutes();
         
