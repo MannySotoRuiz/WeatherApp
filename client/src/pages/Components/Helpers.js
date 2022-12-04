@@ -134,9 +134,10 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getAllCoordinates[0]}&lon=${getAllCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const res = await fetch(endpoint);
         if (response.status === 429) {
-            console.log("Openweathermap API reached daily limit");
+            document.getElementById("homeErrorMsg").innerText = "Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
         } else if (response !== 200) {
+            document.getElementById("homeErrorMsg").innerText = "Error with Weather API";
             return [errorHrData, error7DayData, errorCurrentData]; 
         }
 
@@ -226,9 +227,10 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const response = await fetch(endpoint);
         if (response.status === 429) {
-            // console.log("Openweathermap API reached daily limit");
+            document.getElementById("homeErrorMsg").innerText = "Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
         } else if (response !== 200) {
+            document.getElementById("homeErrorMsg").innerText = "Error with Weather API";
             return [errorHrData, error7DayData, errorCurrentData]; 
         }
 

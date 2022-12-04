@@ -24,6 +24,10 @@ const SevenDayDisplay = () => {
 
         const getData = async (place) => {
             let getit = await getHourly_Weekly_CurrentWeather(place);
+            if (getit[1][0][0] === "NULL") {
+                console.log("eror with api");
+                document.getElementById("displayErrorMsg").classList.remove("hidden");
+            }
             setData(getit[1]);
         }
         getData(getLoc);

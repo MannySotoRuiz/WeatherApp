@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeLeft from './Components/Home/HomeLeft';
 import HomeRight from './Components/Home/HomeRight';
+import closeImg from '../images/close.png';
 
 const Home = () => {
 
@@ -10,8 +11,18 @@ const Home = () => {
     document.body.style.marginBottom = "0%";
     document.body.style.backgroundColor = "#ecf2f4";
 
+    const handleClose = () => {
+        document.getElementById("displayErrorMsg").classList.add("hidden");
+    }
+
     return (
         <div id="home">
+            <div className="hidden" id="displayErrorMsg">
+                <div id="divForCloseBtn">
+                    <div id="holdCloseImg"><img onClick={handleClose} src={closeImg} alt="Close Alerts"/></div>
+                </div>
+                <div id="homeErrorMsg"></div>
+            </div>
             <div className="row" id="mainContainer">
                 <HomeLeft />
                 <HomeRight />
