@@ -136,7 +136,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         if (response.status === 429) {
             document.getElementById("homeErrorMsg").innerText = "Error: Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
-        } else if (response !== 200) {
+        } else if (response.status !== 200) {
             document.getElementById("homeErrorMsg").innerText = "Error with Weather API";
             return [errorHrData, error7DayData, errorCurrentData]; 
         }
@@ -229,7 +229,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         if (response.status === 429) {
             document.getElementById("homeErrorMsg").innerText = "Error: Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
-        } else if (response !== 200) {
+        } else if (response.status !== 200) {
             document.getElementById("homeErrorMsg").innerText = "Error with Weather API";
             return [errorHrData, error7DayData, errorCurrentData]; 
         }
