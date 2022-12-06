@@ -318,7 +318,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
             }
         });
     }
-    // localStorage.setItem("highestTemp7Days", JSON.stringify(highestTemp7days));
+    localStorage.setItem("highestTemp7Days", JSON.stringify(highestTemp7days));
     return [hourlyData, sevenDayData, currentWeatherData];
 }
 
