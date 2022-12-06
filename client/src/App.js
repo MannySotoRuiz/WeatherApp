@@ -17,7 +17,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} ></Route>
-        <Route path="/accountsettings" element={user ? <AccountSettings /> : <Navigate to="*" />} ></Route>
+        {/* <Route path="/accountsettings" element={user ? <AccountSettings /> : <Navigate to="*" />} ></Route> */}
+        <Route path="/accountsettings" element={<AccountSettings />} ></Route>
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/accountsettings" />}></Route>
         <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/accountsettings" />}></Route>
         <Route path="*" element={<ErrorPage />} ></Route>

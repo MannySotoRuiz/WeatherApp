@@ -11,6 +11,16 @@ const SevenDayDisplay = () => {
     const addPopup = e => {
         let popup = document.querySelectorAll(".popupDisplay");
         popup[0].classList.remove("hidden");
+        const getClicked = e.currentTarget.parentNode;
+        let getChilds = document.querySelectorAll(".eachDayin7Days");
+        let index;
+        for (let i = 0; i < getChilds.length; i++) {
+            if (getChilds[i] === getClicked) {
+                index = i;
+                break;
+            }
+        }
+        localStorage.setItem("dayClickedOn", JSON.stringify(index));
     };
 
     const [allData, setData] = useState([]);

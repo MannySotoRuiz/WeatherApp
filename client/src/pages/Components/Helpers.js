@@ -118,6 +118,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         ["NULL", 0, sun, "NULL", 0],
     ];
 
+    let highestTemp7days = [];
+
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
     if (!ifSavedLocation) {
         // alert("Not in saved locations");
@@ -227,6 +229,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getNeededCoordinates[0]}&lon=${getNeededCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const response = await fetch(endpoint);
         if (response.status === 429) {
+            const untilAPIworks = [47, 35, 50, 60, 40, 39, 30];
+            localStorage.setItem("highestTemp7Days", JSON.stringify(untilAPIworks));
             document.getElementById("homeErrorMsg").innerText = "Error: Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
         } else if (response.status !== 200) {
@@ -310,10 +314,11 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
                 let dailyDesc = value.weather[0].description;
                 let currentDayData = [dayname, rainProb, picMap[formatIcon], minTemp, maxTemp, dailyDesc];
                 sevenDayData.push(currentDayData);
+                highestTemp7days.push(maxTemp);
             }
         });
     }
-
+    // localStorage.setItem("highestTemp7Days", JSON.stringify(highestTemp7days));
     return [hourlyData, sevenDayData, currentWeatherData];
 }
 

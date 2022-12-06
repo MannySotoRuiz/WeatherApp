@@ -10,12 +10,10 @@ const LeftPanel = () => {
         }
         if (userClicked === "Edit Profile") {
             rightPanelChildren[0].classList.remove("hidden");
-        } else if (userClicked === "Password") {
-            rightPanelChildren[1].classList.remove("hidden");
         } else if (userClicked === "Notifications") {
-            rightPanelChildren[2].classList.remove("hidden");
+            rightPanelChildren[1].classList.remove("hidden");
         } else if (userClicked === "Weather & Clothes Preference") {
-            rightPanelChildren[3].classList.remove("hidden");
+            rightPanelChildren[2].classList.remove("hidden");
         }
     };
 
