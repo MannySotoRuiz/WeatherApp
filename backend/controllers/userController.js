@@ -36,4 +36,18 @@ const signupUser = async (req, res) => {
     }
 }
 
-module.exports = { loginUser, signupUser }
+// update value
+const updateValue = async(req, res) => {
+    const {email, value} = req.body
+
+    try { // will try to update the slider value for the user
+        const user = await User.updatevalue(email, value)
+
+        res.status(200).json({email, value})
+    } catch (error) { // we got an erorr when trying to update the slider value for the user
+        res.status(400).json({error: error.message})
+    }
+
+}
+
+module.exports = { loginUser, signupUser, updateValue }

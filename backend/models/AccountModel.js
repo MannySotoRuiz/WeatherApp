@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt')
 const validator = require('validator')
+const { json } = require("express")
 
 const Schema = mongoose.Schema
 
@@ -13,6 +14,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    slidervalue: {
+        type: Number,
+        default: 60
     }
 })
   
@@ -61,6 +66,23 @@ userSchema.statics.login = async function(email, password) {
     }
 
     return user
+}
+
+// static update slider method 
+userSchema.statics.updatevalue = async function(email, slidervalue) {
+    // validation
+    if (!email || !slidervalue) {
+        throw Error('Missing email or value')
+    }
+
+    this.update({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
+        if (err) {
+            throw Error('Error trying tp update value')
+        }
+
+        // User was updated successfully
+        res.json(doc)
+    })
 }
 
 module.exports = mongoose.model('User', userSchema)
