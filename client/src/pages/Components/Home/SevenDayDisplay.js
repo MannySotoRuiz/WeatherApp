@@ -4,13 +4,14 @@
 // import cloudyWithSunImg from '../../../images/cloudyWithSun.png';
 import rainDropImg from '../../../images/rainDropIcon.png';
 import getHourly_Weekly_CurrentWeather from '../Helpers.js';
+import Popup from './Popup';
 import { useEffect, useState } from 'react';
 
 const SevenDayDisplay = () => {
 
     const addPopup = e => {
-        let popup = document.querySelectorAll(".popupDisplay");
-        popup[0].classList.remove("hidden");
+        // let popup = document.querySelectorAll(".popupDisplay");
+        // popup[0].classList.remove("hidden");
         const getClicked = e.currentTarget.parentNode;
         let getChilds = document.querySelectorAll(".eachDayin7Days");
         let index;
@@ -21,9 +22,11 @@ const SevenDayDisplay = () => {
             }
         }
         localStorage.setItem("dayClickedOn", JSON.stringify(index));
+        setOpen(true)
     };
 
     const [allData, setData] = useState([]);
+    const [open, setOpen] = useState(false);
 
     let getLoc = JSON.parse(localStorage.getItem("location"));
     if (!getLoc) {
@@ -36,14 +39,16 @@ const SevenDayDisplay = () => {
             let getit = await getHourly_Weekly_CurrentWeather(place);
             if (getit[1][0][0] === "NULL") {
                 console.log("eror with api");
-                document.getElementById("displayErrorMsg").classList.remove("hidden");
+                // document.getElementById("displayErrorMsg").classList.remove("hidden");
+                setOpen(true)
             }
-            setData(getit[1]);
+            setData(getit[1]); 
         }
         getData(getLoc);
     }, [getLoc]);
 
     return (
+        <>
             <div className="sevenDayDisplay">
                 {allData.map((currentDay, idx) => {
                     if (idx === 6) {
@@ -120,6 +125,8 @@ const SevenDayDisplay = () => {
                     )
                 })}
             </div>
+            <Popup open={open} onClose={() => setOpen(false)} />
+        </>
         );
 };
 
