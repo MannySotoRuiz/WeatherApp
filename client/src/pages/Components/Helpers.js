@@ -127,10 +127,14 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let endpointCoord = `https://api.openweathermap.org/geo/1.0/direct?q=${getCity}&appid=e15a543800b7e60db9e4e04aaf22a037`; // api to get coordinates lat and lon
         const response = await fetch(endpointCoord);
         if (response.status !== 200) {
-            alert("Unexpected error happened when getting coordinates. Please try again");
+            document.getElementById("homeErrorMsg").innerText = `Error: Geocoding API crashed`;
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const responseData = await response.json();
+        if (responseData.length === 0) {
+            document.getElementById("homeErrorMsg").innerText = `Error: API couldn't find latitude and longitude for ${getCity}`;
+            return [errorHrData, error7DayData, errorCurrentData];
+        }
         const newCoor = [responseData[0].lat, responseData[0].lon];
         getAllCoordinates = newCoor;
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getAllCoordinates[0]}&lon=${getAllCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;

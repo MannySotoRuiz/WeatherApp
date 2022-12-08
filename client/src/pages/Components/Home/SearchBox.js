@@ -28,7 +28,7 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
     // assign autoComplete with Google maps place one time
     autoComplete = new window.google.maps.places.Autocomplete(
         autoCompleteRef.current,
-        { types: ["(cities)"], componentRestrictions: { country: "us" } }
+        { types: ["(cities)"] }
     );
     autoComplete.setFields(["address_components", "formatted_address"]); // specify what properties we will get from API
     // add a listener to handle when the place is selected
@@ -48,11 +48,11 @@ async function handlePlaceSelect(updateQuery) {
 
 const SearchBox = () => {
 
-    const [search, setMessage] = useState("");
+    // const [search, setMessage] = useState("");
 
-    const handleChange = (event) => {
-        setMessage(event.currentTarget.value);
-    };
+    // const handleChange = (event) => {
+    //     setMessage(event.currentTarget.value);
+    // };
 
     const handleSearch = (event) => {
         // if (event.key === "Enter") {
