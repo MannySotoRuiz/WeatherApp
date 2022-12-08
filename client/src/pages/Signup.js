@@ -7,24 +7,6 @@ const Signup = () => {
 
     let navigate = useNavigate();
 
-    // const changeToSignUpMode = () => {
-    //     localStorage.setItem("authMode", JSON.stringify("signup"));
-    //     window.location.reload();
-    // }
-    
-    // const changeToLoginMode = () => {
-    //     localStorage.setItem("authMode", JSON.stringify("signin"));
-    //     window.location.reload();
-    // }
-
-    // let getAuth = JSON.parse(localStorage.getItem("authMode"));
-    // if (!getAuth){
-    //   localStorage.setItem("authMode", JSON.stringify(authMode));
-    // }
-    // else{
-    //   authMode = getAuth;
-    // }
-
     const [signupemail, setsignupemail] = useState ("");
     const [signuppass, setsignuppass] = useState ("");
     const {signup, error, isLoading} = useSignup();

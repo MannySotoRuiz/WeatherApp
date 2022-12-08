@@ -75,13 +75,13 @@ userSchema.statics.updatevalue = async function(email, slidervalue) {
         throw Error('Missing email or value')
     }
 
-    this.update({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
+    this.updateOne({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
         if (err) {
             throw Error('Error trying tp update value')
         }
 
         // User was updated successfully
-        res.json(doc)
+        return json(doc)
     })
 }
 
