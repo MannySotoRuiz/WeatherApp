@@ -124,7 +124,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!ifSavedLocation) {
         // alert("Not in saved locations");
         let getCity = location.split(",");
-        let endpointCoord = `https://api.openweathermap.org/geo/1.0/direct?q=${getCity[0]}&appid=e15a543800b7e60db9e4e04aaf22a037`; // api to get coordinates lat and lon
+        let endpointCoord = `https://api.openweathermap.org/geo/1.0/direct?q=${getCity}&appid=e15a543800b7e60db9e4e04aaf22a037`; // api to get coordinates lat and lon
         const response = await fetch(endpointCoord);
         if (response.status !== 200) {
             alert("Unexpected error happened when getting coordinates. Please try again");
@@ -136,6 +136,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         let endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${getAllCoordinates[0]}&lon=${getAllCoordinates[1]}&exclude=minutely,alerts&units=imperial&appid=e15a543800b7e60db9e4e04aaf22a037`;
         const res = await fetch(endpoint);
         if (response.status === 429) {
+            const untilAPIworks = [47, 35, 50, 60, 40, 39, 30];
+            localStorage.setItem("highestTemp7Days", JSON.stringify(untilAPIworks));
             document.getElementById("homeErrorMsg").innerText = "Error: Weather API reached limit calls";
             return [errorHrData, error7DayData, errorCurrentData];
         } else if (response.status !== 200) {
@@ -245,9 +247,6 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         const currentSunset = new Date(data.current.sunset * 1000);
         const sunsetHour = currentSunset.getHours();
         const sunsetMins = currentSunset.getMinutes();
-        
-
-
         let newSunsetTime;
         if (sunsetHour === 0) {
             newSunsetTime = `12:${sunsetMins} am`;
