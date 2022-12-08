@@ -32,7 +32,7 @@ const AllWeatherInfo = () => {
             <div id="displayWeather">
                 <HourlyDisplay />
                 <SevenDayDisplay />
-                <Popup />
+                {/*<Popup />*/}
                 {/*<MonthlyDisplay />*/}
             </div>
         </div>
