@@ -1,37 +1,14 @@
 import React, { useState } from "react";
 import '../login.css';
-// import { useSignup } from '../hooks/useSignup';
 import { useLogin } from '../hooks/useLogin';
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
     let navigate = useNavigate();
-    // let authMode = "signin";
-
-    // const changeToSignUpMode = () => {
-    //   localStorage.setItem("authMode", JSON.stringify("signup"));
-    //   window.location.reload();
-    // }
-    
-    // const changeToLoginMode = () => {
-    //   localStorage.setItem("authMode", JSON.stringify("signin"));
-    //   window.location.reload();
-    // }
-
-    // let getAuth = JSON.parse(localStorage.getItem("authMode"));
-    // if (!getAuth){
-    //   localStorage.setItem("authMode", JSON.stringify(authMode));
-    // }
-    // else{
-    //   authMode = getAuth;
-    // }
 
     const [loginemail, setloginemail] = useState("");
     const [loginpass, setloginpass] = useState ("");
-    // const [signupemail, setsignupemail] = useState ("");
-    // const [signuppass, setsignuppass] = useState ("");
-    // const {signup, error, isLoading} = useSignup();
     const {login, error: loginError, isLoading: loginIsLoading} = useLogin();
 
     const handleLoginEmailChange = (event) => {
@@ -42,14 +19,6 @@ const Login = () => {
       setloginpass(event.currentTarget.value);
     };
 
-    // const handleSignupEmailChange = (event) => {
-    //   setsignupemail(event.currentTarget.value);
-    // };
-
-    // const handleSignupPassChange = (event) => {
-    //   setsignuppass(event.currentTarget.value);
-    // };
-
     const handleLogin =  async (e) => {
 
       e.preventDefault();
@@ -57,14 +26,6 @@ const Login = () => {
       await login(loginemail, loginpass);
       
     }
-
-    // const handleSignup = async (e) => {
-
-    //   e.preventDefault();
-
-    //   await signup(signupemail, signuppass);
-
-    // }
   
     return (
       <div className="Auth-form-container">

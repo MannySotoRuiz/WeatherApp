@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./Popup.css"
 import "../../../popup.css";
 //import PubSub from "pubsub-js";
-import store from "../../../redux/store";
+// import store from "../../../redux/store";
 
 // function Popup(props) {
 //   return (props.trigger) ? (
@@ -19,15 +19,16 @@ const Popup = ({ open, onClose }) => {
   useEffect(() => {
     if (open) {
       //PubSub.subscribe("openPopup", (e, data) => {
-      console.log(store.getState().value);
+      const sliderValue = JSON.parse(localStorage.getItem("sliderValue"));
+      console.log(sliderValue);
+      // console.log(store.getState().value);
       //0,20,40,60,80,100
       let getTemps = JSON.parse(localStorage.getItem("highestTemp7Days"));
       let index = JSON.parse(localStorage.getItem("dayClickedOn"));
       //let tem_c = 
       let list = {};
       let arr = [];
-      //let getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
-      if (store.getState().value == 60) {
+      if (sliderValue === 60) {
         list = {
           100: "Short sleeve",
           90: "Long sleeve",
@@ -40,7 +41,7 @@ const Popup = ({ open, onClose }) => {
         };
 
         arr = [100, 90, 80, 70, 55, 50, 45, 30];
-      } else if (store.getState().value == 100) {
+      } else if (sliderValue === 100) {
         list = {
           100: "Short sleeve",
           90: "Long sleeve",
@@ -53,7 +54,7 @@ const Popup = ({ open, onClose }) => {
         };
 
         arr = [100, 90, 80, 70, 55, 50, 45, 30];
-      } else if(store.getState().value == 20){
+      } else if(sliderValue === 20){
         list = {
           95: "Short sleeve",   //35
           89: "Long sleeve",    //32

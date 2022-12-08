@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Slider } from "antd-mobile";
-// import { DemoBlock } from 'demos'
-import store from '../../../redux/store';
+// import store from '../../../redux/store';
+import { useSliderValue } from '../../../hooks/useSliderValue';
 
 const marks = {
   0: "wear less",
@@ -13,13 +13,18 @@ const marks = {
 };
 
 const Preference = () => {
-  let [value, setValue] = useState("60");
+  // let [value, setValue] = useState("60");
   
-  let chan = (a) => {
-    setValue(a);
+  const { updateSliderValue, error: updateError, isLoading: updateIsLoading } = useSliderValue();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
+
+  let chan = async (a) => {
+    // setValue(a);
     console.log(a);
-    store.dispatch({type:'change',value:a})
-    localStorage.setItem("sliderValue", JSON.stringify(a));
+    // store.dispatch({type:'change',value:a})
+    // localStorage.setItem("sliderValue", JSON.stringify(a));
+    await updateSliderValue(user.email, a);
   };
   return (
     <div id="preferenceDisplay">
@@ -27,11 +32,13 @@ const Preference = () => {
       <h2>Weather & Clothes Preference</h2>
       <Slider
         style={{ "--fill-color": "#00b578" }}
-        defaultValue={value}
+        defaultValue={getSliderValue}
         marks={marks}
         ticks
         onChange={chan}
+        disabled={updateIsLoading}
       />
+      {updateError && <div className="errorUpdatingValue">{updateError}</div>}
     </div>
   );
 };
