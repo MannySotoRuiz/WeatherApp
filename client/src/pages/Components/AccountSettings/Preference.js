@@ -17,8 +17,11 @@ const Preference = () => {
   
   const { updateSliderValue, error: updateError, isLoading: updateIsLoading } = useSliderValue();
   const user = JSON.parse(localStorage.getItem("user"));
-  const getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
-
+  let getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
+  if (!getSliderValue) {
+    getSliderValue = 60;
+    console.log(getSliderValue);
+  }
   let chan = async (a) => {
     // setValue(a);
     console.log(a);

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../../../popup.css";
 //import PubSub from "pubsub-js";
 // import store from "../../../redux/store";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 // function Popup(props) {
 //   return (props.trigger) ? (
@@ -16,6 +17,7 @@ import "../../../popup.css";
 // };
 const Popup = ({ open, onClose }) => {
   const [message, setMessage] = useState("");
+  const { user } = useAuthContext();
   useEffect(() => {
     if (open) {
       //PubSub.subscribe("openPopup", (e, data) => {
@@ -85,20 +87,33 @@ const Popup = ({ open, onClose }) => {
   };
 
   return (
-    <div className={`${open ? '' : 'hidden'} popupDisplay`}>
-      {/* <button>Close</button> */}
-      {/* <h3>Recommended Clothing</h3> */}
+    <div>
+      {user && (
+        <div className={`${open ? '' : 'hidden'} popupDisplay`}>
+          {/* <button>Close</button> */}
+          {/* <h3>Recommended Clothing</h3> */}
 
-      <div className="innerPopup">
-        <button onClick={closePopup}>Close</button>
-        <h3>Recommended Clothing</h3>
-        <div className="clothes mt-10">
-          <i className="iconfont icon-yurongfu3 f100"></i>
-          <i className="iconfont icon-TROUSERS f100"></i>
-          <span className="mt-10">{message}</span>
+          <div className="innerPopup">
+            <button onClick={closePopup}>Close</button>
+            <h3>Recommended Clothing</h3>
+            <div className="clothes mt-10">
+              <i className="iconfont icon-yurongfu3 f100"></i>
+              <i className="iconfont icon-TROUSERS f100"></i>
+              <span className="mt-10">{message}</span>
+            </div>
+          </div>
+          <div className="backgroundPopup"></div>
         </div>
-      </div>
-      <div className="backgroundPopup"></div>
+      )}
+      {!user && (
+        <div className={`${open ? '' : 'hidden'} popupDisplay`}>
+          <div className="innerPopup">
+            <button onClick={closePopup}>Close</button>
+            <h3>Login to use this feature</h3>
+          </div>
+          <div className="backgroundPopup"></div>
+        </div>
+      )}
     </div>
   );
 };
