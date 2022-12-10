@@ -56,10 +56,8 @@ const Cities = () => {
         for (let i = 0; i < allPics.length; i++) {
             let currentCity = allPics[i].children[1].innerHTML;
             if (currentCity===currentLocation) {
-                console.log("foundddd")
                 allPics[i].children[0].children[0].classList.add("cityPicActive");
             } else {
-                console.log("noooopppeeee");
                 allPics[i].children[0].children[0].classList.remove("cityPicActive");
             }
         }
