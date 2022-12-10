@@ -9,27 +9,21 @@ const NewCity = () => {
         userClicked.parentNode.parentNode.parentNode.classList.add("hidden");
     };
 
-    // const [citySearch, setCity] = useState("");
-    const [countrySearch, setCountry] = useState("");
-
-    // const handleCityChange = (event) => {
-    //     setCity(event.currentTarget.value);
-    // };
+    const [search, setSearch] = useState("");
 
     const handleCountryChange = (event) => {
-        setCountry(event.currentTarget.value);
+        setSearch(event.currentTarget.value);
         document.getElementById("submitNewCity").disabled = false;
         document.getElementById("submitNewCity").classList.remove("disabled");
     };
 
     const handleAddCity = async (e) => {
-        if (!countrySearch) {
+        if (!search) {
             alert("Please enter valid search");
             return;
         }
-        // let getSearch = [citySearch, countrySearch];
-        // let getCity = getSearch[0].toLocaleLowerCase();
-        let endPoint = `https://api.unsplash.com/search/photos?page1&query=${countrySearch}&client_id=KD3JlHXUemNJy8AIoBejnopOYu4gbmvTsuoal9N4jZk`;
+        
+        let endPoint = `https://api.unsplash.com/search/photos?page1&query=${search}&client_id=KD3JlHXUemNJy8AIoBejnopOYu4gbmvTsuoal9N4jZk`;
         const response = await fetch(endPoint);
 
         if (response.status === 404) {
@@ -52,14 +46,13 @@ const NewCity = () => {
         }
 
         let getOldCoordinates = JSON.parse(localStorage.getItem("allCoordinates"));
-        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${countrySearch}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
+        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
         const res = await fetch(end);
         if (res.status !== 200) {
             alert("Something went wrong. Try again");
             return;
         }
         const resData = await res.json();
-        console.log(resData);
         if (resData.length === 0) {
             alert("Error trying to get latitude and longitutde for city");
             return;
@@ -68,16 +61,15 @@ const NewCity = () => {
         // update to new city
         let getAll = document.querySelectorAll(".cityPic");
         getAll[2].children[0].src = getURL.href;   // update with the new src
-        getAll[2].children[0].alt = countrySearch;
+        getAll[2].children[0].alt = search;
 
         let getImages = JSON.parse(localStorage.getItem("allPicsSrc")); // get the src of all the images
         let newImages = [getImages[1], getImages[2], getURL.href]; // create a new variable with the new sources
 
         const newCoor = [resData[0].lat, resData[0].lon];
         let newCoordinates = [getOldCoordinates[1], getOldCoordinates[2], newCoor];
-        console.log(resData);
         let newCountry = resData[0].country;
-        let newCity = countrySearch.split(",")[0];
+        let newCity = search.split(",")[0];
         let newState = resData[0].state;
         let newSavedLocations;
         let savedLocations = JSON.parse(localStorage.getItem("savedLocations")); // get current saved locations
@@ -125,7 +117,7 @@ const NewCity = () => {
                 <div className="innerInfo">
                     <h3>Add a new city to save</h3>
                     {/* <input type="search" id="citySearch" name="citySearch" placeholder="City" value={citySearch} onChange={handleCityChange}></input> */}
-                    <input type="search" id="countrySearch" name="countrySearch" placeholder="Country" value={countrySearch} onChange={handleCountryChange}></input>
+                    <input type="search" id="countrySearch" name="countrySearch" placeholder="Add city ..." value={search} onChange={handleCountryChange}></input>
                     <button onClick={handleAddCity} className="disabled" id="submitNewCity">Submit</button>
                     <h4 className="hidden" id="errorInput">Please try again</h4>
                 </div>
