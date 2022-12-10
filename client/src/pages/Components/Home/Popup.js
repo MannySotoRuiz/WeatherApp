@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./Popup.css"
 import "../../../popup.css";
 //import PubSub from "pubsub-js";
-// import store from "../../../redux/store";
+import store from "../../../redux/store";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 // function Popup(props) {
@@ -101,8 +101,8 @@ const Popup = ({ open, onClose }) => {
             30: "Thick down jacket",
           }
           break;
-        default:
-          break;
+        //default:
+          //break;
       }
       
       console.log(index)
