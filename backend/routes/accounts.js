@@ -1,7 +1,7 @@
 const express = require("express");
 
 // controller functions
-const { loginUser, signupUser, updateValue } = require("../controllers/userController");
+const { loginUser, signupUser, updateValue, updateLocation } = require("../controllers/userController");
 
 const router = express.Router();
 
@@ -13,5 +13,8 @@ router.post('/signup', signupUser);
 
 //update slider value
 router.post('/updatevalue', updateValue);
+
+//update user location
+router.post('/updatelocation', updateLocation);
 
 module.exports = router;

@@ -18,6 +18,10 @@ const userSchema = new Schema({
     slidervalue: {
         type: Number,
         default: 60
+    },
+    location: {
+        type: String,
+        default: "New York, USA"
     }
 })
   
@@ -77,10 +81,26 @@ userSchema.statics.updatevalue = async function(email, slidervalue) {
 
     this.updateOne({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
         if (err) {
-            throw Error('Error trying tp update value')
+            throw Error('Error trying to update value')
         }
 
         // User was updated successfully
+        return json(doc)
+    })
+}
+
+// static update user location
+userSchema.statics.updatelocation = async function(email, location) {
+    // validation
+    if (!email || !location) {
+        throw Error("Missing email or location")
+    }
+
+    this.updateOne({email, email}, {$set:{ location:location }}, (err, doc) => {
+        if (err) {
+            throw Error('Error trying to update location')
+        }
+
         return json(doc)
     })
 }
