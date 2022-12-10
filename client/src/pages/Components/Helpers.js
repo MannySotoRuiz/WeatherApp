@@ -119,6 +119,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
     ];
 
     let highestTemp7days = [];
+    document.getElementById("displayErrorMsg").classList.add("hidden");
     // console.log(location);
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
     if (!ifSavedLocation) {
@@ -129,6 +130,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         if (response.status !== 200) {
             document.getElementById("homeErrorMsg").innerText = `Error: Geocoding API crashed`;
             console.log("geocoding api crashed");
+            localStorage.setItem("location", JSON.stringify("New York, USA"));
+            document.getElementById("displayErrorMsg").classList.remove("hidden");
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const responseData = await response.json();
@@ -136,6 +139,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         if (responseData.length === 0) {
             document.getElementById("homeErrorMsg").innerText = `Error: API couldn't find latitude and longitude for ${getCity}`;
             console.log("couldnt find lat and lon by the api");
+            localStorage.setItem("location", JSON.stringify("New York, USA"));
+            document.getElementById("displayErrorMsg").classList.remove("hidden");
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const newCoor = [responseData[0].lat, responseData[0].lon];
@@ -243,9 +248,11 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
             const untilAPIworks = [47, 35, 50, 60, 40, 39, 30];
             localStorage.setItem("highestTemp7Days", JSON.stringify(untilAPIworks));
             document.getElementById("homeErrorMsg").innerText = "Error: Weather API reached limit calls";
+            document.getElementById("displayErrorMsg").classList.remove("hidden");
             return [errorHrData, error7DayData, errorCurrentData];
         } else if (response.status !== 200) {
             document.getElementById("homeErrorMsg").innerText = "Error with Weather API";
+            document.getElementById("displayErrorMsg").classList.remove("hidden");
             return [errorHrData, error7DayData, errorCurrentData]; 
         }
 
