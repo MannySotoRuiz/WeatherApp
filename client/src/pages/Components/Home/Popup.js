@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./Popup.css"
 import "../../../popup.css";
 //import PubSub from "pubsub-js";
-// import store from "../../../redux/store";
+import store from "../../../redux/store";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 // function Popup(props) {
@@ -20,59 +20,101 @@ const Popup = ({ open, onClose }) => {
   const { user } = useAuthContext();
   useEffect(() => {
     if (open) {
-      //PubSub.subscribe("openPopup", (e, data) => {
-      const sliderValue = JSON.parse(localStorage.getItem("sliderValue"));
-      console.log(sliderValue);
-      // console.log(store.getState().value);
-      //0,20,40,60,80,100
       let getTemps = JSON.parse(localStorage.getItem("highestTemp7Days"));
       let index = JSON.parse(localStorage.getItem("dayClickedOn"));
-      //let tem_c = 
+      console.log(getTemps[index])
+      const state = +store.getState().value;
       let list = {};
-      let arr = [];
-      if (sliderValue === 60) {
-        list = {
-          100: "Short sleeve",
-          90: "Long sleeve",
-          80: "Hoodie",
-          70: "Thin jacket",
-          55: "Wool sweater",
-          50: "Cotton jacket",
-          45: "Thin down jacket",
-          30: "Thick down jacket",
-        };
+      let getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
+      console.log(getSliderValue, 'getSliderValue');
 
-        arr = [100, 90, 80, 70, 55, 50, 45, 30];
-      } else if (sliderValue === 100) {
-        list = {
-          100: "Short sleeve",
-          90: "Long sleeve",
-          80: "Hoodie",
-          70: "Thin jacket",
-          55: "Wool sweater",
-          50: "Cotton jacket",
-          45: "Thin down jacket",
-          30: "Thick down jacket",
-        };
-
-        arr = [100, 90, 80, 70, 55, 50, 45, 30];
-      } else if(sliderValue === 20){
-        list = {
-          95: "Short sleeve",   //35
-          89: "Long sleeve",    //32
-          86: "Hoodie",         //30
-          80: "Thin jacket",    //27
-          77: "Wool sweater",   //25
-          73: "Cotton jacket",  //23
-          68: "Thin down jacket",   //20
-          62: "Thick down jacket",  //17
-        };
-
-        arr = [95, 89, 86, 80, 77, 73, 68, 62];
+      switch (getSliderValue) {
+        case 0:
+          list = {
+            75: "Short sleeve",
+            65: "Long sleeve",
+            55: "Hoodie",
+            45: "Thin jacket",
+            30: "Wool sweater",
+            25: "Cotton jacket",
+            20: "Thin down jacket",
+            5: "Thick down jacket",
+          }
+          break;
+        case 20:
+          list = {
+            80: "Short sleeve",
+            70: "Long sleeve",
+            60: "Hoodie",
+            50: "Thin jacket",
+            35: "Wool sweater",
+            30: "Cotton jacket",
+            25: "Thin down jacket",
+            10: "Thick down jacket",
+          }
+          break;
+        case 40:
+          list = {
+            85: "Short sleeve",
+            75: "Long sleeve",
+            65: "Hoodie",
+            55: "Thin jacket",
+            40: "Wool sweater",
+            35: "Cotton jacket",
+            30: "Thin down jacket",
+            15: "Thick down jacket",
+          }
+          break;
+        case 60:
+          list = {
+            90: "Short sleeve",
+            80: "Long sleeve",
+            70: "Hoodie",
+            60: "Thin jacket",
+            45: "Wool sweater",
+            40: "Cotton jacket",
+            35: "Thin down jacket",
+            20: "Thick down jacket",
+          }
+          break;
+        case 80:
+          list = {
+            95: "Short sleeve",
+            85: "Long sleeve",
+            75: "Hoodie",
+            65: "Thin jacket",
+            50: "Wool sweater",
+            45: "Cotton jacket",
+            40: "Thin down jacket",
+            25: "Thick down jacket",
+          }
+          break;
+        case 100:
+          list = {
+            100: "Short sleeve",
+            90: "Long sleeve",
+            80: "Hoodie",
+            70: "Thin jacket",
+            55: "Wool sweater",
+            50: "Cotton jacket",
+            45: "Thin down jacket",
+            30: "Thick down jacket",
+          }
+          break;
+        //default:
+          //break;
       }
+      
+      console.log(index)
+      console.log(getTemps)
+      console.log(getTemps[index])
+
+      const arr = Object.keys(list).reverse();
+      console.log(arr)
 
       for (let i = 0; i < arr.length; i++) {
         if (getTemps[index] >= arr[i]) {
+          console.log(arr[i])
           setMessage(`Today's weather is good for ${list[arr[i]]}`);
           break;
         }
