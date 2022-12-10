@@ -54,6 +54,18 @@ const Cities = () => {
         getCoordinates(defaultSavedLocations);
     }
 
+    // add border to city pic if selected
+    const allPics = document.querySelectorAll(".selectCity");
+    const currentLocation = JSON.parse(localStorage.getItem("location"));
+    for (let i = 0; i < allPics.length; i++) {
+        let currentCity = allPics[i].children[1].innerHTML;
+        if (currentCity.includes(currentLocation)) {
+            allPics[i].children[0].children[0].classList.add("cityPicActive");
+        } else {
+            allPics[i].children[0].children[0].classList.remove("cityPicActive");
+        }
+    }
+
     // code to display all saved cities
     return (
         <div id="cities">
