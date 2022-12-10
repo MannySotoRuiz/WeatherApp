@@ -1,10 +1,5 @@
 import NewCity from './NewCity';
-import React from 'react';
-// import getCityWeatherData from '../Helpers.js';
-// import usePlacesAutocomplete, {
-//     getGeocode,
-//     getLatLang,
-// } from 'use-places-autocomplete';
+import React, { useEffect } from 'react';
 
 const Cities = () => {
 
@@ -54,17 +49,21 @@ const Cities = () => {
         getCoordinates(defaultSavedLocations);
     }
 
-    // add border to city pic if selected
-    const allPics = document.querySelectorAll(".selectCity");
-    const currentLocation = JSON.parse(localStorage.getItem("location"));
-    for (let i = 0; i < allPics.length; i++) {
-        let currentCity = allPics[i].children[1].innerHTML;
-        if (currentCity.includes(currentLocation)) {
-            allPics[i].children[0].children[0].classList.add("cityPicActive");
-        } else {
-            allPics[i].children[0].children[0].classList.remove("cityPicActive");
+    useEffect(() => {
+        // add border to city pic if selected
+        const allPics = document.querySelectorAll(".selectCity");
+        const currentLocation = JSON.parse(localStorage.getItem("location"));
+        for (let i = 0; i < allPics.length; i++) {
+            let currentCity = allPics[i].children[1].innerHTML;
+            if (currentCity===currentLocation) {
+                console.log("foundddd")
+                allPics[i].children[0].children[0].classList.add("cityPicActive");
+            } else {
+                console.log("noooopppeeee");
+                allPics[i].children[0].children[0].classList.remove("cityPicActive");
+            }
         }
-    }
+    });
 
     // code to display all saved cities
     return (

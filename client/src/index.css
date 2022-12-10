@@ -107,6 +107,10 @@ width: 200px;
 text-align: center;
 }
 
+.cityPicActive{
+  outline: 7px solid #adc5fa;
+}
+
 .cityPic {
 margin: auto;
 height: 85%;
