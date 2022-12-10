@@ -119,20 +119,23 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
     ];
 
     let highestTemp7days = [];
-
+    console.log(location);
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
     if (!ifSavedLocation) {
         // alert("Not in saved locations");
         let getCity = location.split(",");
-        let endpointCoord = `https://api.openweathermap.org/geo/1.0/direct?q=${getCity}&appid=e15a543800b7e60db9e4e04aaf22a037`; // api to get coordinates lat and lon
+        let endpointCoord = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=e15a543800b7e60db9e4e04aaf22a037`; // api to get coordinates lat and lon
         const response = await fetch(endpointCoord);
         if (response.status !== 200) {
             document.getElementById("homeErrorMsg").innerText = `Error: Geocoding API crashed`;
+            console.log("geocoding api crashed");
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const responseData = await response.json();
+        console.log(responseData);
         if (responseData.length === 0) {
             document.getElementById("homeErrorMsg").innerText = `Error: API couldn't find latitude and longitude for ${getCity}`;
+            console.log("couldnt find lat and lon by the api");
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const newCoor = [responseData[0].lat, responseData[0].lon];
@@ -198,6 +201,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
                 const hourTemp = value.temp.toFixed(0);
                 const rainProb = value.pop * 100;
                 const hourIcon = value.weather[0].icon;
+                // console.log(hourIcon);
                 let formatIcon = `icon${hourIcon}`;
                 // const iconURL = `https://openweathermap.org/img/wn/${hourIcon}@2x.png`;
                 const hourDescription = value.weather[0].description;
@@ -222,6 +226,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
                 let dailyDesc = value.weather[0].description;
                 let currentDayData = [dayname, rainProb, picMap[formatIcon], minTemp, maxTemp, dailyDesc];
                 sevenDayData.push(currentDayData);
+                highestTemp7days.push(maxTemp);
             }
         });
 
