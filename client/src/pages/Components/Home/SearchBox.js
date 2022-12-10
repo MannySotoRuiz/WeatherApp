@@ -120,7 +120,7 @@ const SearchBox = () => {
                         <input
                             ref={autoCompleteRef} 
                             onChange={event => setQuery(event.target.value)}
-                            placeholder="Search city ..."
+                            placeholder="Quick search city ..."
                             value={query}
                             id="search"
                             name="search"

@@ -10,13 +10,9 @@ const Cities = () => {
 
     const clickedCity = e => {
         let getLocation = e.currentTarget.parentNode.innerText;
-        let splitLocation = getLocation.split(",");
-        let getCity = splitLocation[0];
-        let getCountry = splitLocation[1].trim(); // to remover the leading white space
-        let newLocation = `${getCity}, ${getCountry}`;
         let changeLocation = document.getElementById("currentLocation");
-        changeLocation.innerText = newLocation;
-        localStorage.setItem("location", JSON.stringify(newLocation));
+        changeLocation.innerText = getLocation;
+        localStorage.setItem("location", JSON.stringify(getLocation));
         window.location.reload();
     };
 
@@ -55,7 +51,6 @@ const Cities = () => {
     } else {
         defaultSavedLocations = ["New York, USA", "Paris, France", "Berlin, Germany"];
         localStorage.setItem("savedLocations", JSON.stringify(defaultSavedLocations));
-        console.log(defaultSavedLocations);
         getCoordinates(defaultSavedLocations);
     }
 

@@ -119,7 +119,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
     ];
 
     let highestTemp7days = [];
-    console.log(location);
+    // console.log(location);
     // the location provided to us is not in the saved location, so we need to go get that lat and lon for that location
     if (!ifSavedLocation) {
         // alert("Not in saved locations");
@@ -132,7 +132,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
             return [errorHrData, error7DayData, errorCurrentData];
         }
         const responseData = await response.json();
-        console.log(responseData);
+        // console.log(responseData);
         if (responseData.length === 0) {
             document.getElementById("homeErrorMsg").innerText = `Error: API couldn't find latitude and longitude for ${getCity}`;
             console.log("couldnt find lat and lon by the api");

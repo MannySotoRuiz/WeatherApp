@@ -2,7 +2,7 @@
     /* background-color: cornflowerblue; */
     width: 100%;
     min-height: 250px;
-    /* z-index: 9999; */
+    z-index: 0;
     position: absolute;
     /* outline: 1px solid red; */
     display: flex;
@@ -34,7 +34,7 @@
     box-sizing: border-box;
 }
 .innerInfo input {
-    width: 30%;
+    width: 40%;
 }
 
 .innerInfo button {
