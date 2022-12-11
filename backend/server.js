@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require('mongoose')
 const cors = require("cors");
 const accountRoutes = require('./routes/accounts')
+const notificationRoutes = require('./routes/notifications')
 
 const CONNECTION_URL = 'mongodb+srv://weatherapp:weatherapp@cluster0.z08pecz.mongodb.net/test?retryWrites=true&w=majority'
 const PORT = process.env.PORT|| 4000;
@@ -37,6 +38,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/accounts', accountRoutes)
+app.use('/api/notifications', notificationRoutes)
 
 //connect to mongo
 // mongoose.connect(process.env.MONGO_URI)
