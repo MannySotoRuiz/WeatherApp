@@ -75,3 +75,30 @@
     height: 500px;
     width: 100%;
 }
+
+.eachNotification {
+    width: 60%;
+    height: 150px;
+    outline: 2px solid gray;
+    margin-top: 20px;
+}
+
+.eachNotification p {
+    margin: 1%;
+}
+
+.notiTemps {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+}
+.notiTemps {
+    font-size: large;
+}
+
+.notiDesc {
+    font-size: large;
+}
+.notiFit {
+    font-size: large;
+}
