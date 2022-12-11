@@ -60,7 +60,7 @@ const ProfileInfo = () => {
 
         let ifVerified = true;
 
-        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${writtenLocaiton}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
+        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${writtenLocaiton}&appid=a63f9e77a7e5b1e6d12da2311068e37d`; // to get new coordinates for new city with api call
         const res = await fetch(end);
         if (res.status !== 200) {
             document.getElementById("updateLocationError").innerHTML = "Openweathermap API crashed. Please try again later";

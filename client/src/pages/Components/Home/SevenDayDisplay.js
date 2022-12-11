@@ -1,14 +1,7 @@
-// import sunImg from '../../../images/sun.png';
-// import cloudyNoSunImg from '../../../images/cloudyNoSun.png';
-// import cloudyRainImg from '../../../images/cloudyRain.png';
-// import cloudyWithSunImg from '../../../images/cloudyWithSun.png';
 import rainDropImg from '../../../images/rainDropIcon.png';
 import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import Popup from './Popup';
 import { useEffect, useState } from 'react';
-
-// date fns
-import { format } from 'date-fns';
 
 const SevenDayDisplay = () => {
 
@@ -46,58 +39,6 @@ const SevenDayDisplay = () => {
                 setOpen(true)
             }
             setData(getit[1]);
-            createNotification(getit[1]);
-        }
-        const createNotification = async (data) => {
-            const getUser = JSON.parse(localStorage.getItem("user"));
-            if(getUser) {
-                const userEmail = getUser.email;
-                const location = getUser.userLocation;
-                const params = {param1: userEmail};
-
-                const response = await fetch(`/api/notifications?${new URLSearchParams(params)}`);
-                const json = await response.json();
-
-                if (response.ok) {
-                    let ifFound = false;
-                    // loop through notifications to see if noti already exists for the current date
-                    for (let i = 0; i < json.length; i++) {
-                        const current = json[i];
-                        const tempDate = format(new Date(current.createdAt), 'MM/dd/yyyy');
-                        if (tempDate === getUser.date) {
-                            ifFound = true;
-                            break;
-                        }
-                    }
-
-                    if (ifFound) { // notification already exists for current day
-                        console.log("notification already exists for this date, dont create a new one");
-                    } else { // create a new notification for the date
-                        console.log("going to create a new notification for this date");
-                        const icon = data[0][2];
-                        const fit = "Hoodie";
-                        const highTemp = data[0][4];
-                        const lowTemp = data[0][3];
-                        const desc = data[0][5];
-                        const newNotification = {userEmail, fit, highTemp, lowTemp, desc, icon, location};
-                        const response2 = await fetch('/api/notifications', {
-                            method: 'POST',
-                            headers: {'Content-Type': 'application/json'},
-                            body: JSON.stringify(newNotification)
-                        })
-                        const json2 = await response2.json();
-                        if (!response2.ok) {
-                            console.log(json2.error);
-                            console.log(json2.emptyFields);
-                        }
-                        if (response2.ok) {
-                            console.log("successfully created notification");
-                        }
-                    }
-                }
-            } else {
-                console.log('user not logged in, cant detect notifications');
-            }
         }
         getData(getLoc);
     }, [getLoc]);

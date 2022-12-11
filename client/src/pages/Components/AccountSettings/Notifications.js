@@ -122,8 +122,8 @@ const Notifications = () => {
                         </div>
                         <div className="notiTemps">
                             <img src={currentNoti.icon} alt="today's img desc"/>
-                            <p className="notiHighTemp">Highest: {currentNoti.hightemp}</p>
-                            <p className="notiLowTemp">Lowest: {currentNoti.lowtemp}</p>
+                            <p className="notiHighTemp">Highest: {currentNoti.hightemp}<span>&#176;</span>F</p>
+                            <p className="notiLowTemp">Lowest: {currentNoti.lowtemp}<span>&#176;</span>F</p>
                         </div>
                         <p className="notiDesc">Description: {currentNoti.description}</p>
                         <p className="notiFit">Recommended Fit: {currentNoti.recommendedfit}</p>
