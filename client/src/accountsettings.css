@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+#logoutBtn {
+    margin: 2%;
+}
+
 #leftPanel p {
     font-weight: bold;
 }

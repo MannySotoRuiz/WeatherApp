@@ -8,7 +8,7 @@ const RightPanel = () => {
         <div id="rightPanel">
             <ProfileInfo />
             <Notifications />
-            <Preference />
+            {/* <Preference /> */}
         </div>
     );
 };

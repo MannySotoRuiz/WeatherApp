@@ -32,7 +32,7 @@ const Preference = () => {
   return (
     <div id="preferenceDisplay">
       {/* <div className="hidden" id="preferenceDisplay"> */}
-      <h2>Weather & Clothes Preference</h2>
+      {/* <h2>Weather & Clothes Preference</h2>
       <Slider
         style={{ "--fill-color": "#00b578" }}
         defaultValue={getSliderValue}
@@ -41,7 +41,7 @@ const Preference = () => {
         onChange={chan}
         disabled={updateIsLoading}
       />
-      {updateError && <div className="errorUpdatingValue">{updateError}</div>}
+      {updateError && <div className="errorUpdatingValue">{updateError}</div>} */}
     </div>
   );
 };
