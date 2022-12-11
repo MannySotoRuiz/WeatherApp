@@ -1,7 +1,8 @@
 import { useLogout } from "../../../hooks/useLogout";
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSliderValue } from '../../../hooks/useSliderValue';
+import { useUpdateUserLocation } from "../../../hooks/useUpdateUserLocation";
 import { Slider } from "antd-mobile";
 
 const marks = {
@@ -20,9 +21,12 @@ const ProfileInfo = () => {
 
     const { logout } = useLogout();
 
-    const [passwordShown, setPasswordShown] = useState(false);
+    const [writtenLocaiton, setLocation] = useState("");
+    const [oldLocation, setOldLocation] = useState("");
 
     const { updateSliderValue, error: updateError, isLoading: updateIsLoading } = useSliderValue();
+    const { updateUserLocation, error: locationError, isLoading: locationLoading } = useUpdateUserLocation();
+
     const user = JSON.parse(localStorage.getItem("user"));
     let getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
     if (!getSliderValue) {
@@ -37,37 +41,70 @@ const ProfileInfo = () => {
         await updateSliderValue(user.email, a);
     };
 
-    // Password toggle handler
-    const togglePassword = () => {
-        // when the handler is invoked
-        // inverse the boolean state of passwordShown
-        setPasswordShown(!passwordShown);
-    }
-
     const handleClick = () => {
          logout();
          navigate("/");
     }
 
+    const handleLocationChange = (e) => {
+        setLocation(e.currentTarget.value);
+    }
+
+    const updateLocation = async () => {
+
+        if (writtenLocaiton.length === 0) {
+            document.getElementById("updateLocationError").innerHTML = "Location missing";
+            document.getElementById("updateLocationError").classList.remove("hidden");
+            return;
+        }
+
+        let ifVerified = true;
+
+        let end = `https://api.openweathermap.org/geo/1.0/direct?q=${writtenLocaiton}&appid=e15a543800b7e60db9e4e04aaf22a037`; // to get new coordinates for new city with api call
+        const res = await fetch(end);
+        if (res.status !== 200) {
+            document.getElementById("updateLocationError").innerHTML = "Openweathermap API crashed. Please try again later";
+            ifVerified = false;
+        }
+        const resData = await res.json();
+        console.log(resData);
+        if (resData.length === 0) {
+            document.getElementById("updateLocationError").innerHTML = "Openweathermap API could not get latitude and longitude for your city";
+            ifVerified = false;
+        }
+
+        if (ifVerified) {
+            await updateUserLocation(user.email, writtenLocaiton);
+            if (!updateError) {
+                document.getElementById("locationInput").value = "";
+                document.getElementById("locationInput").placeholder = writtenLocaiton;
+                document.getElementById("updateLocationError").classList.add("hidden");
+                document.getElementById("updateLocationSuccess").classList.remove("hidden");
+            }
+        } else {
+            document.getElementById("updateLocationError").classList.remove("hidden");
+        }
+    }
+
+    useEffect(() => {
+        const getUser = JSON.parse(localStorage.getItem("user"));
+        setOldLocation(getUser.userLocation);
+    }, []);
+
     return (
         <div id="editProfileDisplay">
             <h2>Edit Profile</h2>
             <div id="profileInfo">
-                <div id="firstName">Email<br></br><br></br>
-                    <input type="text" id="femail" name="femail" placeholder="email"></input><br></br><br></br>
+                <div id="savedLocation"><h4>Update Location</h4><p>(notification results are based on your primary location)</p>
+                    <input type="search" placeholder={oldLocation} onChange={handleLocationChange} id="locationInput"></input>
+                    <button type="submit" value="Submit" onClick={updateLocation} id="updateLocationBtn" disabled={locationLoading}>Update</button><br></br><br></br>
+                    <div className="hidden error" id="updateLocationError"></div>
+                    <div className="hidden primary" id="updateLocationSuccess">Successfully updated location</div>
+                    {locationError && <div className="errorUpdatingLocation">{locationError}</div>}
                 </div>
-                {/* <div id="passwordDisplay">
-                    <div id="currentPassword">Current Password<br></br><br></br>
-                        <input type={passwordShown ? "text" : "password"} id="fcurrentpassword" name="fcurrentpassword" /><br></br><br></br>
-                    </div>
-                    <div id="newPassword">New Password<br></br><br></br>
-                        <input type={passwordShown ? "text" : "password"} id="fnewpassword" name="fnewpassword" /><br></br><br></br>
-                    </div>
-                    <button onClick={togglePassword}>Show Passwords</button>
-                    <button type="submit" value="Submit">Save</button>
-                    <button type="submit" value="Submit" onClick={handleClick}>Log Out</button>
-                </div> */}
-                <h2>Weather & Clothes Preference</h2>
+                
+                <h4>Weather & Clothes Preference</h4>
+                <p id="sliderNote">(recommended clothes are suggested based on this value)</p>
                 <Slider
                     style={{ "--fill-color": "#00b578" }}
                     defaultValue={getSliderValue}
