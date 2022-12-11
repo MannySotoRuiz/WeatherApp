@@ -121,6 +121,7 @@ const Notifications = () => {
                             <div className="trashIcon"><img src={trashIocn} alt="delete icon" onClick={event => deleteNoti(event, currentNoti._id)}/></div>
                         </div>
                         <div className="notiTemps">
+                            <img src={currentNoti.icon} alt="today's img desc"/>
                             <p className="notiHighTemp">Highest: {currentNoti.hightemp}</p>
                             <p className="notiLowTemp">Lowest: {currentNoti.lowtemp}</p>
                         </div>

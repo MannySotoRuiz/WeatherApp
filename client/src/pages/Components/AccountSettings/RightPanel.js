@@ -1,6 +1,6 @@
 import ProfileInfo from "./ProfileInfo";
 import Notifications from "./Notifications";
-import Preference from "./Preference";
+// import Preference from "./Preference";
 
 const RightPanel = () => {
 

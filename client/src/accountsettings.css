@@ -91,6 +91,7 @@
 
 .eachNotification p {
     margin: 0;
+    margin-left: 1%;
 }
 
 .notiTemps {
@@ -100,6 +101,11 @@
 }
 .notiTemps {
     font-size: large;
+}
+.notiTemps img {
+    width: 3%;
+    margin-left: 1%;
+    height: 10%;
 }
 
 .notiDesc {
@@ -115,6 +121,8 @@
     box-sizing: border-box;
     height: 17%;
     display: flex;
+    margin-left: 1%;
+    margin-bottom: 1%;
 }
 
 .notiTitle h5 {
