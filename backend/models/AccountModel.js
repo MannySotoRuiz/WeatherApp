@@ -22,6 +22,9 @@ const userSchema = new Schema({
     location: {
         type: String,
         default: "New York, USA"
+    },
+    lastlogin: {
+        type: String
     }
 })
   

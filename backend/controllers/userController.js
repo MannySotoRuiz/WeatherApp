@@ -14,10 +14,16 @@ const loginUser = async (req, res) => {
         const userSliderValue = user.slidervalue
         const userLocation = user.location
 
+        const current = new Date();
+        const currentMonth = current.getMonth() + 1;
+        const currentDate = current.getDate();
+        const currentYear = current.getFullYear();
+        const date = `${currentMonth}/${currentDate}/${currentYear}`;
+
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, userSliderValue, userLocation })
+        res.status(200).json({email, token, userSliderValue, userLocation, date })
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -34,7 +40,7 @@ const signupUser = async (req, res) => {
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, userSliderValue, userLocation})
+        res.status(200).json({email, token, userSliderValue, userLocation, date})
     } catch (error) {
         res.status(400).json({error: error.message})
     }

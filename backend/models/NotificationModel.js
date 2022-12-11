@@ -26,6 +26,14 @@ const notificationSchema = new Schema({
     checked: {
         type: Boolean,
         default: false
+    },
+    icon: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 

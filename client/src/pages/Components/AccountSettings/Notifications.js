@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 // import { useAuthContext } from "../../../hooks/useAuthContext";
 // import { useNotificationContext } from "../../../hooks/useNotificationContext";
+import trashIocn from '../../../images/trash.png';
+
+// date fns
+import { format } from 'date-fns';
 
 const Notifications = () => {
 
@@ -33,37 +37,37 @@ const Notifications = () => {
     //         return;
     //     }
 
-    //     // const current = new Date();
-    //     // const currentMonth = current.getMonth() + 1;
-    //     // const currentDate = current.getDate();
-    //     // const currentYear = current.getFullYear();
-    //     // const date = `${currentMonth}/${currentDate}/${currentYear}`;
-    //     // console.log(date);
+        // const current = new Date();
+        // const currentMonth = current.getMonth() + 1;
+        // const currentDate = current.getDate();
+        // const currentYear = current.getFullYear();
+        // const date = `${currentMonth}/${currentDate}/${currentYear}`;
+        // console.log(date);
 
     //     const userEmail = user.email;
     //     const notification = {userEmail, fit, highTemp, lowTemp, desc};
     //     console.log(notification)
 
-    //     const response = await fetch('/api/notifications', {
-    //         method: 'POST',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: JSON.stringify(notification)
-    //     })
+        // const response = await fetch('/api/notifications', {
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(notification)
+        // })
 
-    //     const json = await response.json();
-    //     if (!response.ok) {
-    //         setError(json.error);
-    //         setEmptyFields(json.emptyFields);
-    //     }
-    //     if (response.ok) {
-    //         setFit('');
-    //         setHighTemp(0);
-    //         setLowTemp(0);
-    //         setDesc('');
-    //         setError(null);
-    //         setEmptyFields([]);
-    //         console.log("successfully created notification");
-    //     }
+        // const json = await response.json();
+        // if (!response.ok) {
+        //     setError(json.error);
+        //     setEmptyFields(json.emptyFields);
+        // }
+        // if (response.ok) {
+        //     setFit('');
+        //     setHighTemp(0);
+        //     setLowTemp(0);
+        //     setDesc('');
+        //     setError(null);
+        //     setEmptyFields([]);
+        //     console.log("successfully created notification");
+        // }
     // }
 
     const [notis, setNotis] = useState([]);
@@ -85,6 +89,20 @@ const Notifications = () => {
         fetchNotifications();
     }, [])
 
+    const deleteNoti = async (event, id) => {
+
+        const response = await fetch('/api/notifications/' + id, {
+            method: 'DELETE'
+        })
+        const json = await response.json();
+
+        if (response.ok) {
+            event.target.parentNode.parentNode.parentNode.remove(); // delete the content from screen
+            console.log("succcessfully deleted notification");
+            console.log(json);
+        }
+    }
+
     return (
         <div className="hidden" id="notificationDisplay">
             <h2>Notifications</h2>
@@ -93,12 +111,15 @@ const Notifications = () => {
             <input type="text" placeholder="hightemp" value={highTemp} onChange={handleHighTempChange}></input><br></br><br></br>
             <input type="text" placeholder="lowtemp" value={lowTemp} onChange={handleLowTempChange}></input><br></br><br></br>
             <input type="text" placeholder="description" value={desc} onChange={handleDescChange}></input><br></br><br></br>
-            <button type="submit" value="Submit" onClick={handleCreateNoti}>Submit</button> */}
-            {/* {error && <div className="error">{error}</div>} */}
+            <button type="submit" value="Submit" onClick={handleCreateNoti}>Submit</button>
+            {error && <div className="error">{error}</div>} */}
             {notis.map((currentNoti, idx) => {
                 return (
                     <div className="eachNotification" key={idx}>
-                        <h5 className="notiCreatedAt">{currentNoti.createdAt}</h5>
+                        <div className="notiTitle">
+                            <h5 className="notiCreatedAt">{format(new Date(currentNoti.createdAt), 'MM/dd/yyyy, eeee')}, {currentNoti.location}</h5>
+                            <div className="trashIcon"><img src={trashIocn} alt="delete icon" onClick={event => deleteNoti(event, currentNoti._id)}/></div>
+                        </div>
                         <div className="notiTemps">
                             <p className="notiHighTemp">Highest: {currentNoti.hightemp}</p>
                             <p className="notiLowTemp">Lowest: {currentNoti.lowtemp}</p>

@@ -81,10 +81,12 @@
     height: 150px;
     outline: 2px solid gray;
     margin-top: 20px;
+    box-sizing: border-box;
+    padding-top: 10px;
 }
 
 .eachNotification p {
-    margin: 1%;
+    margin: 0;
 }
 
 .notiTemps {
@@ -101,4 +103,22 @@
 }
 .notiFit {
     font-size: large;
+}
+
+.notiTitle {
+    width: 100%;
+    /* outline:1px solid red; */
+    box-sizing: border-box;
+    height: 17%;
+    display: flex;
+}
+
+.notiTitle h5 {
+    margin: 0;
+    width: 70%;
+}
+.notiTitle img {
+    margin-left: 88%;
+    width: 7%;
+    cursor: pointer;
 }

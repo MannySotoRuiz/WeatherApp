@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 // create notification
 const createNotification = async(req, res) => {
-    const { userEmail, fit, highTemp, lowTemp, desc } = req.body
+    const { userEmail, fit, highTemp, lowTemp, desc, icon, location } = req.body
 
     let emptyFields = []
 
@@ -22,22 +22,20 @@ const createNotification = async(req, res) => {
     if (!desc) {
         emptyFields.push("description")
     }
+    if (!icon) {
+        emptyFields.push("icon");
+    }
+    if (!location) {
+        emptyFields.push("location");
+    }
     if (emptyFields.length > 0) {
         console.log("details are missing")
         return res.status(400).json({error: 'Please fill in all the fieldss', emptyFields})
     }
 
-    // const exists = await Notification.find({ date })
-    // const temp = JSON.parse(exists)
-    // if (exists.length === 1) {
-    //     console.log(temp)
-    //     console.log(userEmail)
-    //     return res.status(400).json({error: 'Notification already exists for this date!', date})
-    // }
-
     // add doc to db
     try {
-        const noti = await Notification.create({ email: userEmail, recommendedfit: fit, hightemp: highTemp, lowtemp: lowTemp, description: desc })
+        const noti = await Notification.create({ email: userEmail, recommendedfit: fit, hightemp: highTemp, lowtemp: lowTemp, description: desc, icon: icon, location: location })
         res.status(200).json(noti)
     } catch (error) {
         console.log("something went wrong when creating notification")
@@ -52,4 +50,23 @@ const getNotifications = async (req, res) => {
     res.status(200).json(notifications)
 }
 
-module.exports = { createNotification, getNotifications }
+// delete a notification
+const deleteNotification = async (req, res) => {
+    
+    const { id } = req.params
+    console.log(id)
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({error: 'No such notification'})
+    }
+
+    const noti = await Notification.findOneAndDelete({_id: id})
+
+    if (!noti) {
+        return res.status(400).json({error: 'No such notification!'})
+    }
+
+    res.status(200).json(noti)
+}
+
+module.exports = { createNotification, getNotifications, deleteNotification }
