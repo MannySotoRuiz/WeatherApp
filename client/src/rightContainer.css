@@ -270,4 +270,15 @@
     font-size: medium;
 }
 
+@media screen and (max-width: 1500px) {
+    .displayAllNotis {
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .displayAllNotis {
+        margin-left: 2%;
+    }
+}
 
