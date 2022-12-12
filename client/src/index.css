@@ -145,6 +145,11 @@ margin-bottom: 5%;
 cursor: pointer;
 }
 
+#addCity:hover {
+  color: #2e71de;
+  cursor: pointer;
+  }
+
 #addCity p {
 font-weight: lighter;
 }
