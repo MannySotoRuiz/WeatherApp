@@ -237,22 +237,25 @@
     height: 400px;
     background-color: white;
     clear: both;
-    border-radius: 10%;
+    border-radius: 2%;
     position: absolute;
     margin-top: 1%;
     margin-left: 9%;
     z-index: 99999;
-    padding-top: 2%;
+    overflow-y:auto;
+    /* padding-top: 2%; */
 }
 
 .homeEachNoti {
     width: 95%;
-    height: 100px;
+    height: 110px;
     outline: 2px solid gray;
     border-radius: 1%;
     margin: auto;
     padding-top: 1%;
     padding-left: 2%;
+    margin-top: 3%;
+    padding-bottom: 2%;
 }
 
 .homeEachNoti p {
@@ -268,6 +271,11 @@
     display: flex;
     gap: 1rem;
     font-size: medium;
+}
+
+.homeNotiIcon {
+    width: 7.5%;
+    /* height: 0%; */
 }
 
 @media screen and (max-width: 1500px) {

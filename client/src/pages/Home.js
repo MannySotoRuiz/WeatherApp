@@ -16,6 +16,7 @@ import night from "../images/night2.png";
 
 // date fns
 import { format } from 'date-fns';
+import getRecommendation from './Components/Recommdation.js';
 
 const Home = () => {
 
@@ -38,6 +39,7 @@ const Home = () => {
                 const params = {param1: userEmail};
 
                 const response = await fetch(`/api/notifications?${new URLSearchParams(params)}`);
+                // const response = await fetch(`https://weather-app-server-api.herokuapp.com/api/notifications?${new URLSearchParams(params)}`);
                 const json = await response.json();
 
                 if (response.ok) {
@@ -55,7 +57,7 @@ const Home = () => {
                         }
                         console.log(tempDate, getUser.date);
                     }
-
+                    // ifFound = false;
                     if (ifFound) { // notification already exists for current day
                         console.log("notification already exists for this date, dont create a new one");
                     } else { // create a new notification for the date
@@ -111,9 +113,10 @@ const Home = () => {
                         const tempIcon = tempWeather.weather[0].icon;
                         const formatIcon = `icon${tempIcon}`;
                         const icon = picMap[formatIcon];
-                        const fit = "Hoodie";
+                        // const fit = "Hoodie";
                         const highTemp = tempWeather.temp.max.toFixed(0);
                         const lowTemp = tempWeather.temp.min.toFixed(0);
+                        const fit = getRecommendation(highTemp);
                         const desc = tempWeather.weather[0].description;
                         const newNotification = {userEmail, fit, highTemp, lowTemp, desc, icon, location};
                         const response2 = await fetch('/api/notifications', {
@@ -121,6 +124,11 @@ const Home = () => {
                             headers: {'Content-Type': 'application/json'},
                             body: JSON.stringify(newNotification)
                         })
+                        // const response2 = await fetch('https://weather-app-server-api.herokuapp.com/api/notifications', {
+                        //     method: 'POST',
+                        //     headers: {'Content-Type': 'application/json'},
+                        //     body: JSON.stringify(newNotification)
+                        // })
                         const json2 = await response2.json();
                         if (!response2.ok) {
                             console.log(json2.error);

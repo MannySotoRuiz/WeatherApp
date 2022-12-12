@@ -12,7 +12,7 @@ export const useUpdateUserLocation = () => {
     // const response = await fetch('https://weather-app-server-api.herokuapp.com/api/accounts/updatelocation', {
     //   method: 'POST',
     //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify({ email, password })
+    //   body: JSON.stringify({ email, location })
     // })
     const response = await fetch('/api/accounts/updatelocation', {
       method: 'POST',

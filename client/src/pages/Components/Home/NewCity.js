@@ -22,8 +22,10 @@ const NewCity = () => {
             alert("Please enter valid search");
             return;
         }
+
+        const query = `views of ${search}`;
         
-        let endPoint = `https://api.unsplash.com/search/photos?page1&query=${search}&client_id=KD3JlHXUemNJy8AIoBejnopOYu4gbmvTsuoal9N4jZk`;
+        let endPoint = `https://api.unsplash.com/search/photos?page1&query=${query}&client_id=KD3JlHXUemNJy8AIoBejnopOYu4gbmvTsuoal9N4jZk`;
         const response = await fetch(endPoint);
 
         if (response.status === 404) {

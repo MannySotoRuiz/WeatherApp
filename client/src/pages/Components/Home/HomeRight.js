@@ -87,6 +87,7 @@ const HomeRight = () => {
                                         <div className="homeNotiTemps">
                                             <p>Highest: {currentNoti.hightemp}<span>&#176;</span>F</p>
                                             <p>Lowest: {currentNoti.lowtemp}<span>&#176;</span>F</p>
+                                            <img className="homeNotiIcon" src={currentNoti.icon} alt="notification icon img"/>
                                         </div>
                                         <p style={{ fontSize: "medium" }}>Description: {currentNoti.description}</p>
                                         <p style={{ fontSize: "medium" }}>Recommended fit: {currentNoti.recommendedfit}</p>

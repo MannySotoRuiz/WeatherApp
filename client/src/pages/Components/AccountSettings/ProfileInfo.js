@@ -30,8 +30,10 @@ const ProfileInfo = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     let getSliderValue = JSON.parse(localStorage.getItem("sliderValue"));
     if (!getSliderValue) {
-        getSliderValue = 60;
-        console.log(getSliderValue);
+        if (getSliderValue !== 0) {
+            getSliderValue = 60;
+            console.log(getSliderValue)
+        }
     }
     let chan = async (a) => {
         // setValue(a);

@@ -113,7 +113,7 @@ const Popup = ({ open, onClose }) => {
       console.log(arr)
 
       for (let i = 0; i < arr.length; i++) {
-        if (getTemps[index] >= arr[i]) {
+        if (parseInt(getTemps[index]) >= parseInt(arr[i])) {
           console.log(arr[i])
           setMessage(`Today's weather is good for ${list[arr[i]]}`);
           break;

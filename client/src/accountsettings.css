@@ -23,6 +23,7 @@
     background-color: white;
     box-sizing: border-box;
     display: flex;
+    border-radius: 0.5%;
 }
 
 #leftPanel {
@@ -44,6 +45,7 @@
     cursor: pointer;
     justify-content: center;
     align-items: center;
+    font-size: large;
 }
 
 #backHomeBtn {
@@ -77,6 +79,8 @@
     padding-top: 1%;
     padding-left: 3%;
     padding-right: 3%;
+    padding-bottom: 2%;
+    overflow-y:auto;
 }
 
 .hidden {

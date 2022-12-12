@@ -12,7 +12,7 @@ export const useSliderValue = () => {
     // const response = await fetch('https://weather-app-server-api.herokuapp.com/api/accounts/updatevalue', {
     //   method: 'POST',
     //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify({ email, password })
+    //   body: JSON.stringify({ email, value })
     // })
     const response = await fetch('/api/accounts/updatevalue', {
       method: 'POST',
