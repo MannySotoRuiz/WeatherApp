@@ -96,7 +96,7 @@ const HomeRight = () => {
                         </div>
                     </div>
                 )}
-                <div className="holdAccountPic">
+                <div  style={{ width: "15%" }} className="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
                         navigate("/login");
                     }}/>
