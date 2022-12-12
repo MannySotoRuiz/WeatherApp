@@ -19,6 +19,8 @@ import thunderstorm2 from "../../images/Backgrounds/thunderstorm.jpg";
 import snow2 from "../../images/Backgrounds/snow.jpg";
 import mist2 from "../../images/Backgrounds/mist.jpg";
 import night2 from "../../images/Backgrounds/night.webp";
+import nightSnow from "../../images/nightsnow.jpg";
+import nightMist from "../../images/nightmist.jpg";
 
 export default async function getHourly_Weekly_CurrentWeather(location) {
     if (!location) {
@@ -58,7 +60,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         "icon09n": cloudyRain,
         "icon10n": cloudyRain,
         "icon11n": thunderstorm,
-        "icon50n": mist
+        "icon50n": mist,
+        "icon13n": snow
     };
 
     const backGroundMap = {
@@ -78,7 +81,8 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         "icon09n": cloudyRain2,
         "icon10n": cloudyRain2,
         "icon11n": thunderstorm2,
-        "icon50n": mist2
+        "icon50n": nightMist,
+        "icon13n": nightSnow
     };
 
     const errorCurrentData = [0, 0, 0, sun, "NULL", 0, sun2];
@@ -279,6 +283,7 @@ export default async function getHourly_Weekly_CurrentWeather(location) {
         const currentHumidity = data.current.humidity;
         const currentIcon = data.current.weather[0].icon;
         let formatIcon = `icon${currentIcon}`;
+        console.log(formatIcon);
         // const currentIconURL = `https://openweathermap.org/img/wn/${currentIcon}@2x.png`;
         const currentDesc = data.current.weather[0].description;
         const currentFeels = data.current.feels_like.toFixed(0);

@@ -10,6 +10,14 @@
     color: #00000f;
 }
 
+#displayEmail {
+    font-size: 20px;
+    outline: 2px solid black;
+    padding: 5px;
+    border-radius: 1%;
+    margin-right: 20%;
+}
+
 .spaceBtwn {
     box-sizing: border-box;
     width: 100%;
@@ -22,7 +30,7 @@
     box-sizing: border-box;
     width: 100%;
     min-height: 100px;
-    /* outline: 2px solid orange; */
+    outline: 2px solid orange;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -31,9 +39,10 @@
 #holdAccountPic {
     width: 8%;
     height: 50%;
-    /* outline: 1px solid black; */
+    outline: 1px solid black;
     margin-right: 20px;
     cursor: pointer;
+    float: right;
 }
 
 #holdAccountPic img {

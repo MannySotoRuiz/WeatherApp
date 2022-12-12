@@ -17,7 +17,7 @@ const AccountSettings = () => {
     return (
         <div id="settings">
             <h1>Account Settings</h1>
-            <h3 onClick={() => {
+            <h3 id="backHomeBtn" onClick={() => {
                 navigate("/");
             }}>Home</h3>
             <div id="settingsDiv">

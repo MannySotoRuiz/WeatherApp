@@ -161,14 +161,16 @@ display: flex;
 margin: 0;
 margin-left: 40px;
 /* text-align: center; */
-width: 20%;
-color: #808080;
+padding: 6px;
+color: white;
+background-color: #4B56D2;
 font-size: 20px;
 font-weight: 600;
+border-radius: 8%;
 }
 
 #howDisplayWeather h3:hover {
-color: #000047;
+color: gray;
 cursor: pointer;
 }
 
