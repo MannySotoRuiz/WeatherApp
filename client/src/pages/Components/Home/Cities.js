@@ -53,14 +53,12 @@ const Cities = () => {
 
     useEffect(() => {
 
-        let getLoc = JSON.parse(localStorage.getItem("location"));
-
         // add border to city pic if selected
         const allPics = document.querySelectorAll(".selectCity");
-        const currentLocation = JSON.parse(localStorage.getItem("location"));
+        let currentLocation = JSON.parse(localStorage.getItem("location"));
 
-        if (!getLoc) {
-            getLoc = "New York, USA";
+        if (!currentLocation) {
+            currentLocation = "New York, USA";
             allPics[0].children[0].children[0].classList.add("cityPicActive");
             return;
         }

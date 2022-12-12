@@ -43,13 +43,19 @@ const Home = () => {
                 if (response.ok) {
                     let ifFound = false;
                     // loop through notifications to see if noti already exists for the current date
+
+                    const currentD = new Date();
+                    let currentDate = `${currentD.getMonth()+1}/${currentD.getDate()}/${currentD.getFullYear()}`;
+                    // console.log(currentDate)
                     for (let i = 0; i < json.length; i++) {
                         const current = json[i];
                         const tempDate = format(new Date(current.createdAt), 'MM/dd/yyyy');
-                        if (tempDate === getUser.date) {
+                        if (tempDate === currentDate) {
+                            console.log(tempDate, getUser.date);
                             ifFound = true;
                             break;
                         }
+                        console.log(tempDate, getUser.date);
                     }
 
                     if (ifFound) { // notification already exists for current day

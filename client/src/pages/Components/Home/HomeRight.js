@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import getHourly_Weekly_CurrentWeather from '../Helpers.js';
 import ChanceOfRain from './ChanceOfRain.js';
 import { useAuthContext } from '../../../hooks/useAuthContext.js';
+import notibell from '../../../images/notibell.png';
 
 
 const HomeRight = () => {
@@ -46,9 +47,13 @@ const HomeRight = () => {
         <div className="col" id="rightContainer">
             <div id="loginContainer">
                 {user && (
-                    <span id="displayEmail">Hello {user.email}</span>
+                    <div>
+                        <span id="displayEmail">Hello {user.email}</span>
+                        <div className="holdAccountPic"><img src={notibell} alt="notification bell img"/></div>
+                        <div className="displayAllNotis hidden"></div>
+                    </div>
                 )}
-                <div id="holdAccountPic">
+                <div className="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
                         navigate("/login");
                     }}/>
