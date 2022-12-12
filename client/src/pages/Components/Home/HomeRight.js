@@ -46,7 +46,7 @@ const HomeRight = () => {
         <div className="col" id="rightContainer">
             <div id="loginContainer">
                 {user && (
-                    <span id="displayEmail">{user.email}</span>
+                    <span id="displayEmail">Hello {user.email}</span>
                 )}
                 <div id="holdAccountPic">
                     <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
