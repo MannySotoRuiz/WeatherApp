@@ -242,6 +242,32 @@
     margin-top: 1%;
     margin-left: 9%;
     z-index: 99999;
+    padding-top: 2%;
+}
+
+.homeEachNoti {
+    width: 95%;
+    height: 100px;
+    outline: 2px solid gray;
+    border-radius: 1%;
+    margin: auto;
+    padding-top: 1%;
+    padding-left: 2%;
+}
+
+.homeEachNoti p {
+    margin: 0;
+}
+
+.homeNotiTitle {
+    font-size: large;
+    font-weight: bold;
+}
+
+.homeNotiTemps {
+    display: flex;
+    gap: 1rem;
+    font-size: medium;
 }
 
 
