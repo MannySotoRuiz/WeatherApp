@@ -79,7 +79,9 @@ userSchema.statics.login = async function(email, password) {
 userSchema.statics.updatevalue = async function(email, slidervalue) {
     // validation
     if (!email || !slidervalue) {
-        throw Error('Missing email or value')
+        if (slidervalue !== 0) {
+            throw Error('Missing email or value')
+        }
     }
 
     this.updateOne({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
