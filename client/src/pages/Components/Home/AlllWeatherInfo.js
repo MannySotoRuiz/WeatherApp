@@ -8,15 +8,22 @@ const AllWeatherInfo = () => {
 
     const changeForecastDisplay = e => {
         let userClicked = e.currentTarget.innerText;
+        let buttonClicked = e.currentTarget;
+        let hourlyButton = e.currentTarget.parentNode.children[0];
+        let sevenDayButton = e.currentTarget.parentNode.children[1];
         let allDisplays = e.currentTarget.parentNode.parentNode.children[1].children;
         for (let i = 0; i < allDisplays.length; i++) {
             let currentChild = allDisplays[i];
             currentChild.classList.add("hidden");
+            sevenDayButton.classList.remove("myBorder");
+            hourlyButton.classList.remove("myBorder");
         }
         if (userClicked === "Hourly") {
             allDisplays[0].classList.remove("hidden");
+            buttonClicked.classList.add("myBorder");
         } else if (userClicked === "7 Day") {
             allDisplays[1].classList.remove("hidden");
+            buttonClicked.classList.add("myBorder");
         } else if (userClicked === "Monthly") {
             allDisplays[3].classList.remove("hidden");
         }

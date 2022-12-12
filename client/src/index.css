@@ -170,7 +170,7 @@ border-radius: 8%;
 }
 
 #howDisplayWeather h3:hover {
-color: gray;
+color: #28cbcb;
 cursor: pointer;
 }
 
@@ -295,6 +295,10 @@ height: 100%;
 
 .hidden {
 display: none;
+}
+
+.myBorder {
+  outline: 4px solid #adc5fa;
 }
 
 .lowTempContainer {
