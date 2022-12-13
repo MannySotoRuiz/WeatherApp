@@ -312,5 +312,8 @@ and (max-device-width: 900px) {
     #innerBoxTab {
         width: 60%;
     }
+    #feelsLike {
+        font-size: 19px;
+    }
 }
 
