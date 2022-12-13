@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import HourlyDisplay from './HourlyDisplay';
 import SevenDayDisplay from './SevenDayDisplay';
 // import MonthlyDisplay from './MonthlyDisplay';
-import Popup from './Popup';
+// import Popup from './Popup';
 
 const AllWeatherInfo = () => {
-
-    localStorage.setItem("hourlyOrWeekly", "weekly");
 
     const changeForecastDisplay = e => {
         let userClicked = e.currentTarget.innerText;
@@ -25,46 +23,37 @@ const AllWeatherInfo = () => {
             allDisplays[0].classList.remove("hidden");
             buttonClicked.classList.add("myBorder");
             sevenDayButton.classList.remove("myBorder");
-            localStorage.setItem("hourlyOrWeekly", "hourly");
+            localStorage.setItem("hourlyOrWeekly", JSON.stringify("hourly"));
         } else if (userClicked === "7 Day") {
             allDisplays[1].classList.remove("hidden");
             buttonClicked.classList.add("myBorder");
             hourlyButton.classList.remove("myBorder");
-            localStorage.setItem("hourlyOrWeekly", "weekly");
+            localStorage.setItem("hourlyOrWeekly", JSON.stringify("weekly"));
         } else if (userClicked === "Monthly") {
             allDisplays[3].classList.remove("hidden");
         }
     };
 
     useEffect(() => {
+        const allPics = document.querySelectorAll(".howDisplay");
+        let hourlyOrWeekly = JSON.parse(localStorage.getItem("hourlyOrWeekly"));
 
-    //     // add border to city pic if selected
-         const allPics = document.querySelectorAll(".howDisplay");
-    //     const currentLocation = JSON.parse(localStorage.getItem("location"));
-        let hourlyOrWeekly = localStorage.getItem("hourlyOrWeekly");
         if (!hourlyOrWeekly) {
-            localStorage.setItem("hourlyOrWeekly", "weekly");
-            //allPics[0].children[0].children[0].classList.add("cityPicActive");
+            hourlyOrWeekly = "weekly";
+            localStorage.setItem("hourlyOrWeekly", JSON.stringify("weekly"));
             return;
         }
-
-        // if (hourlyOrWeekly == "weekly") {
-        //     allPics[1].classList.add("myBorder");
-        // }
-        if (!hourlyOrWeekly == "hourly") {
-            allPics[0].classList.add("myBorder")
-        } else {
+        
+        if (hourlyOrWeekly === "weekly") {
             allPics[1].classList.add("myBorder");
+            document.getElementById("hourlyDisplay").classList.add("hidden");
+            document.querySelectorAll(".sevenDayDisplay")[0].classList.remove("hidden");
+        } else {
+            allPics[0].classList.add("myBorder");
+            document.getElementById("hourlyDisplay").classList.remove("hidden");
+            document.querySelectorAll(".sevenDayDisplay")[0].classList.add("hidden");
         }
-
-    //     for (let i = 0; i < allPics.length; i++) {
-    //         let currentCity = allPics[i].children[1].innerHTML;
-    //         if (currentCity===currentLocation) {
-    //             allPics[i].children[0].children[0].classList.add("cityPicActive");
-    //         } else {
-    //             allPics[i].children[0].children[0].classList.remove("cityPicActive");
-    //         }
-    //     }
+        
     });
 
     return (

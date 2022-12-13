@@ -97,6 +97,9 @@ const Notifications = () => {
         const response = await fetch('/api/notifications/' + id, {
             method: 'DELETE'
         })
+        // const response = await fetch('https://weather-app-server-api.herokuapp.com/api/notifications/' + id, {
+        //     method: 'DELETE'
+        // })
         const json = await response.json();
 
         if (response.ok) {
