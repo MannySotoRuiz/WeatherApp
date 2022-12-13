@@ -62,6 +62,8 @@ const Home = () => {
 
                     const currentD = new Date();
                     let currentDate = `${currentD.getMonth()+1}/${currentD.getDate()}/${currentD.getFullYear()}`;
+                    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    const getDay = days[currentD.getDay()];
                     for (let i = 0; i < json.length; i++) {
                         const current = json[i];
                         const tempDate = format(new Date(current.createdAt), 'MM/dd/yyyy');
@@ -150,6 +152,63 @@ const Home = () => {
                         }
                         if (response2.ok) {
                             console.log("successfully created notification");
+                            // create div element
+                            let homeEachNoti = document.createElement("div");
+                            homeEachNoti.classList.add("homeEachNoti");
+        
+                            let homeNotiTitle = document.createElement("p");
+                            homeNotiTitle.classList.add("homeNotiTitle");
+                            homeNotiTitle.innerText = `${currentDate}, ${getDay}, ${location}`;
+
+                            let homeNotiTemps = document.createElement("div");
+                            homeNotiTemps.classList.add("homeNotiTemps");
+
+                            let firstP = document.createElement("p");
+                            firstP.innerHTML = `Highest: ${highTemp}°F`;
+
+                            let secondP = document.createElement("p");
+                            secondP.innerText = `Lowest: ${lowTemp}°F`;
+
+                            let img1 = document.createElement("img");
+                            img1.classList.add("homeNotiIcon");
+                            img1.src = icon;
+                            img1.alt = "noti icon img";
+
+                            homeNotiTemps.appendChild(firstP);
+                            homeNotiTemps.appendChild(secondP);
+                            homeNotiTemps.appendChild(img1);
+
+                            let pDesc = document.createElement("p");
+                            pDesc.style.fontSize = "medium";
+                            pDesc.innerHTML = `Description: ${desc}`;
+
+                            let pFit = document.createElement("p");
+                            pFit.style.fontSize = "medium";
+                            pFit.innerHTML = `Recommended fit: ${fit}`;
+
+                            homeEachNoti.appendChild(homeNotiTitle);
+                            homeEachNoti.appendChild(homeNotiTemps);
+                            homeEachNoti.appendChild(pDesc);
+                            homeEachNoti.appendChild(pFit);
+                            document.querySelectorAll(".displayAllNotis")[0].appendChild(homeEachNoti);
+                            let getChilds = document.querySelectorAll(".displayAllNotis")[0].children;
+
+                            if (getChilds.length > 1) { // we want to have the notis display with most recent date on top
+                                var nodeList = document.querySelectorAll('.displayAllNotis')[0].children;
+                                nodeList = [...nodeList];
+                                const getEl = nodeList.pop();
+                                nodeList.unshift(getEl);
+                                
+                                let e = document.querySelectorAll(".displayAllNotis")[0];
+                                let child = e.lastElementChild;
+                                while (child) {
+                                    e.removeChild(child);
+                                    child = e.lastElementChild;
+                                }
+                                for (let i = 0; i < nodeList.length; i++) {
+                                    document.querySelectorAll(".displayAllNotis")[0].appendChild(nodeList[i]);
+                                }
+                            }
                         }
                     }
                 }

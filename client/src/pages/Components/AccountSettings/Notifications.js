@@ -9,68 +9,6 @@ import { format } from 'date-fns';
 
 const Notifications = () => {
 
-    // const { user } = useAuthContext();
-
-    // const [fit, setFit] = useState("");
-    // const [highTemp, setHighTemp] = useState(0);
-    // const [lowTemp, setLowTemp] = useState(0);
-    // const [desc, setDesc] = useState("");
-    // const [error, setError] = useState(null);
-    // const [emptyFields, setEmptyFields] = useState([]);
-
-    // const handleFitChange = (event) => {
-    //     setFit(event.currentTarget.value);
-    // }
-    // const handleHighTempChange = (event) => {
-    //     setHighTemp(event.currentTarget.value);
-    // }
-    // const handleLowTempChange = (event) => {
-    //     setLowTemp(event.currentTarget.value);
-    // }
-    // const handleDescChange = (event) => {
-    //     setDesc(event.currentTarget.value);
-    // }
-
-    // const handleCreateNoti = async (e) => {
-
-    //     if (!user) {
-    //         setError('You must be logged in');
-    //         return;
-    //     }
-
-        // const current = new Date();
-        // const currentMonth = current.getMonth() + 1;
-        // const currentDate = current.getDate();
-        // const currentYear = current.getFullYear();
-        // const date = `${currentMonth}/${currentDate}/${currentYear}`;
-        // console.log(date);
-
-    //     const userEmail = user.email;
-    //     const notification = {userEmail, fit, highTemp, lowTemp, desc};
-    //     console.log(notification)
-
-        // const response = await fetch('/api/notifications', {
-        //     method: 'POST',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify(notification)
-        // })
-
-        // const json = await response.json();
-        // if (!response.ok) {
-        //     setError(json.error);
-        //     setEmptyFields(json.emptyFields);
-        // }
-        // if (response.ok) {
-        //     setFit('');
-        //     setHighTemp(0);
-        //     setLowTemp(0);
-        //     setDesc('');
-        //     setError(null);
-        //     setEmptyFields([]);
-        //     console.log("successfully created notification");
-        // }
-    // }
-
     const [notis, setNotis] = useState([]);
 
     useEffect(() => {
@@ -112,13 +50,6 @@ const Notifications = () => {
     return (
         <div className="hidden" id="notificationDisplay">
             <h2>Notifications</h2>
-
-            {/* <input type="text" placeholder="recommended fit" value={fit} onChange={handleFitChange}></input><br></br><br></br>
-            <input type="text" placeholder="hightemp" value={highTemp} onChange={handleHighTempChange}></input><br></br><br></br>
-            <input type="text" placeholder="lowtemp" value={lowTemp} onChange={handleLowTempChange}></input><br></br><br></br>
-            <input type="text" placeholder="description" value={desc} onChange={handleDescChange}></input><br></br><br></br>
-            <button type="submit" value="Submit" onClick={handleCreateNoti}>Submit</button>
-            {error && <div className="error">{error}</div>} */}
             {notis.map((currentNoti, idx) => {
                 return (
                     <div className="eachNotification" key={idx}>
