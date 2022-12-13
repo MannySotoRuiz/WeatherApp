@@ -173,3 +173,91 @@
     border-radius: 4px;
     margin: 20px 0;
 }
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 900px) {
+    #settingsDiv {
+        flex-direction: column;
+    }
+    #leftPanel {
+        display: none;
+    }
+    #rightPanel {
+        margin-top: 60px;
+        width: 100%;
+    }
+
+    .notiMenu {
+        width: 84%;
+        height: 60px;
+        background-color: #BCCEF8;
+        align-items: center;
+        position: fixed;
+        z-index: 9999;
+        /* position: absolute; */
+    }
+    .notiMenu img {
+        width: 17%;
+    }
+
+    #settings h1 {
+        display: none;
+    }
+    #backHomeBtn {
+        display: none;
+    }
+    .displayNotiMenu {
+        width: 84%;
+        height: 250px;
+        position: fixed;
+        z-index: 999999;
+        background-color: #BCCEF8;
+    }
+    .displayNotiMenu img {
+        width: 15%;
+    }
+    .displayNotiMenu h4 {
+        margin-top: 5%;
+        color: black;
+        font-weight: bold;
+    }
+    .eachNotification {
+        height: 200px;
+    }
+    .notiTitle {
+        /* outline: 1px solid red; */
+        height: 30%;
+        flex-direction: row;
+    }
+    .notiTitle h5 {
+        margin: 0;
+        width: 200%;
+        font-size: medium;
+    }
+    /* .notiTitle img {
+        width: 20%;
+        margin-right: 30px;
+        outline: 1px solid green;
+    } */
+    .trashIcon img {
+        margin-left: 0;
+        margin-right: 3%;
+        float: right;
+        width: 20%;
+    }
+    .notiTemps {
+        flex-direction: row-reverse;
+        gap: 5%;
+    }
+    .notiTemps img {
+        margin: 0;
+        width: 15%;
+    }
+    #savedLocation input {
+        width: 65%;
+    }
+    #logoutBtn {
+        margin-top: 20%;
+    }
+}

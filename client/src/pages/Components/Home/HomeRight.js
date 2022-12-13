@@ -98,16 +98,16 @@ const HomeRight = () => {
                     </div>
                 )}
                 <div  style={{ width: "15%" }} className="holdAccountPic">
-                    <img src={require('../../../images/account.png')} alt="account icon" onClick={() => {
+                    <img src={require('../../../images/account2.png')} alt="account icon" onClick={() => {
                         navigate("/login");
                     }}/>
                 </div>
             </div>
             <div className="spaceBtwn"></div>
             <div id="todayInfo">
-            <div id="innerBox"></div>
-            <div id="innerBoxLower"></div>
-            <div id="innerBoxTab"></div>
+                <div id="innerBox"></div>
+                <div id="innerBoxLower"></div>
+                <div id="innerBoxTab"></div>
                 <div id="formattingInfo">
                     <div id="todayDate">
                         <div id="imgCurrentWeather"><img src={allData[3]} alt="current weather img"/></div>

@@ -681,7 +681,8 @@ background-color: #ea4c89;
   margin-left: 550px;
 	position: relative;
 	border-radius: 30px;
-	background: #fff
+	background: #fff;
+  outline: 3px solid black;
 }
 
 .toggle-btn {
@@ -767,4 +768,8 @@ input.error {
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.mobileMenu {
+  display: none;
 }

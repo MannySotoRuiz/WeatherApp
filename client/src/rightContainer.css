@@ -11,10 +11,11 @@
 }
 
 #displayEmail {
-    font-size: 20px;
-    /* outline: 2px solid black; */
+    font-size: 23px;
+    outline: 2px solid black;
     padding: 6px;
-    border-radius: 6%;
+    border-radius: 1%;
+    /* height: 50px; */
     color: white;
     background-color: #3E6D9C;
 }
@@ -287,6 +288,29 @@
 @media screen and (max-width: 1300px) {
     .displayAllNotis {
         margin-left: 2%;
+    }
+}
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 900px) {
+    #rightContainer {
+        /* margin: 0; */
+        /* padding: 0; */
+    }
+    #todayInfo {
+        margin: 0;
+        padding: 0;
+        /* outline: 2px solid orange; */
+    }
+    #innerBox {
+        /* width: 90%; */
+        /* outline: 1px solid red; */
+        margin: 0;
+        /* margin-right: 8%; */
+    }
+    #innerBoxTab {
+        width: 60%;
     }
 }
 

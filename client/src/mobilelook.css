@@ -10,6 +10,7 @@ and (max-device-width: 900px) {
         margin: 0;
     }
     #leftContainer {
+        margin-top: 90px;
         width: 100%;
     }
     #rightContainer {
@@ -95,6 +96,46 @@ and (max-device-width: 900px) {
     }
     #search-border {
         width: 300px;
+    }
+    .mobileMenu {
+        display: inline-flex;
+        background-color: #009EFF;
+        width: 100%;
+        height: 90px;
+        /* justify-content: center; */
+        align-items: center;
+        position: fixed;
+        z-index: 9999;
+    }
+    .mobileMenu img {
+        width: 15%;
+    }
+    #displayEmail {
+        display: none;
+    }
+    .holdAccountPic {
+        display: none;
+    }
+    .displayMenu {
+        width: 100%;
+        height: 250px;
+        background-color: #009EFF;
+        outline: 1px solid black;
+        z-index: 99999;
+        position: fixed;
+    }
+    .displayMenu img {
+        width: 10%;
+        margin-top: 3%;
+    }
+    .displayMenu h4 {
+        margin-top: 5%;
+        font-weight: bold;
+        color: black;
+    }
+    .displayMenu a {
+        color: black;
+        text-decoration: none;
     }
 
 }
