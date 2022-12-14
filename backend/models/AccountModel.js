@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt')
 const validator = require('validator')
+const { json } = require("express")
 
 const Schema = mongoose.Schema
 
@@ -13,6 +14,17 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    slidervalue: {
+        type: Number,
+        default: 60
+    },
+    location: {
+        type: String,
+        default: "New York, USA"
+    },
+    lastlogin: {
+        type: String
     }
 })
   
@@ -61,6 +73,41 @@ userSchema.statics.login = async function(email, password) {
     }
 
     return user
+}
+
+// static update slider method 
+userSchema.statics.updatevalue = async function(email, slidervalue) {
+    // validation
+    if (!email || !slidervalue) {
+        if (slidervalue !== 0) {
+            throw Error('Missing email or value')
+        }
+    }
+
+    this.updateOne({email, email}, {$set:{ slidervalue:slidervalue }}, (err, doc) => {
+        if (err) {
+            throw Error('Error trying to update value')
+        }
+
+        // User was updated successfully
+        return json(doc)
+    })
+}
+
+// static update user location
+userSchema.statics.updatelocation = async function(email, location) {
+    // validation
+    if (!email || !location) {
+        throw Error("Missing email or location")
+    }
+
+    this.updateOne({email, email}, {$set:{ location:location }}, (err, doc) => {
+        if (err) {
+            throw Error('Error trying to update location')
+        }
+
+        return json(doc)
+    })
 }
 
 module.exports = mongoose.model('User', userSchema)

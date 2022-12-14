@@ -1,0 +1,10 @@
+node_modules/
+
+# mac junk
+.DS_Store
+
+# visual studio code junk
+.vscode/
+.vscode/settings.json
+
+build/
